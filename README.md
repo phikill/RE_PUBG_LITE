@@ -1,16 +1,57 @@
 v 1.4.2.423
-# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   HI!
+# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   slow reverse engineering Sorry!
 PUBG LITE game reverse engineering test
 
 you can find some old backup files in my google drive including 2019 launcher and game with version 1.4.2.423  
 [PUBG LITE Backup April 2020 - Google Drive](https://drive.google.com/drive/u/0/folders/1IWccZ7mIpKqnnrxmyTDGBmvkkb2tyOqD)  
+includes the 2019 launcher but some update servers are still active.  
 
+and includes the game with its files. 
 
 TOOLS
 
 .PAK files exploring [PUBG Lite Explorer by Warranty Voider](https://github.com/zeroKilo/PUBGLiteExplorerWV)  
 UMODEL = bug
 
+depends22_x64  
+depends22_x86
+FModel
+JWlink
+SmartSteamEmu143
+uasm256_x86
+umodel_win32
+CheatEngine
+node.js
+UAssetGUI
+UnrealLocres
+Wireshark
+Xenos_2.3.2
+Ghidra
+7zip
+xvolkolak
+ForceToolKit
+SublimeText
+RegShot
+winapiexec64
+QuickUnpack 4.3
+Process Explorer
+Detect It Easy DIE
+OpenHashTab
+EchoMirage
+FakeNet https://github.com/fireeye/flare-fakenet-ng/releases
+Nmap
+HXD
+ImHex
+FileGrab
+Error Lookup
+dnSpyEx64
+ILSpy
+Delphi IDR
+X64DBG
+CyberChef
+XOpcodeCalc
+Hollows_Hunter
+Cain & Abel
 
 ## code tree 
 
