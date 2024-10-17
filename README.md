@@ -14,45 +14,45 @@ TOOLS
 UMODEL = bug
 
 depends22_x64  
-depends22_x86
-FModel
-JWlink
-SmartSteamEmu143
-uasm256_x86
-umodel_win32
-CheatEngine
-node.js
-UAssetGUI
-UnrealLocres
-Wireshark
-Xenos_2.3.2
-Ghidra
-7zip
-xvolkolak
-ForceToolKit
-SublimeText
-RegShot
-winapiexec64
-QuickUnpack 4.3
-Process Explorer
-Detect It Easy DIE
-OpenHashTab
-EchoMirage
-FakeNet https://github.com/fireeye/flare-fakenet-ng/releases
-Nmap
-HXD
-ImHex
-FileGrab
-Error Lookup
-dnSpyEx64
-ILSpy
-Delphi IDR
-X64DBG
-CyberChef
-XOpcodeCalc
-Hollows_Hunter
-Cain & Abel
-
+depends22_x86  
+FModel  
+JWlink  
+SmartSteamEmu143  
+uasm256_x86  
+umodel_win32  
+CheatEngine  
+node.js  
+UAssetGUI  
+UnrealLocres  
+Wireshark  
+Xenos_2.3.2  
+Ghidra  
+7zip  
+xvolkolak  
+ForceToolKit  
+SublimeText  
+RegShot  
+winapiexec64  
+QuickUnpack 4.3  
+Process Explorer  
+Detect It Easy DIE  
+OpenHashTab  
+EchoMirage  
+FakeNet https://github.com/fireeye/flare-fakenet-ng/releases  
+Nmap  
+HXD  
+ImHex  
+FileGrab  
+Error Lookup  
+dnSpyEx64  
+ILSpy  
+Delphi IDR  
+X64DBG  
+CyberChef  
+XOpcodeCalc  
+Hollows_Hunter  
+Cain & Abel  
+  
 ## code tree 
 
 ``` 
