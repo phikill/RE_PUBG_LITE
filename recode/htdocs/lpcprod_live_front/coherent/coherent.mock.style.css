@@ -1,0 +1,155 @@
+#coherent-browser-debug-overlay {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    background-color: rgba(245, 222, 179, 0.65); /* transparent wheat*/
+    color: black;
+    line-height: normal;
+    font-weight: normal;
+    min-width: 30px; /* dock button height */
+    font-family: Arial;
+    z-index: 9999999999999999999999999;
+}
+
+#coherent-browser-debug-overlay.hidden {
+    display: none;
+}
+#coherent-browser-debug-overlay.show {
+    display: block;
+}
+
+
+#coherent-browser-debug-overlay .contents {
+    margin-left: 10px;
+    margin-right: 25px;
+    overflow: auto;
+    max-height: 100%;
+}
+
+
+#coherent-browser-debug-overlay button{
+    font-size: 13px;
+    vertical-align: top;
+    width: 50%;
+    height: 40px;
+    padding: 0;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #f39c12;
+    border: 0;
+    border-bottom: 1px solid #e8930c;
+    -webkit-box-shadow: inset 0 -1px #e8930c;
+    box-shadow: inset 0 -1px #e8930c;
+}
+
+#coherent-browser-debug-overlay img{
+    display: inline;
+    margin-right: 25px;
+    margin-top: 15px;
+}
+
+
+#coherent-browser-debug-overlay input{
+    width: 40%;
+    vertical-align: middle;
+}
+
+#coherent-browser-debug-overlay button:active {
+    margin-top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#coherent-browser-debug-overlay h1 {
+    font-size: 1.7em;
+    font-family: Candara;
+    display: inline;
+}
+
+#coherent-browser-debug-overlay h1 + hr {
+    margin-top: 10px;
+}
+
+#coherent-browser-debug-overlay h2{
+    font-size: 1em;
+    display: inline;
+    font-family: Candara;
+    line-height: 1.2;
+    max-width: 70%;
+}
+
+
+#coherent-browser-debug-overlay p {
+    font-family: Calibri;
+    font-size: large;
+}
+
+#coherent-browser-debug-overlay .left {
+    float: left;
+}
+
+#coherent-browser-debug-overlay .right {
+    float: right;
+}
+
+
+#coherent-browser-debug-overlay ul {
+    padding: 0;
+    margin: 0;
+}
+
+#coherent-browser-debug-overlay li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    clear: both;
+}
+
+#coherent-browser-debug-overlay hr {
+    clear: both;
+    color: gray;
+    border: 0;
+    height: 1px;
+    margin-top: 50px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
+}
+
+
+#coherent-browser-debug-overlay.open > .contents {
+    display: block;
+}
+
+#coherent-browser-debug-overlay.docked > .contents {
+    display: none;
+}
+
+#coherent-browser-debug-overlay .docked-contents {
+    position: absolute;
+    top: 45%;
+    right: -30px; /* docking button height */
+    transform: rotate(-90deg);
+}
+#coherent-browser-debug-overlay .docked-contents button {
+    width: 75px;
+    height: 30px;
+    margin: 0;
+}
+
+#coherent-browser-debug-overlay.docked {
+    -webkit-transition: right 0.5s, width 0.5s;
+    transition: right 0.5s, width 0.5s;
+    right: 99%;
+}
+
+#coherent-browser-debug-overlay.open {
+    -webkit-transition: right 0.5s;
+    transition: right 0.5s, width 0.5s;
+    right: 75%;
+}

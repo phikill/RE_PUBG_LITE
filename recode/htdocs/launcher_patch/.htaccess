@@ -1,0 +1,4 @@
+<Files "launcher.ini">
+    ForceType application/octet-stream
+    Header set Content-Disposition attachment
+</Files>
