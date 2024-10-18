@@ -1,5 +1,5 @@
 v 1.4.2.423
-# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   slow reverse engineering Sorry!
+# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   Battlegrounds Lite.
 PUBG LITE game reverse engineering test
 
 you can find some old backup files in my google drive including 2019 launcher and game with version 1.4.2.423  
