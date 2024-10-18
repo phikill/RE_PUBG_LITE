@@ -53,6 +53,10 @@ XOpcodeCalc
 Hollows_Hunter  
 Cain & Abel  
   
+Free ThirdParty Resources.
+
+Launcher [Newtonsoft.json.dll](https://github.com/JamesNK/Newtonsoft.Json/releases/tag/13.0.3 ) v12.01
+
 ## code tree 
 
 ``` 
