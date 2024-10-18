@@ -14,7 +14,6 @@ and includes the game with its files.
 UMODEL = bug
 
 depends22_x64  
-depends22_x86  
 FModel  
 JWlink  
 SmartSteamEmu143  
