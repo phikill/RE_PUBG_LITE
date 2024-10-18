@@ -37,7 +37,7 @@ Process Explorer
 Detect It Easy DIE  
 OpenHashTab  
 EchoMirage  
-FakeNet https://github.com/fireeye/flare-fakenet-ng/releases  
+[FakeNet](https://github.com/fireeye/flare-fakenet-ng/releases)  
 Nmap  
 HXD  
 ImHex  
