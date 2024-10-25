@@ -1,0 +1,3 @@
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\PatcherObject2\PatcherObject2\obj\Debug\net452\PatcherObject2.csproj.AssemblyReference.cache
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\PatcherObject2\PatcherObject2\obj\Debug\net452\PatcherObject2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\PatcherObject2\PatcherObject2\obj\Debug\net452\PatcherObject2.csproj.CoreCompileInputs.cache

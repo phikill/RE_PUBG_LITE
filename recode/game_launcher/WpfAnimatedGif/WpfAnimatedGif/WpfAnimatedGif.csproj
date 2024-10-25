@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <ProjectGuid>{8558B806-1E39-4142-9458-015B5C7FE0F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WpfAnimatedGif</RootNamespace>
+    <AssemblyName>WpfAnimatedGif</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net35</TargetFramework>
+    <UseWPF>True</UseWPF>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Include="AnimationCache.cs" />
+    <Compile Include="Decoding\GifApplicationExtension.cs" />
+    <Compile Include="Decoding\GifBlock.cs" />
+    <Compile Include="Decoding\GifBlockKind.cs" />
+    <Compile Include="Decoding\GifColor.cs" />
+    <Compile Include="Decoding\GifCommentExtension.cs" />
+    <Compile Include="Decoding\GifDecoderException.cs" />
+    <Compile Include="Decoding\GifExtension.cs" />
+    <Compile Include="Decoding\GifFile.cs" />
+    <Compile Include="Decoding\GifFrame.cs" />
+    <Compile Include="Decoding\GifGraphicControlExtension.cs" />
+    <Compile Include="Decoding\GifHeader.cs" />
+    <Compile Include="Decoding\GifHelpers.cs" />
+    <Compile Include="Decoding\GifImageData.cs" />
+    <Compile Include="Decoding\GifImageDescriptor.cs" />
+    <Compile Include="Decoding\GifLogicalScreenDescriptor.cs" />
+    <Compile Include="Decoding\GifPlainTextExtension.cs" />
+    <Compile Include="Decoding\GifTrailer.cs" />
+    <Compile Include="ImageAnimationController.cs" />
+    <Compile Include="ImageBehavior.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\VersionInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.Core" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <ProjectGuid>{EA5ED658-48C2-4C2C-8242-283D5D1EF4E2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Launcher</RootNamespace>
+    <AssemblyName>Launcher</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net452</TargetFramework>
+    <UseWPF>True</UseWPF>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Launcher.ico</ApplicationIcon>
+    <StartupObject>&lt;Module&gt;</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+   <!-- FIXME! 
+    <Compile Include="$_s__CatchableTypeArray$_extraBytes_16.cs" />
+    <Compile Include="$_s__RTTIBaseClassArray$_extraBytes_16.cs" />
+    <Compile Include="$_s__RTTIBaseClassArray$_extraBytes_24.cs" />
+    <Compile Include="$_s__RTTIBaseClassArray$_extraBytes_32.cs" />
+    <Compile Include="$_s__RTTIBaseClassArray$_extraBytes_72.cs" />
+    <Compile Include="$_s__RTTIBaseClassArray$_extraBytes_8.cs" />
+    <Compile Include="$_s__RTTIBaseClassArray$_extraBytes_80.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_15.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_16.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_17.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_19.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_20.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_21.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_26.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_28.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_39.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_40.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_41.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_48.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_52.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_53.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_54.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_72.cs" />
+    <Compile Include="$_TypeDescriptor$_extraBytes_75.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY00$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY00Q6MPEBXXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY01$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY01$$CBH.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY01$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY01Q6AXXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY02$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY02$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY02Q6AXXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY03$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY04$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY04$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY04Q6AXXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY05$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY05$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY06$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY06$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY07$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY07$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY07_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY08$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY08$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY08Q6AXXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY09$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0A@P6AHXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0A@P6AXXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BA@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BA@$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BA@Q6AXXZ.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BAAAA@W4byte@std@@.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BAE@_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BB@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BB@$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BC@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BE@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BF@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BF@$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BI@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0BM@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0CA@_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0CB@$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0CB@D.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0CB@_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0DE@$$CBD.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0EAA@D.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0EAA@_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0L@$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0N@$$CB_W.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0N@W4byte@std@@.cs" />
+    <Compile Include="-CppImplementationDetails-\$ArrayType$$$BY0O@$$CB_W.cs" />
+    <Compile Include="-CrtImplementationDetails-\LanguageSupport.cs" />
+    <Compile Include="-CrtImplementationDetails-\ModuleLoadException.cs" />
+    <Compile Include="-CrtImplementationDetails-\ModuleLoadExceptionHandlerException.cs" />
+    <Compile Include="-CrtImplementationDetails-\ModuleUninitializer.cs" />
+    <Compile Include="-CrtImplementationDetails-\Progress.cs" />
+    <Compile Include="-CrtImplementationDetails-\ThisModule.cs" />
+    <Compile Include="-CrtImplementationDetails-\TriBool.cs" /> 
+    -->
+    
+    <!-- <Compile Include="-Module-.cs" /> FIXME! -->
+    <!-- <Compile Include="CLzmaDec.cs" /> FIXME! -->
+    <!-- <Compile Include="CURLcode.cs" /> FIXME! -->
+    <!-- <Compile Include="CURLINFO.cs" /> FIXME! -->
+    <!-- <Compile Include="CURLoption.cs" /> FIXME! -->
+    <!-- <Compile Include="DownloadFile.cs" /> FIXME! --> 
+    <!-- <Compile Include="DownloadSpeed.cs" /> FIXME! -->
+    <!-- <Compile Include="ELzmaFinishMode.cs" /> FIXME! -->
+    <!-- <Compile Include="ELzmaStatus.cs" /> FIXME! --> 
+    <!-- <Compile Include="escape_string.cs" /> FIXME! -->
+    <!-- <Compile Include="FileCompress.cs" /> FIXME! -->
+    <!-- <Compile Include="FileDownloader.cs" /> FIXME! -->
+    <!-- <Compile Include="FileHash.cs" /> FIXME! -->
+    <!-- <Compile Include="FileInfoList.cs" /> FIXME! -->
+    <!-- <Compile Include="gcroot-System.cs" /> FIXME! -->
+    <!-- <Compile Include="HINSTANCE__.cs" /> FIXME! -->
+    <!-- <Compile Include="HRSRC__.cs" /> FIXME! -->
+    <!-- <Compile Include="HWND__.cs" /> -->
+    <!-- <Compile Include="ICLRRuntimeHost.cs" /> FIXME! -->
+    <!-- <Compile Include="ICorRuntimeHost.cs" /> FIXME! -->
+    <!-- <Compile Include="IniParser.cs" /> FIXME! -->
+    <!-- <Compile Include="ipc\mutex\locker.cs" /> FIXME! -->
+    <!-- <Compile Include="ipc\scoped_shm_reader.cs" /> FIXME! -->
+    <!-- <Compile Include="ipc\winapi_call_error.cs" /> FIXME! -->
+    <!-- <Compile Include="ISzAlloc.cs" /> FIXME! -->
+    <!-- <Compile Include="IUnknown.cs" /> FIXME! -->
+    <!-- <Compile Include="LastErrorInfo-LastErrorType-.cs" /> FIXME! -->
+    <!-- <Compile Include="LastErrorType.cs" /> FIXME! -->
+    <!-- <Compile Include="LauncherupdateInfo.cs" /> FIXME! -->
+    <!-- <Compile Include="LauncherWindowRestoreResult.cs" /> FIXME! -->
+    <!-- <Compile Include="LocalFile.cs" /> FIXME! -->
+    <!-- <Compile Include="MemoryFile.cs" /> FIXME! -->
+    <!-- <Compile Include="msclr\interop\context_node-char const -,System.cs" /> FIXME! -->
+    <!-- <Compile Include="msclr\interop\context_node-wchar_t const -,System.cs" /> FIXME! -->
+    <!-- <Compile Include="msclr\interop\context_node_base.cs" /> FIXME! -->
+    <!-- <Compile Include="msclr\interop\details\char_buffer-char-.cs" /> FIXME! -->
+    <!-- <Compile Include="msclr\interop\marshal_context.cs" /> FIXME! -->
+    <!-- <Compile Include="Properties\AssemblyInfo.cs" /> FIXME! -->
+    <!-- <Compile Include="ResourceBuffer.cs" /> FIXME! -->
+    <!-- <Compile Include="rsa_st.cs" /> FIXME! -->
+    
+    <!-- FIXME
+    <Compile Include="std\-append@-$basic_string@DU-$char_traits@D\__l2\-lambda_59d344839e59d86dc9255728ed6d9dcb-.cs" />
+    <Compile Include="std\-append@-$basic_string@DU-$char_traits@D\__l2\-lambda_f1129f3d98befd92b6d0e63ffb90e238-.cs" />
+    <Compile Include="std\-append@-$basic_string@_WU-$char_traits@\__l2\-lambda_3ca51f66a9d03df3cf21518bbff746cd-.cs" />
+    <Compile Include="std\-append@-$basic_string@_WU-$char_traits@\__l2\-lambda_76dcdb8c0bec046e8a043f4783eee8ee-.cs" />
+    <Compile Include="std\-assign@-$basic_string@DU-$char_traits@D\__l2\-lambda_61f19ca81ede490286327871d07716e6-.cs" />
+    <Compile Include="std\-assign@-$basic_string@_WU-$char_traits@\__l2\-lambda_d4301fda4684ac16da26da6c6383f5f5-.cs" />
+    <Compile Include="std\-push_back@-$basic_string@_WU-$char_trai\__l2\-lambda_94b5dcf1ef2e5769bf4885c9dfc60389-.cs" />
+    <Compile Include="std\-reserve@-$basic_string@DU-$char_traits@\__l11\-lambda_25f5346b87de700b649286b586e55410-.cs" />
+    <Compile Include="std\-reserve@-$basic_string@_WU-$char_traits\__l11\-lambda_2b6d0663084f1b41c20caedb04b12c52-.cs" /> -->
+    <Compile Include="std\allocator-char-.cs" />
+    <!-- 
+    <Compile Include="std\allocator-DownloadSpeed.2.cs" />
+    <Compile Include="std\allocator-DownloadSpeed.cs" />
+    <Compile Include="std\allocator-std.2.cs" />
+    <Compile Include="std\allocator-std.3.cs" />
+    <Compile Include="std\allocator-std.4.cs" />
+    <Compile Include="std\allocator-std.5.cs" />
+    <Compile Include="std\allocator-std.cs" />
+    <Compile Include="std\allocator-wchar_t-.cs" />
+    <Compile Include="std\bad_cast.cs" />
+    <Compile Include="std\basic_ios-wchar_t,std.cs" />
+    <Compile Include="std\basic_iostream-wchar_t,std.cs" />
+    <Compile Include="std\basic_ostream-wchar_t,std.cs" />
+    <Compile Include="std\basic_streambuf-wchar_t,std.cs" />
+    <Compile Include="std\basic_string-char,std.cs" />
+    <Compile Include="std\basic_string-wchar_t,std.cs" />
+    <Compile Include="std\basic_stringbuf-wchar_t,std.cs" />
+    <Compile Include="std\basic_stringstream-wchar_t,std.cs" />
+    <Compile Include="std\byte.cs" />
+    <Compile Include="std\ctype-wchar_t-.cs" />
+    <Compile Include="std\deque-DownloadSpeed.cs" />
+    <Compile Include="std\exception.cs" />
+    <Compile Include="std\fpos-_Mbstatet-.cs" />
+    <Compile Include="std\integral_constant-bool,1-.cs" />
+    <Compile Include="std\ios_base.cs" />
+    <Compile Include="std\list-FileInfoList.cs" />
+    <Compile Include="std\list-std.cs" />
+    <Compile Include="std\locale.cs" />
+    <Compile Include="std\map-std.2.cs" />
+    <Compile Include="std\map-std.cs" />
+    <Compile Include="std\pair-HWND__ -,bool-.cs" />
+    <Compile Include="std\pair-std.2.cs" />
+    <Compile Include="std\pair-std.3.cs" />
+    <Compile Include="std\pair-std.4.cs" />
+    <Compile Include="std\pair-std.cs" />
+    <Compile Include="std\piecewise_construct_t.cs" />
+    <Compile Include="std\shared_ptr-IniParser-.cs" />
+    <Compile Include="std\shared_ptr-LocalFile-.cs" />
+    <Compile Include="std\shared_ptr-MemoryFile-.cs" />
+    <Compile Include="std\tuple.cs" />
+    <Compile Include="std\tuple-std.cs" />
+    <Compile Include="std\unique_ptr-std.cs" />
+    <Compile Include="std\_Compressed_pair-std.cs" />
+    <Compile Include="std\_Container_base12.cs" />
+    <Compile Include="std\_Container_proxy.cs" />
+    <Compile Include="std\_Deque_alloc-std.cs" />
+    <Compile Include="std\_Deque_const_iterator-std.cs" />
+    <Compile Include="std\_Deque_iterator-std.cs" />
+    <Compile Include="std\_Facet_base.cs" />
+    <Compile Include="std\_Fac_node.cs" />
+    <Compile Include="std\_Fac_tidy_reg_t.cs" />
+    <Compile Include="std\_Iterator_base12.cs" />
+    <Compile Include="std\_List_alloc-std.2.cs" />
+    <Compile Include="std\_List_alloc-std.cs" />
+    <Compile Include="std\_List_buy-FileInfoList.cs" />
+    <Compile Include="std\_List_buy-std.cs" />
+    <Compile Include="std\_List_iterator-std.2.cs" />
+    <Compile Include="std\_List_iterator-std.cs" />
+    <Compile Include="std\_List_node-FileInfoList.cs" />
+    <Compile Include="std\_List_node-std.cs" />
+    <Compile Include="std\_List_unchecked_const_iterator-std.2.cs" />
+    <Compile Include="std\_List_unchecked_const_iterator-std.cs" />
+    <Compile Include="std\_List_val-std.2.cs" />
+    <Compile Include="std\_List_val-std.cs" />
+    <Compile Include="std\_Lockit.cs" />
+    <Compile Include="std\_One_then_variadic_args_t.cs" />
+    <Compile Include="std\_Ptr_base-LocalFile-.cs" />
+    <Compile Include="std\_Ptr_base-MemoryFile-.cs" />
+    <Compile Include="std\_Really_trivial_ptr_iterator_tag.cs" />
+    <Compile Include="std\_Ref_count_base.cs" />
+    <Compile Include="std\_Ref_count_obj-IniParser-.cs" />
+    <Compile Include="std\_Ref_count_obj-LocalFile-.cs" />
+    <Compile Include="std\_Ref_count_obj-MemoryFile-.cs" />
+    <Compile Include="std\_String_alloc-std.2.cs" />
+    <Compile Include="std\_String_alloc-std.cs" />
+    <Compile Include="std\_String_const_iterator-std.cs" />
+    <Compile Include="std\_String_iterator-std.cs" />
+    <Compile Include="std\_String_val-std.2.cs" />
+    <Compile Include="std\_String_val-std.cs" />
+    <Compile Include="std\_Tree-std.2.cs" />
+    <Compile Include="std\_Tree-std.cs" />
+    <Compile Include="std\_Tree_comp_alloc-std.2.cs" />
+    <Compile Include="std\_Tree_comp_alloc-std.cs" />
+    <Compile Include="std\_Tree_const_iterator-std.2.cs" />
+    <Compile Include="std\_Tree_const_iterator-std.cs" />
+    <Compile Include="std\_Tree_iterator-std.2.cs" />
+    <Compile Include="std\_Tree_iterator-std.cs" />
+    <Compile Include="std\_Tree_node-std.2.cs" />
+    <Compile Include="std\_Tree_node-std.cs" />
+    <Compile Include="std\_Tree_unchecked_const_iterator-std.2.cs" />
+    <Compile Include="std\_Tree_unchecked_const_iterator-std.cs" />
+    <Compile Include="std\_Tree_val-std.2.cs" />
+    <Compile Include="std\_Tree_val-std.cs" />
+    <Compile Include="std\_Zero_then_variadic_args_t.cs" />
+    -->
+    
+    <!-- <Compile Include="_EXCEPTION_POINTERS.cs" /> FIXME! -->
+    <!-- <Compile Include="_GET_FILEEX_INFO_LEVELS.cs" /> FIXME! -->
+    <!-- <Compile Include="_GUID.cs" /> FIXME! -->
+    <!-- <Compile Include="_OVERLAPPED.cs" /> FIXME! -->
+    <!-- <Compile Include="_PROCESS_INFORMATION.cs" /> FIXME! -->
+    <!-- <Compile Include="_RTL_CRITICAL_SECTION.cs" /> FIXME! -->
+    <!-- <Compile Include="_SECURITY_ATTRIBUTES.cs" /> FIXME!-->
+    <!-- <Compile Include="_STARTUPINFOW.cs" /> FIXME! -->
+    <!-- <Compile Include="_s__RTTIBaseClassDescriptor.cs" /> FIXME! -->
+    <!-- <Compile Include="_s__RTTIClassHierarchyDescriptor.cs" /> FIXME! -->
+    <!-- <Compile Include="_s__RTTICompleteObjectLocator2.cs" /> FIXME! -->
+    <!-- <Compile Include="_s__ThrowInfo.cs" /> FIXME! -->
+    <!-- <Compile Include="_WIN32_FILE_ATTRIBUTE_DATA.cs" /> FIXME! -->
+    <!-- <Compile Include="_WIN32_FIND_DATAW.cs" /> FIXME! -->
+    <!-- <Compile Include="__scrt_native_startup_state.cs" /> FIXME! -->
+    <!-- <Compile Include="__std_exception_data.cs" /> FIXME! -->
+    <!-- <Compile Include="__s_GUID.cs" />  FIXME-->
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LoggerManaged">
+      <HintPath>..\..\_orig_res\LoggerManaged.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+</Project>

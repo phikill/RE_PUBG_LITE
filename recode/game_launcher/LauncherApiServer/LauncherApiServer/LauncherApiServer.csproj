@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{79AC1F82-1FD9-4ED5-A2FD-1623C9FF726A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LauncherApiServer</RootNamespace>
+    <AssemblyName>LauncherApiServer</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net452</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Include="ApiServer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PUBGClientService.cs" />
+    <Compile Include="RouteService.cs" />
+    <Compile Include="SessionDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LauncherModel">
+      <HintPath>..\..\_orig_res\LauncherModel.dll</HintPath>
+    </Reference>
+    <Reference Include="LoggerManaged">
+      <HintPath>..\..\_orig_res\LoggerManaged.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\_orig_res\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+</Project>

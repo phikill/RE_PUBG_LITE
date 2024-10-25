@@ -1,0 +1,5 @@
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherView\LauncherView\obj\Debug\net452\LauncherView.csproj.AssemblyReference.cache
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherView\LauncherView\obj\Debug\net452\App.g.cs
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherView\LauncherView\obj\Debug\net452\LauncherView_MarkupCompile.cache
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherView\LauncherView\obj\Debug\net452\LauncherView_MarkupCompile.lref
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherView\LauncherView\obj\Debug\net452\MainWindow.g.cs

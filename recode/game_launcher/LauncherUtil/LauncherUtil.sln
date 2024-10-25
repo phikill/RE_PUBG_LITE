@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherUtil", "LauncherUtil\LauncherUtil.csproj", "{430901BA-9591-4C00-A0D5-2DED1F527677}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Debug|Any CPU.Build.0 = Debug|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Debug|x64.ActiveCfg = Debug|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Debug|x64.Build.0 = Debug|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Release|Any CPU.ActiveCfg = Release|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Release|Any CPU.Build.0 = Release|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Release|Mixed Platforms.Build.0 = Release|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Release|x64.ActiveCfg = Release|x64
+		{430901BA-9591-4C00-A0D5-2DED1F527677}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

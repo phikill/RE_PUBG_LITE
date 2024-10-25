@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <ProjectGuid>{38C95128-CE64-42E0-9A8F-E879C4EFD01A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>LauncherAgent</RootNamespace>
+    <AssemblyName>LauncherAgent</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net452</TargetFramework>
+    <UseWindowsForms>True</UseWindowsForms>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LauncherAgent.ico</ApplicationIcon>
+    <StartupObject>LauncherAgent.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ExceptionController.cs" />
+    <Compile Include="Utility\Names.cs" />
+    <Compile Include="Watch\IWatcherScope.cs" />
+    <Compile Include="Watch\LauncherWatcher.cs" />
+    <Compile Include="Watch\Watcher.cs" />
+    <Compile Include="Watch\WatchScope.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LauncherView">
+      <HintPath>..\..\..\..\PUBG LITE\LauncherView.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\bin\Debug\net452\LauncherModel.dll.config
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\bin\Debug\net452\LauncherModel.dll
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\bin\Debug\net452\LauncherModel.pdb
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\bin\Debug\net452\Microsoft.IdentityModel.Tokens.dll
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\bin\Debug\net452\Microsoft.IdentityModel.Logging.dll
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\obj\Debug\net452\LauncherModel.csproj.AssemblyReference.cache
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\obj\Debug\net452\LauncherModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\obj\Debug\net452\LauncherModel.csproj.CoreCompileInputs.cache
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\obj\Debug\net452\Launcher.64173CC6.Up2Date
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\obj\Debug\net452\LauncherModel.dll
+C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherModel\LauncherModel\obj\Debug\net452\LauncherModel.pdb
