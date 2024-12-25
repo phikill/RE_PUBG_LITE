@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "PUBGLauncher",
+	"Description": "Plugin to integrate PUBG Launcher",
+	"Category": "Launcher",
+	"CreatedBy": "PUBG Corporation",
+	"CreatedByURL": "www.pubg.com",
+	"EnabledByDefault" : true,
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "PUBGLauncher",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

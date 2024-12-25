@@ -1,0 +1,8 @@
+{
+	"BuildId": "3709383",
+	"Modules": 
+	{
+		"AkAudio": "UE4Editor-AkAudio.dylib",
+		"AudiokineticTools": "UE4Editor-AudiokineticTools.dylib"
+	}
+}

@@ -1,0 +1,25 @@
+﻿{
+	"FileVersion" : 3,
+	"Version" : 1,
+	"VersionName" : "1.0",
+	"FriendlyName" : "Item Icon Creator",
+	"Description" : "Batch capturing items icon",
+	"Category" : "ItemIcon",
+	"CreatedBy" : "erion@bluehole.net",
+	"CreatedByURL" : "",
+	"DocsURL" : "",
+	"MarketplaceURL" : "",
+	"SupportURL" : "",
+	"EnabledByDefault" : false,
+	"CanContainContent" : false,
+	"IsBetaVersion" : false,
+	"Installed" : false,
+	"Modules" :
+	[
+		{
+			"Name" : "ItemIconCreator",
+			"Type" : "Editor",
+			"LoadingPhase" : "Default"
+		}
+	]
+}

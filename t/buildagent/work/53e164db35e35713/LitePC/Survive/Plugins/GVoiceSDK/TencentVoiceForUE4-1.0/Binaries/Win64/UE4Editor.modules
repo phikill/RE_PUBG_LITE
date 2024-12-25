@@ -1,0 +1,9 @@
+{
+	"Changelist" : 3658906,
+	"CompatibleChangelist" : 3573198,
+	"BuildId" : "7d5229ac-d3e2-4191-ac6f-9a43d8706aee",
+	"Modules" : 
+	{
+		"TencentVoiceForUnreal" : "UE4Editor-TencentVoiceForUnreal.dll"
+	}
+}

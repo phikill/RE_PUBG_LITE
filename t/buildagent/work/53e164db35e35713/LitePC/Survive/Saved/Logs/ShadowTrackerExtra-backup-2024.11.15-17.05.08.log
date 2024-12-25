@@ -1,0 +1,158 @@
+﻿Log file open, 11/15/24 17:04:43
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogInit: Display: Running engine for game: ShadowTrackerExtra
+LogPlatformFile: Not using cached read wrapper
+LogInit: Display: RandInit(40749869) SRandInit(40749870).
+LogInit: Read version file with build ID '66e2061f-355b-4d9c-8f14-3d90ce7d9ea3'
+LogInit: Registered custom module enumerator with build ID '66e2061f-355b-4d9c-8f14-3d90ce7d9ea3'
+LogTaskGraph: Started task graph with 5 named threads and 14 total threads with 3 sets of task threads.
+LogStats: Stats thread started at 0.201245
+LogD3D11RHI: Aftermath initialized
+LogPluginManager: Mounting plugin Wwise
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin HTTPChunkInstaller
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin OMobileFBPL
+LogPluginManager: Mounting plugin ScriptGeneratorPlugin
+LogPluginManager: Mounting plugin ScriptPlugin
+LogPluginManager: Mounting plugin Tss
+LogPluginManager: Mounting plugin SkillEditor
+LogPluginManager: Mounting plugin OceanPlugin
+LogPluginManager: Mounting plugin ApexDestruction
+LogPluginManager: Mounting plugin UAETrigger
+LogPluginManager: Mounting plugin CoherentUIGTPlugin
+LogPluginManager: Mounting plugin MinimapCreator
+LogPluginManager: Mounting plugin PlatformCrypto
+LogPluginManager: Mounting plugin AESHandlerComponent
+LogPluginManager: Mounting plugin ItemIconCreator
+LogPluginManager: Mounting plugin RenderDocPlugin
+LogPluginManager: Mounting plugin GVoiceSDK
+LogPluginManager: Mounting plugin ImpostorBaker
+LogPluginManager: Mounting plugin BlueprintMaterialTextureNodes
+LogPluginManager: Mounting plugin PUBGLauncher
+LogPluginManager: Mounting plugin RuntimeMeshComponent
+LogPluginManager: Mounting plugin TApm
+LogPluginManager: Mounting plugin UAEStateMachine
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin AppleARKit
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin ImmediatePhysics
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/MovieScene/MatineeToLevelSequence/Binaries/Win64/UE4Editor-MatineeToLevelSequence.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/HTTPChunkInstaller/Binaries/Win64/UE4Editor-HTTPChunkInstaller.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/ProceduralMeshComponent/Binaries/Win64/UE4Editor-ProceduralMeshComponent.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/ProceduralMeshComponent/Binaries/Win64/UE4Editor-ProceduralMeshComponentEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/MobilePatchingUtils/Binaries/Win64/UE4Editor-MobilePatchingUtils.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/ApexDestruction/Binaries/Win64/UE4Editor-ApexDestruction.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/ApexDestruction/Binaries/Win64/UE4Editor-ApexDestructionEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Experimental/PlatformCrypto/Binaries/Win64/UE4Editor-PlatformCrypto.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Experimental/PlatformCrypto/Binaries/Win64/UE4Editor-PlatformCryptoOpenSSL.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/PacketHandlers/AESHandlerComponent/Binaries/Win64/UE4Editor-AESHandlerComponent.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Developer/RenderDocPlugin/Binaries/Win64/UE4Editor-RenderDocPlugin.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Editor/BlueprintMaterialTextureNodes/Binaries/Win64/UE4Editor-BlueprintMaterialTextureNodes.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-Paper2D.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-Paper2DEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-PaperSpriteSheetImporter.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-PaperTiledImporter.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-SmartSnapping.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/AvfMedia/Binaries/Win64/UE4Editor-AvfMediaEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/AvfMedia/Binaries/Win64/UE4Editor-AvfMediaFactory.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/AvfMedia/Binaries/Win64/UE4Editor-AvfMediaFactory.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/ImgMedia/Binaries/Win64/UE4Editor-ImgMedia.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/ImgMedia/Binaries/Win64/UE4Editor-ImgMediaEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/ImgMedia/Binaries/Win64/UE4Editor-ImgMediaFactory.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/ImgMedia/Binaries/Win64/UE4Editor-ImgMediaFactory.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/ImgMedia/Binaries/Win64/UE4Editor-OpenExrWrapper.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/MediaCompositing/Binaries/Win64/UE4Editor-MediaCompositing.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/MediaCompositing/Binaries/Win64/UE4Editor-MediaCompositingEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/WmfMedia/Binaries/Win64/UE4Editor-WmfMedia.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/WmfMedia/Binaries/Win64/UE4Editor-WmfMediaEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/WmfMedia/Binaries/Win64/UE4Editor-WmfMediaFactory.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Media/WmfMedia/Binaries/Win64/UE4Editor-WmfMediaFactory.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/MovieScene/ActorSequence/Binaries/Win64/UE4Editor-ActorSequence.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Online/OnlineSubsystem/Binaries/Win64/UE4Editor-OnlineSubsystem.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Online/OnlineSubsystemNull/Binaries/Win64/UE4Editor-OnlineSubsystemNull.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Online/OnlineSubsystemUtils/Binaries/Win64/UE4Editor-OnlineSubsystemUtils.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Online/OnlineSubsystemUtils/Binaries/Win64/UE4Editor-OnlineBlueprintSupport.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/AndroidPermission/Binaries/Win64/UE4Editor-AndroidPermission.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/AppleARKit/Binaries/Win64/UE4Editor-AppleARKit.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/CableComponent/Binaries/Win64/UE4Editor-CableComponent.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/ExampleDeviceProfileSelector/Binaries/Win64/UE4Editor-ExampleDeviceProfileSelector.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/ImmediatePhysics/Binaries/Win64/UE4Editor-ImmediatePhysics.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/ImmediatePhysics/Binaries/Win64/UE4Editor-ImmediatePhysicsEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/PhysXVehicles/Binaries/Win64/UE4Editor-PhysXVehicles.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/PhysXVehicles/Binaries/Win64/UE4Editor-PhysXVehiclesEditor.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/RuntimePhysXCooking/Binaries/Win64/UE4Editor-RuntimePhysXCooking.dll (API version 0).
+LogModuleManager: Display: Found up-to-date module file ../../../Engine/Plugins/Runtime/WindowsMoviePlayer/Binaries/Win64/UE4Editor-WindowsMoviePlayer.dll (API version 0).
+LogInit: Warning: Incompatible or missing module: UE4Editor-ShadowTrackerExtra.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-SurviveLoadingScreen.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-UnrealArchExt.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-Basic.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-UAEEditor.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-Client.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-Server.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-Gameplay.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-TslCommon.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-AkAudio.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-AudiokineticTools.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-OMobileFBPL.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-Nula.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-ScriptPlugin.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-ScriptEditorPlugin.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-Tss.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-SkillEditor.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-Skill.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-OceanPlugin.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-UAETrigger.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-UAETriggerEditor.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-CoherentUIGTPlugin.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-CoherentUIGTEditorPlugin.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-MinimapCreator.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-ItemIconCreator.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-GVoiceSDK.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-PUBGLauncher.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-RuntimeMeshComponent.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-RuntimeMeshComponentEditor.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-TApm.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-TApmEditor.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-UAEStateMachine.dll
+LogInit: Warning: Incompatible or missing module: UE4Editor-UAEStateMachineEditor.dll
+LogExit: Preparing to exit.
+LogModuleManager: Shutting down and abandoning module AnimationModifiers (36)
+LogModuleManager: Shutting down and abandoning module PropertyEditor (35)
+LogModuleManager: Shutting down and abandoning module AudioEditor (32)
+LogModuleManager: Shutting down and abandoning module TextureCompressor (30)
+LogModuleManager: Shutting down and abandoning module ShaderCore (28)
+LogModuleManager: Shutting down and abandoning module Landscape (26)
+LogModuleManager: Shutting down and abandoning module SlateRHIRenderer (24)
+LogModuleManager: Shutting down and abandoning module OpenGLDrv (22)
+LogModuleManager: Shutting down and abandoning module D3D11RHI (20)
+LogModuleManager: Shutting down and abandoning module AnimGraphRuntime (18)
+LogModuleManager: Shutting down and abandoning module Renderer (16)
+LogModuleManager: Shutting down and abandoning module Engine (14)
+LogModuleManager: Shutting down and abandoning module CoreUObject (12)
+LogModuleManager: Shutting down and abandoning module NetworkFile (10)
+LogModuleManager: Shutting down and abandoning module CookedIterativeFile (8)
+LogModuleManager: Shutting down and abandoning module StreamingFile (6)
+LogModuleManager: Shutting down and abandoning module SandboxFile (4)
+LogModuleManager: Shutting down and abandoning module PakFile (2)
+LogExit: Exiting.
+Log file closed, 11/15/24 17:05:05

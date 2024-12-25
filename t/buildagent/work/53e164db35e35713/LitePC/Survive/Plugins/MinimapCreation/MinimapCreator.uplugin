@@ -1,0 +1,25 @@
+{
+	"FileVersion" : 3,
+	"Version" : 1,
+	"VersionName" : "1.0",
+	"FriendlyName" : "Minimap Creator",
+	"Description" : "Capture level for creating minimap",
+	"Category" : "Minimap",
+	"CreatedBy" : "sghan@bluehole.net",
+	"CreatedByURL" : "",
+	"DocsURL" : "",
+	"MarketplaceURL" : "",
+	"SupportURL" : "",
+	"EnabledByDefault" : false,
+	"CanContainContent" : false,
+	"IsBetaVersion" : false,
+	"Installed" : false,
+	"Modules" :
+	[
+		{
+			"Name" : "MinimapCreator",
+			"Type" : "Developer",
+			"LoadingPhase" : "Default"
+		}
+	]
+}

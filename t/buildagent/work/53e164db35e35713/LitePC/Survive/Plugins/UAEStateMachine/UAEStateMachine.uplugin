@@ -1,0 +1,49 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "UAEStateMachine",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "Bricexu",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "UAEStateMachine",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "UAEStateMachineEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit",
+			"BlacklistPlatforms" :
+			[
+				"HTML5",
+				"Mac",
+				"IOS",
+				"MacNoEditor",
+				"MacClient",
+				"MacServer",
+				"Android",
+				"Android_Multi",
+				"Android_ATC",
+				"Android_DXT",
+				"Android_ETC1",
+				"Android_ETC2",
+				"Android_PVRTC",
+				"Android_ASTC",
+				"LinuxNoEditor",
+				"Linux",		
+				"LinuxClient",
+				"LinuxServer"
+			]
+		}
+	]
+}
