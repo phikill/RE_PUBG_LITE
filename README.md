@@ -1,8 +1,15 @@
-v 1.4.2.423
+v <strike>1.4.2.423 </strike>  
+ now 0.7.0.1  First I'm going to do 0.7.0.1, as it's "easier"  
+
+### STATUS  
+  Active  
+
+
+
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   Battlegrounds Lite.
 PUBG LITE game reverse engineering test
 
-you can find some old backup files in my google drive including 2019 launcher and game with version 1.4.2.423  
+you can find some old backup files in my google drive including 2019 launcher and game with version 1.4.2.423
 [PUBG LITE Backup April 2020 - Google Drive](https://drive.google.com/drive/u/0/folders/1IWccZ7mIpKqnnrxmyTDGBmvkkb2tyOqD)  
 includes the 2019 launcher but some update servers are still active.  
 
