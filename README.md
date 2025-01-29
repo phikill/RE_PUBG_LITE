@@ -4,7 +4,9 @@ v <strike>1.4.2.423 </strike>
 ### STATUS  
   PAUSED  
 
+### Progress
 
+ the game and launcher are still not buildable, I stopped for a long time.
 
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   Battlegrounds Lite.
 PUBG LITE game reverse engineering test
