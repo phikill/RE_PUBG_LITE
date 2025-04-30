@@ -1,0 +1,45 @@
+#pragma once
+
+// Name: LitePC_0701, Version: 1.0.0
+
+#ifdef _MSC_VER
+	#pragma pack(push, 0x8)
+#endif
+
+namespace SDK
+{
+//---------------------------------------------------------------------------
+// Classes
+//---------------------------------------------------------------------------
+
+// ScriptBlueprintGeneratedClass bp_share_levelup.bp_share_levelup_C
+// 0x0040 (0x03D0 - 0x0390)
+class Abp_share_levelup_C : public ALuaClassObj
+{
+public:
+	class UScriptContextComponent*                     Generated_ScriptContext;                                  // 0x0390(0x0008) (BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData)
+	struct FBP_STRUCT_ShareLevelUp_ShareInfo           BP_STRUCT_ShareLevelUp_ShareInfo;                         // 0x0398(0x0030) (Edit, BlueprintVisible)
+	class USceneComponent*                             DefaultSceneRoot;                                         // 0x03C8(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("ScriptBlueprintGeneratedClass bp_share_levelup.bp_share_levelup_C");
+		return ptr;
+	}
+
+
+	void EventFetchInfo_NoFetch();
+	void EventFetchInfo();
+	void EventSetInfo_Push_NoFetch();
+	void EventSetInfo_Push();
+	void EventShareLevelUpHide_NoFetch();
+	void EventShareLevelUpHide();
+	void UserConstructionScript();
+};
+
+
+}
+
+#ifdef _MSC_VER
+	#pragma pack(pop)
+#endif

@@ -1,0 +1,60 @@
+Base Address: 0x0000000140000000
+Searching for GetEngineVersion()
+Found GetEngineversion() 1407adc30
+Engine Version 41801
+Searching for GNames Using method 1
+Searching for FName::GetNames()
+Searching for GNames Using method 2
+Found GNames 0x143e1c3e8
+Found GNames 0x143f8b490
+UsingFNamePool: 0
+Dumping Names...
+Dumping 182846 Names
+Saving Dump as DumpName.txt
+Searching for String Ref UObject::StaticLoadObject()
+StaticLoadObject: 0x140994f90
+Searching for String Ref UWorld::SpawnActor(UClass *,FTransform*...
+SpawnActorFTransform: 0x141667f60
+Searching for String Ref UObject::CallFunctionByNameWithArguments()
+CallFunctionByNameWithArguments: 0x140969f30
+InitGameState: 0x1415b11f0
+ActorBeginPlay: 0x141357070
+ProcessEvent: 0x140971780
+Found GObject: 0x1436ba840
+GWorld Address: 0x14409ae80
+
+[gameinfo]
+usesfnamepool=0
+isusingfchunkedfixeduobjectarray=1
+isusing4_22=0
+[ginfo]
+isginfopatterns=0
+gname=0x3f8b490
+gobject=0x36ba840
+gworld=0x409ae80
+[functioninfo]
+isfunctionpatterns=0
+gamestateinit=0x15b11f0
+beginplay=0x1357070
+staticloadobject=0x994f90
+spawnactorftrans=0x1667f60
+callfunctionbynamewitharguments=0x969f30
+processevent=0x971780
+
+;; atomic sdk
+GName Chunk Array Adress : 3510080
+GObjects Chunk Array Adress : 6F90000
+
+GName Chunk Array Adress v2 : 3160080
+GObjects Chunk Array Adress v2 : 6F90000
+
+
+
+
+
+
+
+
+
+
+
