@@ -1,26 +1,33 @@
+[![discord](https://shields.io/discord/1334106568253509692?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/hmdVw2pR)
+
+
 v <strike>1.4.2.423 </strike>  
- now 0.7.0.1  First I'm going to do 0.7.0.1, as it's "easier"  
+ First I'm going to do 0.7.0.1, as it's "easier"  
+
 
 ### STATUS  
-  PAUSED  
+  ![Status](http://img.shields.io/badge/ACTIVE-active.png)
 
 ### Progress
 
- the game and launcher are still not buildable, I stopped for a long time.
+ the game and launcher are still not buildable.  
+ I currently work in the game lobby and authentications.  
 
-# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   Battlegrounds Lite.
-PUBG LITE game reverse engineering test
+
+
+
+# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
+PUBG LITE game reverse engineering, for educational purposes.  
 
 you can find some old backup files in my google drive including 2019 launcher and game with version 1.4.2.423
 [PUBG LITE Backup April 2020 - Google Drive](https://drive.google.com/drive/u/0/folders/1IWccZ7mIpKqnnrxmyTDGBmvkkb2tyOqD)  
-includes the 2019 launcher but some update servers are still active.  
 
-and includes the game with its files. 
+
 
 ## TOOLS
 
 .PAK files exploring [PUBG Lite Explorer by Warranty Voider](https://github.com/zeroKilo/PUBGLiteExplorerWV)  
-UMODEL = bug
+UMODEL 
 
 depends22_x64  
 FModel  
