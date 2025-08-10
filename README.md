@@ -32,7 +32,7 @@ You can create simple matches in the custom_match menu. To play, simply open two
 
 By default, the game opens on port ```7777```.   
 
-
+matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2.423``` and ```1.4.2.681``` the game crashes
 
 ## TOOLS
 
