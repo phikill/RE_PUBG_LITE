@@ -42,6 +42,12 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
 
 I'm decompiling the launcher and making it in pure C, with support for Linux and even Windows XP.  
 
+ Cef Working o Windows XP  
+<img src="web_help_files/lpc_launcher_nt.png" alt="launcher_windows" width="600">
+
+ and the same code working on linux  
+<img src="web_help_files/lpc_launcher_linux.png" alt="launcher_linux" width="600">
+
 
 
 ## TOOLS
