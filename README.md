@@ -19,9 +19,10 @@ v <strike>1.4.2.423 </strike>
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
 PUBG LITE game reverse engineering, for educational purposes.  
 
-you can find some old backup files in my google drive including 2019 launcher and game with version 1.4.2.423
-[PUBG LITE Backup April 2020 - Google Drive](https://drive.google.com/drive/u/0/folders/1IWccZ7mIpKqnnrxmyTDGBmvkkb2tyOqD)  
+Lobby Code : Branch  [ogbg_lobby](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_lobby)  
+Works on all versions of the game  
 
+```@PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="https://phikill.github.io/RE_PUBG_LITE/custom_lobby/index.html" -AllowJoinAnyMatchState -stdout -LOG -cmd -NOSPLASH -nothreadtimeout```
 
 
 ## TOOLS
