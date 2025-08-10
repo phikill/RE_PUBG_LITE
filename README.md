@@ -8,6 +8,14 @@ v <strike>1.4.2.423 </strike>
 ### STATUS  
   ![Status](http://img.shields.io/badge/ACTIVE-active.png)
 
+### collaborate with the project. 
+
+ Any help is always welcome.  
+
+#### If anyone knows how to disable antidebugging and generate an SDK for the latest versions, please contact H4tiux.  
+Discord: h4tiux  
+[Telegram OG:BG](https://t.me/ogbattlegrounds)  
+
 ### Progress % 
 
  the game and launcher are still not buildable.  
