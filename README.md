@@ -25,7 +25,19 @@ Works on all versions of the game
 ```@PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="https://phikill.github.io/RE_PUBG_LITE/custom_lobby/index.html" -AllowJoinAnyMatchState -stdout -LOG -cmd -NOSPLASH -nothreadtimeout```
 
 
+<img src="web_help_files/lobby_preview.png" alt="lobby_preview" width="600">
+<img src="web_help_files/lobby_preview_2.png" alt="lobby_preview_2" width="600">
+
+You can create simple matches in the custom_match menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
+
+By default, the game opens on port ```7777```.   
+
+
+
 ## TOOLS
+
+
+name of the tools so I don't forget  
 
 .PAK files exploring [PUBG Lite Explorer by Warranty Voider](https://github.com/zeroKilo/PUBGLiteExplorerWV)  
 UMODEL 
