@@ -16,6 +16,8 @@ you can use this branch's page as lobby url
 
 ```@PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="https://phikill.github.io/RE_PUBG_LITE/custom_lobby/index.html" -AllowJoinAnyMatchState -stdout -LOG -cmd -NOSPLASH -nothreadtimeout```
 
+You can also play offline by placing ```custom_lobby``` and ```start_test.bat``` in the same directory as the main game binary, ```Client/ShadowTrackerExtra/Binaries/Win64```
+
 Works on all versions of the game  
 
 
