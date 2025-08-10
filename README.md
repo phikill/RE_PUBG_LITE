@@ -19,6 +19,8 @@ v <strike>1.4.2.423 </strike>
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
 PUBG LITE game reverse engineering, for educational purposes.  
 
+## Game Lobby 
+
 Lobby Code : Branch  [ogbg_lobby](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_lobby)  
 ##### WORKS ON ALL VERSIONS OF THE GAME  
 
@@ -33,6 +35,14 @@ You can create simple matches in the custom_match menu. To play, simply open two
 By default, the game opens on port ```7777```.   
 
 matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2.423``` and ```1.4.2.681``` the game crashes
+
+
+## Game Launcher
+
+
+I'm decompiling the launcher and making it in pure C, with support for Linux and even Windows XP.  
+
+
 
 ## TOOLS
 
