@@ -8,7 +8,7 @@ v <strike>1.4.2.423 </strike>
 ### STATUS  
   ![Status](http://img.shields.io/badge/ACTIVE-active.png)
 
-### Progress
+### Progress % 
 
  the game and launcher are still not buildable.  
  I currently work in the game lobby and authentications.  
