@@ -1,0 +1,172 @@
+﻿(function (c) { c(window.jQuery, window, document) })(function (c, q, x, y) {
+    c.widget("selectBox.selectBoxIt", {
+        VERSION: "3.8.1", options: {
+            showEffect: "none", showEffectOptions: {}, showEffectSpeed: "medium", hideEffect: "none", hideEffectOptions: {}, hideEffectSpeed: "medium", showFirstOption: !0, defaultText: "", defaultIcon: "", downArrowIcon: "", theme: "default", keydownOpen: !0, isMobile: function () { return /iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/.test(navigator.userAgent || navigator.vendor || q.opera) }, "native": !1,
+            aggressiveChange: !1, selectWhenHidden: !0, viewport: c(q), similarSearch: !1, copyAttributes: ["title", "rel"], copyClasses: "button", nativeMousedown: !1, customShowHideEvent: !1, autoWidth: !0, html: !0, populate: "", dynamicPositioning: !0, hideCurrent: !1
+        }, getThemes: function () {
+            var a = c(this.element).attr("data-theme") || "c"; return {
+                bootstrap: { focus: "active", hover: "", enabled: "enabled", disabled: "disabled", arrow: "caret", button: "btn", list: "dropdown-menu", container: "bootstrap", open: "open" }, jqueryui: {
+                    focus: "ui-state-focus", hover: "ui-state-hover",
+                    enabled: "ui-state-enabled", disabled: "ui-state-disabled", arrow: "ui-icon ui-icon-triangle-1-s", button: "ui-widget ui-state-default", list: "ui-widget ui-widget-content", container: "jqueryui", open: "selectboxit-open"
+                }, jquerymobile: {
+                    focus: "ui-btn-down-" + a, hover: "ui-btn-hover-" + a, enabled: "ui-enabled", disabled: "ui-disabled", arrow: "ui-icon ui-icon-arrow-d ui-icon-shadow", button: "ui-btn ui-btn-icon-right ui-btn-corner-all ui-shadow ui-btn-up-" + a, list: "ui-btn ui-btn-icon-right ui-btn-corner-all ui-shadow ui-btn-up-" +
+                    a, container: "jquerymobile", open: "selectboxit-open"
+                }, "default": { focus: "selectboxit-focus", hover: "selectboxit-hover", enabled: "selectboxit-enabled", disabled: "selectboxit-disabled", arrow: "selectboxit-default-arrow", button: "selectboxit-btn", list: "selectboxit-list", container: "selectboxit-container", open: "selectboxit-open" }
+            }
+        }, isDeferred: function (a) { return c.isPlainObject(a) && a.promise && a.done }, _create: function (a) {
+            var b = this.options.populate, d = this.options.theme; if (this.element.is("select")) return this.widgetProto =
+            c.Widget.prototype, this.originalElem = this.element[0], this.selectBox = this.element, this.options.populate && this.add && !a && this.add(b), this.selectItems = this.element.find("option"), this.firstSelectItem = this.selectItems.slice(0, 1), this.documentHeight = c(x).height(), this.theme = c.isPlainObject(d) ? c.extend({}, this.getThemes()["default"], d) : this.getThemes()[d] ? this.getThemes()[d] : this.getThemes()["default"], this.currentFocus = 0, this.blur = !0, this.textArray = [], this.currentIndex = 0, this.currentText = "", this.flipped =
+            !1, a || (this.selectBoxStyles = this.selectBox.attr("style")), this._createDropdownButton()._createUnorderedList()._copyAttributes()._replaceSelectBox()._addClasses(this.theme)._eventHandlers(), this.originalElem.disabled && this.disable && this.disable(), this._ariaAccessibility && this._ariaAccessibility(), this.isMobile = this.options.isMobile(), this._mobile && this._mobile(), this.options["native"] && this._applyNativeSelect(), this.triggerEvent("create"), this
+        }, _createDropdownButton: function () {
+            var a = this.originalElemId =
+            this.originalElem.id || "", b = this.originalElemValue = this.originalElem.value || "", d = this.originalElemName = this.originalElem.name || "", f = this.options.copyClasses, h = this.selectBox.attr("class") || ""; this.dropdownText = c("<span/>", { id: a && a + "SelectBoxItText", "class": "selectboxit-text", unselectable: "on", text: this.firstSelectItem.text() }).attr("data-val", b); this.dropdownImageContainer = c("<span/>", { "class": "selectboxit-option-icon-container" }); this.dropdownImage = c("<i/>", {
+                id: a && a + "SelectBoxItDefaultIcon", "class": "selectboxit-default-icon",
+                unselectable: "on"
+            }); this.dropdown = c("<span/>", { id: a && a + "SelectBoxIt", "class": "selectboxit " + ("button" === f ? h : "") + " " + (this.selectBox.prop("disabled") ? this.theme.disabled : this.theme.enabled), name: d, tabindex: this.selectBox.attr("tabindex") || "0", unselectable: "on" }).append(this.dropdownImageContainer.append(this.dropdownImage)).append(this.dropdownText); this.dropdownContainer = c("<span/>", { id: a && a + "SelectBoxItContainer", "class": "selectboxit-container " + this.theme.container + " " + ("container" === f ? h : "") }).append(this.dropdown);
+            return this
+        }, _createUnorderedList: function () {
+            var a = this, b, d, f, h, g, e, l, k = "", p = a.originalElemId || "", p = c("<ul/>", { id: p && p + "SelectBoxItOptions", "class": "selectboxit-options", tabindex: -1 }), v, w, u, r, m, t; a.options.showFirstOption || (a.selectItems.first().attr("disabled", "disabled"), a.selectItems = a.selectBox.find("option").slice(1)); a.selectItems.each(function (p) {
+                m = c(this); f = d = ""; b = m.prop("disabled"); h = m.attr("data-icon") || ""; e = (g = m.attr("data-iconurl") || "") ? "selectboxit-option-icon-url" : ""; l = g ? "style=\"background-image:url('" +
+                g + "');\"" : ""; v = m.attr("data-selectedtext"); r = (w = m.attr("data-text")) ? w : m.text(); t = m.parent(); t.is("optgroup") && (d = "selectboxit-optgroup-option", 0 === m.index() && (f = '<span class="selectboxit-optgroup-header ' + t.first().attr("class") + '"data-disabled="true">' + t.first().attr("label") + "</span>")); m.attr("value", this.value); k += f + '<li data-id="' + p + '" data-val="' + this.value + '" data-disabled="' + b + '" class="' + d + " selectboxit-option " + (c(this).attr("class") || "") + '"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon ' +
+                h + " " + (e || a.theme.container) + '"' + l + "></i></span>" + (a.options.html ? r : a.htmlEscape(r)) + "</a></li>"; u = m.attr("data-search"); a.textArray[p] = b ? "" : u ? u : r; this.selected && (a._setText(a.dropdownText, v || r), a.currentFocus = p)
+            }); if (a.options.defaultText || a.selectBox.attr("data-text")) { var q = a.options.defaultText || a.selectBox.attr("data-text"); a._setText(a.dropdownText, q); a.options.defaultText = q } p.append(k); a.list = p; a.dropdownContainer.append(a.list); a.listItems = a.list.children("li"); a.listAnchors = a.list.find("a");
+            a.listItems.first().addClass("selectboxit-option-first"); a.listItems.last().addClass("selectboxit-option-last"); a.list.find("li[data-disabled='true']").not(".optgroupHeader").addClass(a.theme.disabled); a.dropdownImage.addClass(a.selectBox.attr("data-icon") || a.options.defaultIcon || a.listItems.eq(a.currentFocus).find("i").attr("class")); a.dropdownImage.attr("style", a.listItems.eq(a.currentFocus).find("i").attr("style")); return a
+        }, _replaceSelectBox: function () {
+            var a = this.originalElem.id || "", b = this.selectBox.attr("data-size"),
+            b = this.listSize = b === y ? "auto" : "0" === b ? "auto" : +b, d; this.selectBox.css("display", "none").after(this.dropdownContainer); this.dropdownContainer.appendTo("body").addClass("selectboxit-rendering"); this.dropdown.height(); this.downArrow = c("<i/>", { id: a && a + "SelectBoxItArrow", "class": "selectboxit-arrow", unselectable: "on" }); this.downArrowContainer = c("<span/>", { id: a && a + "SelectBoxItArrowContainer", "class": "selectboxit-arrow-container", unselectable: "on" }).append(this.downArrow); this.dropdown.append(this.downArrowContainer);
+            this.listItems.removeClass("selectboxit-selected").eq(this.currentFocus).addClass("selectboxit-selected"); a = this.downArrowContainer.outerWidth(!0); d = this.dropdownImage.outerWidth(!0); this.options.autoWidth && (this.dropdown.css({ width: "auto" }).css({ width: this.list.outerWidth(!0) + a + d }), this.list.css({ "min-width": this.dropdown.width() })); this.dropdownText.css({ "max-width": this.dropdownContainer.outerWidth(!0) - (a + d) }); this.selectBox.after(this.dropdownContainer); this.dropdownContainer.removeClass("selectboxit-rendering");
+            "number" === c.type(b) && (this.maxHeight = this.listAnchors.outerHeight(!0) * b); return this
+        }, _scrollToView: function (a) { var b = this.listItems.eq(this.currentFocus), d = this.list.scrollTop(), f = b.height(), b = b.position().top, c = Math.abs(b), g = this.list.height(); "search" === a ? g - b < f ? this.list.scrollTop(d + (b - (g - f))) : -1 > b && this.list.scrollTop(b - f) : "up" === a ? -1 > b && this.list.scrollTop(d - c) : "down" === a && g - b < f && this.list.scrollTop(d + (c - g + f)); return this }, _callbackSupport: function (a) {
+            c.isFunction(a) && a.call(this, this.dropdown);
+            return this
+        }, _setText: function (a, b) { this.options.html ? a.html(b) : a.text(b); return this }, open: function (a) {
+            var b = this, d = b.options.showEffect, c = b.options.showEffectSpeed, h = b.options.showEffectOptions, g = b.options["native"], e = b.isMobile; if (!b.listItems.length || b.dropdown.hasClass(b.theme.disabled)) return b; if (!g && !e && !this.list.is(":visible")) {
+                b.triggerEvent("open"); b._dynamicPositioning && b.options.dynamicPositioning && b._dynamicPositioning(); if ("none" === d) b.list.show(); else if ("show" === d || "slideDown" ===
+                d || "fadeIn" === d) b.list[d](c); else b.list.show(d, h, c); b.list.promise().done(function () { b._scrollToView("search"); b.triggerEvent("opened") })
+            } b._callbackSupport(a); return b
+        }, close: function (a) {
+            var b = this, d = b.options.hideEffect, c = b.options.hideEffectSpeed, h = b.options.hideEffectOptions, g = b.isMobile; if (!b.options["native"] && !g && b.list.is(":visible")) { b.triggerEvent("close"); if ("none" === d) b.list.hide(); else if ("hide" === d || "slideUp" === d || "fadeOut" === d) b.list[d](c); else b.list.hide(d, h, c); b.list.promise().done(function () { b.triggerEvent("closed") }) } b._callbackSupport(a);
+            return b
+        }, toggle: function () { var a = this.list.is(":visible"); a ? this.close() : a || this.open() }, _keyMappings: { 38: "up", 40: "down", 13: "enter", 8: "backspace", 9: "tab", 32: "space", 27: "esc" }, _keydownMethods: function () {
+            var a = this, b = a.list.is(":visible") || !a.options.keydownOpen; return {
+                down: function () { a.moveDown && b && a.moveDown() }, up: function () { a.moveUp && b && a.moveUp() }, enter: function () { var b = a.listItems.eq(a.currentFocus); a._update(b); "true" !== b.attr("data-preventclose") && a.close(); a.triggerEvent("enter") }, tab: function () {
+                    a.triggerEvent("tab-blur");
+                    a.close()
+                }, backspace: function () { a.triggerEvent("backspace") }, esc: function () { a.close() }
+            }
+        }, _eventHandlers: function () {
+            var a = this, b = a.options.nativeMousedown, d = a.options.customShowHideEvent, f, h, g = a.focusClass, e = a.hoverClass, l = a.openClass; this.dropdown.on({
+                "click.selectBoxIt": function () { a.dropdown.trigger("focus", !0); a.originalElem.disabled || (a.triggerEvent("click"), b || d || a.toggle()) }, "mousedown.selectBoxIt": function () { c(this).data("mdown", !0); a.triggerEvent("mousedown"); b && !d && a.toggle() }, "mouseup.selectBoxIt": function () { a.triggerEvent("mouseup") },
+                "blur.selectBoxIt": function () { a.blur && (a.triggerEvent("blur"), a.close(), c(this).removeClass(g)) }, "focus.selectBoxIt": function (b, d) { var f = c(this).data("mdown"); c(this).removeData("mdown"); f || d || setTimeout(function () { a.triggerEvent("tab-focus") }, 0); d || (c(this).hasClass(a.theme.disabled) || c(this).addClass(g), a.triggerEvent("focus")) }, "keydown.selectBoxIt": function (b) {
+                    var d = a._keyMappings[b.keyCode], c = a._keydownMethods()[d]; c && (c(), !a.options.keydownOpen || "up" !== d && "down" !== d || a.open()); c && "tab" !== d &&
+                    b.preventDefault()
+                }, "keypress.selectBoxIt": function (b) { var d = a._keyMappings[b.charCode || b.keyCode], c = String.fromCharCode(b.charCode || b.keyCode); a.search && (!d || d && "space" === d) && a.search(c, !0, !0); "space" === d && b.preventDefault() }, "mouseenter.selectBoxIt": function () { a.triggerEvent("mouseenter") }, "mouseleave.selectBoxIt": function () { a.triggerEvent("mouseleave") }
+            }); a.list.on({
+                "mouseover.selectBoxIt": function () { a.blur = !1 }, "mouseout.selectBoxIt": function () { a.blur = !0 }, "focusin.selectBoxIt": function () {
+                    a.dropdown.trigger("focus",
+                    !0)
+                }
+            }); a.list.on({
+                "mousedown.selectBoxIt": function () { a._update(c(this)); a.triggerEvent("option-click"); "false" === c(this).attr("data-disabled") && "true" !== c(this).attr("data-preventclose") && a.close(); setTimeout(function () { a.dropdown.trigger("focus", !0) }, 0) }, "focusin.selectBoxIt": function () {
+                    a.listItems.not(c(this)).removeAttr("data-active"); c(this).attr("data-active", ""); var b = a.list.is(":hidden"); (a.options.searchWhenHidden && b || a.options.aggressiveChange || b && a.options.selectWhenHidden) && a._update(c(this));
+                    c(this).addClass(g)
+                }, "mouseup.selectBoxIt": function () { b && !d && (a._update(c(this)), a.triggerEvent("option-mouseup"), "false" === c(this).attr("data-disabled") && "true" !== c(this).attr("data-preventclose") && a.close()) }, "mouseenter.selectBoxIt": function () { "false" === c(this).attr("data-disabled") && (a.listItems.removeAttr("data-active"), c(this).addClass(g).attr("data-active", ""), a.listItems.not(c(this)).removeClass(g), c(this).addClass(g), a.currentFocus = +c(this).attr("data-id")) }, "mouseleave.selectBoxIt": function () {
+                    "false" ===
+                    c(this).attr("data-disabled") && (a.listItems.not(c(this)).removeClass(g).removeAttr("data-active"), c(this).addClass(g), a.currentFocus = +c(this).attr("data-id"))
+                }, "blur.selectBoxIt": function () { c(this).removeClass(g) }
+            }, ".selectboxit-option"); a.list.on({ "click.selectBoxIt": function (a) { a.preventDefault() } }, "a"); a.selectBox.on({
+                "change.selectBoxIt, internal-change.selectBoxIt": function (b, d) {
+                    var c, g; d || (c = a.list.find('li[data-val="' + a.originalElem.value + '"]'), c.length && (a.listItems.eq(a.currentFocus).removeClass(a.focusClass),
+                    a.currentFocus = +c.attr("data-id"))); c = a.listItems.eq(a.currentFocus); g = c.attr("data-selectedtext"); h = (f = c.attr("data-text")) ? f : c.find("a").text(); a._setText(a.dropdownText, g || h); a.dropdownText.attr("data-val", a.originalElem.value); c.find("i").attr("class") && (a.dropdownImage.attr("class", c.find("i").attr("class")).addClass("selectboxit-default-icon"), a.dropdownImage.attr("style", c.find("i").attr("style"))); a.triggerEvent("changed")
+                }, "disable.selectBoxIt": function () { a.dropdown.addClass(a.theme.disabled) },
+                "enable.selectBoxIt": function () { a.dropdown.removeClass(a.theme.disabled) }, "open.selectBoxIt": function () {
+                    var b = a.list.find("li[data-val='" + a.dropdownText.attr("data-val") + "']"); b.length || (b = a.listItems.not("[data-disabled=true]").first()); a.currentFocus = +b.attr("data-id"); b = a.listItems.eq(a.currentFocus); a.dropdown.addClass(l).removeClass(e).addClass(g); a.listItems.removeClass(a.selectedClass).removeAttr("data-active").not(b).removeClass(g); b.addClass(a.selectedClass).addClass(g); a.options.hideCurrent &&
+                    (a.listItems.show(), b.hide())
+                }, "close.selectBoxIt": function () { a.dropdown.removeClass(l) }, "blur.selectBoxIt": function () { a.dropdown.removeClass(g) }, "mouseenter.selectBoxIt": function () { c(this).hasClass(a.theme.disabled) || a.dropdown.addClass(e) }, "mouseleave.selectBoxIt": function () { a.dropdown.removeClass(e) }, destroy: function (a) { a.preventDefault(); a.stopPropagation() }
+            }); return a
+        }, _update: function (a) {
+            var b, d = this.options.defaultText || this.selectBox.attr("data-text"), c = this.listItems.eq(this.currentFocus);
+            "false" === a.attr("data-disabled") && (this.listItems.eq(this.currentFocus).attr("data-selectedtext"), (b = c.attr("data-text")) || c.text(), (d && this.options.html ? this.dropdownText.html() === d : this.dropdownText.text() === d) && this.selectBox.val() === a.attr("data-val") ? this.triggerEvent("change") : (this.selectBox.val(a.attr("data-val")), this.currentFocus = +a.attr("data-id"), this.originalElem.value !== this.dropdownText.attr("data-val") && this.triggerEvent("change")))
+        }, _addClasses: function (a) {
+            this.focusClass = a.focus;
+            this.hoverClass = a.hover; var b = a.button, d = a.list, c = a.arrow, h = a.container; this.openClass = a.open; this.selectedClass = "selectboxit-selected"; this.downArrow.addClass(this.selectBox.attr("data-downarrow") || this.options.downArrowIcon || c); this.dropdownContainer.addClass(h); this.dropdown.addClass(b); this.list.addClass(d); return this
+        }, refresh: function (a, b) { this._destroySelectBoxIt()._create(!0); b || this.triggerEvent("refresh"); this._callbackSupport(a); return this }, htmlEscape: function (a) {
+            return String(a).replace(/&/g,
+            "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        }, triggerEvent: function (a) { this.selectBox.trigger(a, { selectbox: this.selectBox, selectboxOption: this.selectItems.eq(this.options.showFirstOption ? this.currentFocus : 0 <= this.currentFocus - 1 ? this.currentFocus : 0), dropdown: this.dropdown, dropdownOption: this.listItems.eq(this.currentFocus) }); return this }, _copyAttributes: function () { this._addSelectBoxAttributes && this._addSelectBoxAttributes(); return this }, _realOuterWidth: function (a) {
+            if (a.is(":visible")) return a.outerWidth(!0);
+            a = a.clone(); var b; a.css({ visibility: "hidden", display: "block", position: "absolute" }).appendTo("body"); b = a.outerWidth(!0); a.remove(); return b
+        }
+    }); var e = c.selectBox.selectBoxIt.prototype; e._ariaAccessibility = function () {
+        var a = this, b = c("label[for='" + a.originalElem.id + "']"); a.dropdownContainer.attr({ role: "combobox", "aria-autocomplete": "list", "aria-haspopup": "true", "aria-expanded": "false", "aria-owns": a.list[0].id }); a.dropdownText.attr({ "aria-live": "polite" }); a.dropdown.on({
+            "disable.selectBoxIt": function () {
+                a.dropdownContainer.attr("aria-disabled",
+                "true")
+            }, "enable.selectBoxIt": function () { a.dropdownContainer.attr("aria-disabled", "false") }
+        }); b.length && a.dropdownContainer.attr("aria-labelledby", b[0].id); a.list.attr({ role: "listbox", "aria-hidden": "true" }); a.listItems.attr({ role: "option" }); a.selectBox.on({ "open.selectBoxIt": function () { a.list.attr("aria-hidden", "false"); a.dropdownContainer.attr("aria-expanded", "true") }, "close.selectBoxIt": function () { a.list.attr("aria-hidden", "true"); a.dropdownContainer.attr("aria-expanded", "false") } }); return a
+    }; e._addSelectBoxAttributes =
+    function () { var a = this; a._addAttributes(a.selectBox.prop("attributes"), a.dropdown); a.selectItems.each(function (b) { a._addAttributes(c(this).prop("attributes"), a.listItems.eq(b)) }); return a }; e._addAttributes = function (a, b) { var d = this.options.copyAttributes; a.length && c.each(a, function (a, h) { var g = h.name.toLowerCase(), e = h.value; "null" === e || -1 === c.inArray(g, d) && -1 === g.indexOf("data") || b.attr(g, e) }); return this }; e.destroy = function (a) {
+        this._destroySelectBoxIt(); this.widgetProto.destroy.call(this); this._callbackSupport(a);
+        return this
+    }; e._destroySelectBoxIt = function () { this.dropdown.off(".selectBoxIt"); c.contains(this.dropdownContainer[0], this.originalElem) && this.dropdownContainer.before(this.selectBox); this.dropdownContainer.remove(); this.selectBox.removeAttr("style").attr("style", this.selectBoxStyles); this.triggerEvent("destroy"); return this }; e.disable = function (a) {
+        this.options.disabled || (this.close(), this.selectBox.attr("disabled", "disabled"), this.dropdown.removeAttr("tabindex").removeClass(this.theme.enabled).addClass(this.theme.disabled),
+        this.setOption("disabled", !0), this.triggerEvent("disable")); this._callbackSupport(a); return this
+    }; e.disableOption = function (a, b) {
+        var d, f; "number" === c.type(a) && (this.close(), d = this.selectBox.find("option").eq(a), this.triggerEvent("disable-option"), d.attr("disabled", "disabled"), this.listItems.eq(a).attr("data-disabled", "true").addClass(this.theme.disabled), this.currentFocus === a && (d = this.listItems.eq(this.currentFocus).nextAll("li").not("[data-disabled='true']").first().length, f = this.listItems.eq(this.currentFocus).prevAll("li").not("[data-disabled='true']").first().length,
+        d ? this.moveDown() : f ? this.moveUp() : this.disable())); this._callbackSupport(b); return this
+    }; e._isDisabled = function (a) { this.originalElem.disabled && this.disable(); return this }; e._dynamicPositioning = function () {
+        if ("number" === c.type(this.listSize)) this.list.css("max-height", this.maxHeight || "none"); else {
+            var a = this.dropdown.offset().top, b = this.list.data("max-height") || this.list.outerHeight(), d = this.dropdown.outerHeight(), f = this.options.viewport, h = f.height(), f = c.isWindow(f.get(0)) ? f.scrollTop() : f.offset().top,
+            g = !(a + d + b <= h + f); this.list.data("max-height") || this.list.data("max-height", this.list.outerHeight()); g ? this.dropdown.offset().top - f >= b ? (this.list.css("max-height", b), this.list.css("top", this.dropdown.position().top - this.list.outerHeight())) : (a = Math.abs(a + d + b - (h + f)), h = Math.abs(this.dropdown.offset().top - f - b), a < h ? (this.list.css("max-height", b - a - d / 2), this.list.css("top", "auto")) : (this.list.css("max-height", b - h - d / 2), this.list.css("top", this.dropdown.position().top - this.list.outerHeight()))) : (this.list.css("max-height",
+            b), this.list.css("top", "auto"))
+        } return this
+    }; e.enable = function (a) { this.options.disabled && (this.triggerEvent("enable"), this.selectBox.removeAttr("disabled"), this.dropdown.attr("tabindex", 0).removeClass(this.theme.disabled).addClass(this.theme.enabled), this.setOption("disabled", !1), this._callbackSupport(a)); return this }; e.enableOption = function (a, b) {
+        var d; "number" === c.type(a) && (d = this.selectBox.find("option").eq(a), this.triggerEvent("enable-option"), d.removeAttr("disabled"), this.listItems.eq(a).attr("data-disabled",
+        "false").removeClass(this.theme.disabled)); this._callbackSupport(b); return this
+    }; e.moveDown = function (a) {
+        this.currentFocus += 1; var b = "true" === this.listItems.eq(this.currentFocus).attr("data-disabled") ? !0 : !1, d = this.listItems.eq(this.currentFocus).nextAll("li").not("[data-disabled='true']").first().length; if (this.currentFocus === this.listItems.length)--this.currentFocus; else {
+            if (b && d) { this.listItems.eq(this.currentFocus - 1).blur(); this.moveDown(); return } b && !d ? --this.currentFocus : (this.listItems.eq(this.currentFocus -
+            1).blur().end().eq(this.currentFocus).focusin(), this._scrollToView("down"), this.triggerEvent("moveDown"))
+        } this._callbackSupport(a); return this
+    }; e.moveUp = function (a) {
+        --this.currentFocus; var b = "true" === this.listItems.eq(this.currentFocus).attr("data-disabled") ? !0 : !1, d = this.listItems.eq(this.currentFocus).prevAll("li").not("[data-disabled='true']").first().length; if (-1 === this.currentFocus) this.currentFocus += 1; else {
+            if (b && d) { this.listItems.eq(this.currentFocus + 1).blur(); this.moveUp(); return } b && !d ? this.currentFocus +=
+            1 : (this.listItems.eq(this.currentFocus + 1).blur().end().eq(this.currentFocus).focusin(), this._scrollToView("up"), this.triggerEvent("moveUp"))
+        } this._callbackSupport(a); return this
+    }; e._setCurrentSearchOption = function (a) {
+        (this.options.aggressiveChange || this.options.selectWhenHidden || this.listItems.eq(a).is(":visible")) && !0 !== this.listItems.eq(a).data("disabled") && (this.listItems.eq(this.currentFocus).blur(), this.currentFocus = this.currentIndex = a, this.listItems.eq(this.currentFocus).focusin(), this._scrollToView("search"),
+        this.triggerEvent("search")); return this
+    }; e._searchAlgorithm = function (a, b) {
+        var d = !1, c, h, g, e, l = this.textArray, k = this.currentText; c = a; for (g = l.length; c < g; c += 1) {
+            e = l[c]; for (h = 0; h < g; h += 1) -1 !== l[h].search(b) && (d = !0, h = g); d || (k = this.currentText = this.currentText.charAt(this.currentText.length - 1).replace(/[|()\[{.+*?$\\]/g, "\\$0")); b = new RegExp(k, "gi"); if (3 > k.length) {
+                if (b = new RegExp(k.charAt(0), "gi"), -1 !== e.charAt(0).search(b)) {
+                    this._setCurrentSearchOption(c); if (e.substring(0, k.length).toLowerCase() !== k.toLowerCase() ||
+                    this.options.similarSearch) this.currentIndex += 1; return !1
+                }
+            } else if (-1 !== e.search(b)) return this._setCurrentSearchOption(c), !1; if (e.toLowerCase() === this.currentText.toLowerCase()) return this._setCurrentSearchOption(c), this.currentText = "", !1
+        } return !0
+    }; e.search = function (a, b, d) {
+        this.currentText = d ? this.currentText + a.replace(/[|()\[{.+*?$\\]/g, "\\$0") : a.replace(/[|()\[{.+*?$\\]/g, "\\$0"); this._searchAlgorithm(this.currentIndex, new RegExp(this.currentText, "gi")) && this._searchAlgorithm(0, this.currentText);
+        this._callbackSupport(b); return this
+    }; e._updateMobileText = function () { var a, b; a = this.selectBox.find("option").filter(":selected"); b = (b = a.attr("data-text")) ? b : a.text(); this._setText(this.dropdownText, b); this.list.find('li[data-val="' + a.val() + '"]').find("i").attr("class") && this.dropdownImage.attr("class", this.list.find('li[data-val="' + a.val() + '"]').find("i").attr("class")).addClass("selectboxit-default-icon") }; e._applyNativeSelect = function () {
+        this.dropdownContainer.append(this.selectBox); this.dropdown.attr("tabindex",
+        "-1"); this.selectBox.css({ display: "block", visibility: "visible", width: this._realOuterWidth(this.dropdown), height: this.dropdown.outerHeight(), opacity: "0", position: "absolute", top: "0", left: "0", cursor: "pointer", "z-index": "999999", margin: this.dropdown.css("margin"), padding: "0", "-webkit-appearance": "menulist-button" }); this.originalElem.disabled && this.triggerEvent("disable"); return this
+    }; e._mobileEvents = function () {
+        var a = this; a.selectBox.on({
+            "changed.selectBoxIt": function () {
+                a.hasChanged = !0; a._updateMobileText();
+                a.triggerEvent("option-click")
+            }, "mousedown.selectBoxIt": function () { a.hasChanged || !a.options.defaultText || a.originalElem.disabled || (a._updateMobileText(), a.triggerEvent("option-click")) }, "enable.selectBoxIt": function () { a.selectBox.removeClass("selectboxit-rendering") }, "disable.selectBoxIt": function () { a.selectBox.addClass("selectboxit-rendering") }
+        })
+    }; e._mobile = function (a) { this.isMobile && (this._applyNativeSelect(), this._mobileEvents()); return this }; e.selectOption = function (a, b) {
+        var d = c.type(a); "number" ===
+        d ? this.selectBox.val(this.selectItems.eq(a).val()).change() : "string" === d && this.selectBox.val(a).change(); this._callbackSupport(b); return this
+    }; e.setOption = function (a, b, d) { var f = this; "string" === c.type(a) && (f.options[a] = b); f.refresh(function () { f._callbackSupport(d) }, !0); return f }; e.setOptions = function (a, b) { var d = this; c.isPlainObject(a) && (d.options = c.extend({}, d.options, a)); d.refresh(function () { d._callbackSupport(b) }, !0); return d }; e.wait = function (a, b) { this.widgetProto._delay.call(this, b, a); return this };
+    e.add = function (a, b) {
+        this._populate(a, function (a) {
+            var f = this, e = c.type(a), g = 0, n, l = [], k = (n = f._isJSON(a)) && f._parseJSON(a); if (a && ("array" === e || n && k.data && "array" === c.type(k.data)) || "object" === e && a.data && "array" === c.type(a.data)) { f._isJSON(a) && (a = k); a.data && (a = a.data); for (n = a.length; g <= n - 1; g += 1) e = a[g], c.isPlainObject(e) ? l.push(c("<option/>", e)) : "string" === c.type(e) && l.push(c("<option/>", { text: e, value: e })); f.selectBox.append(l) } else a && "string" === e && !f._isJSON(a) ? f.selectBox.append(a) : a && "object" === e ? f.selectBox.append(c("<option/>",
+            a)) : a && f._isJSON(a) && c.isPlainObject(f._parseJSON(a)) && f.selectBox.append(c("<option/>", f._parseJSON(a))); f.dropdown ? f.refresh(function () { f._callbackSupport(b) }, !0) : f._callbackSupport(b); return f
+        })
+    }; e._parseJSON = function (a) { return JSON && JSON.parse && JSON.parse(a) || c.parseJSON(a) }; e._isJSON = function (a) { try { return this._parseJSON(a), !0 } catch (b) { return !1 } }; e._populate = function (a, b) { var d = this; a = c.isFunction(a) ? a.call() : a; d.isDeferred(a) ? a.done(function (a) { b.call(d, a) }) : b.call(d, a); return d }; e.remove =
+    function (a, b) { var d = this, f = c.type(a), e = 0, g, n = ""; if ("array" === f) { for (g = a.length; e <= g - 1; e += 1) f = a[e], "number" === c.type(f) && (n = n.length ? n + (", option:eq(" + f + ")") : n + ("option:eq(" + f + ")")); d.selectBox.find(n).remove() } else "number" === f ? d.selectBox.find("option").eq(a).remove() : d.selectBox.find("option").remove(); d.dropdown ? d.refresh(function () { d._callbackSupport(b) }, !0) : d._callbackSupport(b); return d }
+});

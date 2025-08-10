@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OG:BG - Main Lobby</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        var globalScope = null;
+        var broConfiguration =
+        {  
+            "gate": "http://{@gate}/index.html",     
+            "uri": "http://127.0.0.1/publicproxy",     
+            "entry": "ws://{@userproxy_elb}:81/userproxy",     
+            "secureEntry": "ws://127.0.0.1/userproxy",     
+            "useSecure": false,     
+            "credential": 
+            {   
+                "lpc": "provider={provider}&ticket={ticket}&playerNetId={playerNetId}&cc={cc}&clientGameVersion={clientGameVersion}"    
+            }, 
+            "verreq": "1.4.2",     
+            "LayoutMode": "",     
+            "LanpartyHome": "" 
+        }
+
+        var production = false;
+        var broDevelopment = true;
+    </script>
+
+
+    <link rel="stylesheet" href="static/fonts/agency.css">
+    <link rel="stylesheet" href="static/fonts/overpass.css"> <!-- CS:GO MAP AS SCRIPT HEHE -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/socket.io.min.js"></script>
+    <script src="static/js/jquery-2.2.0.min.js"></script> <!-- ALERT: This is choking and interfering with lobby loading.-->
+    <script src="static/js/jquery-ui-1.11.4.min.js"></script>
+    <script src="static/js/jquery.selectBoxIt-3.8.1.min.js"></script>
+    <script src="static/js/coherent.js"></script>
+    <script src="static/js/coherent.mock.js"></script>
+    <script src="static/js/mock.entry.js"></script>
+    <script src="static/js/vue.js"></script>
+    <style>
+        .view-panel { display: none; }
+        .view-panel.active { display: block; }
+    </style>
+</head>
+
+
+
+<body oncontextmenu="return false;">
+    
+
+    <div id="app">
+
+        <h1 class="title-text">OG:BG - LITE</h1>
+        <h2 class="subtitle-text"> SANDUBAO EDITION </h2>
+
+
+        <div class="right-menu noselect">
+            <div 
+                v-for="router in routers" 
+                :class="['right-menu-item', { active: router.active == true}, 'noselect']"
+                @click.stop="setRouter(router)">
+                <span>{{router.name}}</span>
+            </div>
+        </div>
+
+        <div class="right-submenu noselect">
+            <p 
+                class="right-submenu-item" 
+                v-for="router in currentRouter.child" 
+                :class="[{'active': router.active == true}, 'noselect']"
+                @click="setSubRouter(router)">
+                <span>{{router.name}}</span>
+            </p>
+        </div>
+
+
+
+        <!-- user-info-section.html -->
+        <section class="user-info" id="user-info-section">
+          <!-- Avatar do usuário -->
+          <span class="user-avatar">
+            <img id="user-avatar-img" src="static/icons/ico-avatar.png" alt="User Avatar">
+            <span class="online" id="user-online-status"></span>
+          </span>
+
+          <!-- Ícones de ações -->
+          <i class="icon-attendance-book disabled" id="attendance-book-btn"></i>
+          
+          <i class="icon-pcp dimmed" id="ucp-btn"></i>
+          
+          <i class="icon-patchnote" id="patchnote-btn"></i>
+          
+          <i class="icon-setting" id="settings-btn"></i>
+
+          <!-- currencies-section.html -->
+            <div class="currencies-wrapper pubg-font" id="currencies-section">
+              <!-- BP (Battle Points) -->
+              <div class="currency">
+                <span class="bp-unit">BP</span>
+                
+                " N/A "
+
+              </div>
+              
+              <!-- Fragmentos de Prata -->
+              <span class="currency">
+                <img class="currency-img" src="" alt="Silver Fragments">
+                
+                " N/A "
+
+              </span>
+              
+              <!-- Medalhas de Galinha -->
+              <span class="currency">
+                <img class="currency-img" src="" alt="Chicken Medals">
+                
+                " N/A "
+              </span>
+            
+            </div>
+
+
+        </section>
+
+
+
+        <p class="debug-text" :class="{'hide': !isDebug}">{{ debugInfo }}</p>
+        <p class="serial-text">{{ userSerial }}</p>
+
+        <p class="bottom-text">OG:BattleGrounds Team, test lobby : {{ gameVersion }}</p>
+        
+        <p id="client-version-alert" class="pubg-client-ver"></p>
+        
+
+        <!-- Painel principal PLAY -->
+        <div v-if="currentRouter.name === 'PLAY'" class="view-panel active">
+            <div v-if="getActiveSubrouterName() === 'PUBLIC MATCH'">
+                <h2></h2>
+                <p></p>
+
+                <span style="display: none" v-if="call_PLAY_PUBLIC_MATCH()"></span>
+
+                
+
+                    <div class="game-play-container">
+                        <div class="join-server-container">
+                            <div style="font-size: 2vh;color: lightgray;margin-bottom: 0.5vh;">REGION</div>
+                            <button v-for="server in serverList"
+                                    v-bind:class="{'sel-server-button': true, 'active': server.name === currentServer.name}"
+                                    :id="server.name"
+                                    v-on:click="selectServer(server)">
+                                    {{ server.name }}
+                            </button>
+                        </div>
+                        <br>
+                        <div style="display: flex;flex-direction: row;align-items: flex-end;">
+                            <!-- <button class="join-server-button" onclick="joinServer()" id="join"> -->
+                                <button class="join-server-button" @click="joinServer" id="join">
+                                <span id="join-server-text">START</span>
+                                <span id="join-server-hint" style="padding: 0;margin: 0;font-size: 0.5em;"></span>
+                            </button>
+                            <div class="player-count" :class="{'hide': currentServer.name != 'AS'}">
+                                {{ playerCountInfo }}
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'TRAINING MODE'">
+                <h2></h2>
+                <p></p>
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'CUSTOM MATCH'"> <!-- PLAY - CUSTOM MATCH MODE -->
+                
+                <span style="display: none" v-if="call_PLAY_CUSTOM_MATCH()"></span>
+
+                <!-- step (1) -->
+                <div class="custom-match-title-text-create "> 
+                    <span>CREATE MATCH</span>
+                    <div class="play_custom_match_box_session_name">
+                      <img src="static/icons/ico-setting.png" alt="" class="icon">
+                      <input type="text" placeholder="INPUT SESSION NAME">
+                    </div> 
+                </div>
+
+                <div class="custom-match-title-text-select-mode "> 
+                    <img src="static/icons/step_2.png" class="step-icon" alt="Step Icon">
+                    <span>SELECT MODE</span>
+                </div>
+
+                <div class="custom-match-title-text-preset "> 
+                    <img src="static/icons/step_3.png" class="step-icon" alt="Step Icon">
+                    <span>PRESET</span>
+                </div>
+
+                <div class="custom-match-title-text-options "> 
+                    <img src="static/icons/step_4.png" class="step-icon" alt="Step Icon">
+                    <span>OPTIONS</span>
+                </div>
+
+                <div class="modos-container">
+                  <div class="modo-box" onclick="customMatch_SelectMode('NORMAL_MODE')">NORMAL MODE</div>
+                  <div class="modo-box" onclick="customMatch_SelectMode('ZOMBIE_MODE')">ZOMBIE MODE</div>
+                  <div class="modo-box" onclick="customMatch_SelectMode('WAR_MODE')">WAR MODE</div>
+                  <div class="modo-box" onclick="customMatch_SelectMode('ESPORTS_MODE')">ESPORTS MODE</div>
+                </div>
+
+                <div id="img-modo" class="modo-img"></div>
+
+
+                <div class="options-container">
+                    <div class="custom_match_options_selection">
+                        <label>MAP</label>
+                        <span onclick="anteriorMapa()">&lt;</span>
+                        <div class="valor" id="mapaAtual">TRAINING</div>
+                        <span onclick="proximoMapa()">&gt;</span>
+                    </div>
+
+                    <div class="custom_match_options_selection">
+                        <label>PERSPECTIVE</label>
+                        <span onclick="nextPerspectiveMode()">&lt;</span>
+                        <div class="valor" id="currentPerspective">TPP</div>
+                        <span onclick="prevPerspectiveMode()">&gt;</span>
+                    </div>
+
+                    <div class="barra">
+                        <label>PLAYERS</label>
+                        <input type="range" min="1" max="100" value="100" oninput="atualizaPlayers(this.value)">
+                        <span id="valorPlayers">100</span>
+                    </div>
+
+                    <div class="barra">
+                        <label>TEAM MEMBERS</label>
+                        <input type="range" min="1" max="4" value="4" oninput="customMatch_updateTeamMembers(this.value)">
+                        <span id="customMatch_MembersValue">4</span>
+                    </div>
+
+                    <div class="custom_match_options_selection">
+                        <label>WEATHER</label>
+                        <span onclick="nextWeatherState()">&lt;</span>
+                        <div class="valor" id="currentWeatherState">CLEAR</div>
+                        <span onclick="prevWeatherState()">&gt;</span>
+                    </div>
+                </div>
+
+                
+
+                <!--
+                <div class="side-container">
+                        <div class="custom-match-card" onclick="joinServerPlay()">
+                            <div class="title">
+                                <img src="static/icons/ico-setting.png" alt="" class="discord-icon-bg">
+                                &ensp;test box!
+                            </div>
+                            <div class="content">
+                                this is not a discord button anymore, this is to create a local server.
+                            </div>
+                        </div>
+                </div> -->
+
+                <div class="container" style="position: relative;">
+                        <div class="custom-match-button-create" onclick="joinServerPlay()">
+                            <div class="title">
+                                <span>CREATE !</span>
+                            </div>
+                        </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Painel CUSTOMIZE -->
+        <div v-if="currentRouter.name === 'CUSTOMIZE'" class="view-panel active">
+            <div v-if="getActiveSubrouterName() === 'WARDROBE'">
+                <h2></h2>
+                <p></p>
+
+                <span style="display: none" v-if="call_CUSTOMIZE_WARDROBE()"></span> <!-- change lobby camera -->
+
+            
+
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'WEAPONS'">
+                <h2></h2>
+                <p></p>
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'GEAR'">
+                <h2></h2>
+                <p></p>
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'EMOTES'">
+                <h2></h2>
+                <p></p>
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'APPEARANCE'">
+                <h2></h2>
+                <p></p>
+            
+                <span style="display: none" v-if="call_CUSTOMIZE_APPEARANCE()"></span>
+            </div>
+        </div>
+
+        <!-- Painel STORE -->
+        <div v-if="currentRouter.name === 'STORE'" class="view-panel active">
+            <h2>Store</h2>
+            <p></p>
+
+            <span style="display: none" v-if="call_STORE()"></span>
+        </div>
+
+        <!-- Painel FRIENDS -->
+        <div v-if="currentRouter.name === 'SOCIAL'" class="view-panel active">
+            <div v-if="getActiveSubrouterName() === 'PROFILE'">
+                <h2>Profile Page</h2>
+                <p></p>a
+
+                <div id="output" 
+                    style="color: #0f0; 
+                            background: rgba(0,0,0,0.7); 
+                            padding: 10px; 
+                            margin: 10px; 
+                            font-family: monospace; 
+                            font-size: 1.2em;">
+                </div>
+
+                <span style="display: none" v-if="call_testOutputsDebug()"></span>
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'FRIENDS'">
+                <h2>Friends Page</h2>
+                <p></p>
+                <span style="display: none" v-if="call_clearDebug()"></span>
+            </div>
+            <div v-else-if="getActiveSubrouterName() === 'RANK'">
+                <h2>RANK PAGE</h2>
+                <p></p>
+            </div>
+        </div>
+
+    </div> <!-- <div id="app"> -->
+
+
+<script src="static/js/main_lobby.js"></script>
+</body>
+
+</html>
