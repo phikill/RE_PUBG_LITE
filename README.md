@@ -20,7 +20,7 @@ v <strike>1.4.2.423 </strike>
 PUBG LITE game reverse engineering, for educational purposes.  
 
 Lobby Code : Branch  [ogbg_lobby](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_lobby)  
-Works on all versions of the game  
+##### WORKS ON ALL VERSIONS OF THE GAME  
 
 ```@PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="https://phikill.github.io/RE_PUBG_LITE/custom_lobby/index.html" -AllowJoinAnyMatchState -stdout -LOG -cmd -NOSPLASH -nothreadtimeout```
 
