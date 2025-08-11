@@ -1,0 +1,8 @@
+STRINGTABLE
+LANGUAGE 0x000, 0x1
+{
+  130, 	"Launcher is already running on this machine. Please locate the launcher and exit first to run the launcher again. It may exist in another desktop or session."
+  131, 	"Cannot run launcher when game is already running."
+  132, 	"Cannot load launcher resources now because the launcher was not closed normally before. Please reboot and try again."
+}
+

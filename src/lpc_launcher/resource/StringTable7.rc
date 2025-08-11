@@ -1,0 +1,8 @@
+STRINGTABLE
+LANGUAGE 0x000, 0x1
+{
+  101, 	"http://lpc-dl.playbattlegrounds.com/launcher_patch"
+  102, 	"http://lpc-dl.playbattlegrounds.com/launcher_patch"
+  111, 	"error"
+}
+
