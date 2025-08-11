@@ -18,10 +18,10 @@ v <strike>1.4.2.423 </strike>
 
  a little slow, but every day I change the code a little   
 
+## NOTE! This repository is for me to put daily or weekly codes, at the moment it is not stable and is only for watcom and windows, 
 
 
-
-# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
+# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite. | Launcher and Online Services
 PUBG LITE game reverse engineering, for educational purposes.  
 
 
