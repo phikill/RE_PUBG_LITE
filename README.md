@@ -12,14 +12,11 @@ v <strike>1.4.2.423 </strike>
 
  Any help is always welcome.  
 
-#### If anyone knows how to disable antidebugging and generate an SDK for the latest versions, please contact H4tiux.  
-Discord: h4tiux  
-[Telegram OG:BG](https://t.me/ogbattlegrounds)  
+  
 
 ### Progress % 
 
- the game and launcher are still not buildable.  
- I currently work in the game lobby and authentications.  
+ a little slow, but every day I change the code a little   
 
 
 
@@ -27,22 +24,6 @@ Discord: h4tiux
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
 PUBG LITE game reverse engineering, for educational purposes.  
 
-## Game Lobby 
-
-Lobby Code : Branch  [ogbg_lobby](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_lobby)  
-##### WORKS ON ALL VERSIONS OF THE GAME  
-
-```@PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="https://phikill.github.io/RE_PUBG_LITE/custom_lobby/index.html" -AllowJoinAnyMatchState -stdout -LOG -cmd -NOSPLASH -nothreadtimeout```
-
-
-<img src="web_help_files/lobby_preview.png" alt="lobby_preview" width="600">
-<img src="web_help_files/lobby_preview_2.png" alt="lobby_preview_2" width="600">
-
-You can create simple matches in the custom_match menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
-
-By default, the game opens on port ```7777```.   
-
-matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2.423``` and ```1.4.2.681``` the game crashes
 
 
 ## Game Launcher
@@ -58,91 +39,64 @@ I'm decompiling the launcher and making it in pure C, with support for Linux and
 
 
 
-## TOOLS
+It focuses on rebuilding the pubg lite launcher, using c and c++ instead of c#.
+
+Focusing on cross-platform and weaker PCs, supporting up to Windows XP SP3+ / Linux / macos, the development may be a bit long, but this code could become something special
+
+the implementations will be the same/similar to the original launcher  
+
+Currently the code is in the initial stages of basic testing, just for functionality
+
+## BUILD   
+### What is needed to compile ?  
+
+</div>
+  <details>
+   <summary> Windows XP SP3 or higher </summary>  
 
 
-name of the tools so I don't forget  
+ to compile for Windows XP and higher systems you need `Open Watcom 1.9`  
 
-.PAK files exploring [PUBG Lite Explorer by Warranty Voider](https://github.com/zeroKilo/PUBGLiteExplorerWV)  
-UMODEL 
 
-depends22_x64  
-FModel  
-JWlink  
-SmartSteamEmu143  
-uasm256_x86  
-umodel_win32  
-CheatEngine  
-node.js  
-UAssetGUI  
-UnrealLocres  
-Wireshark  
-Xenos_2.3.2  
-Ghidra  
-7zip  
-xvolkolak  
-ForceToolKit  
-SublimeText  
-RegShot  
-winapiexec64  
-QuickUnpack 4.3  
-Process Explorer  
-Detect It Easy DIE  
-OpenHashTab  
-EchoMirage  
-[FakeNet](https://github.com/fireeye/flare-fakenet-ng/releases)  
-Nmap  
-HXD  
-ImHex  
-FileGrab  
-Error Lookup  
-dnSpyEx64  
-ILSpy  
-Delphi IDR  
-X64DBG  
-CyberChef  
-XOpcodeCalc  
-Hollows_Hunter  
-Cain & Abel  
-Postman  
+run ```build_launcher_watcom.bat``` and it will compile and generate an X32 file locally ```lpc_launcher.exe``` , which you can test by placing it inside ```bin/nt_86```  
+
+
+watcom generates light, fast and optimized files, but not secure.  
+
+
+watcom only supports 32-bit binaries, from 386 to 686 floating point control  
+
+</details>
+
+</div>
+  <details>
+   <summary> Windows 7 or higher </summary>
+   You need Visual Studio 2019 or 2022, I only tested it with these, maybe it will work with other versions, just change some parameters within the batch script  
+ 
+ 
+run `build_launcher_visual_studio.bat` and it will compile and generate an `X32` or `X64` file locally `lpc_launcher.exe` , which you can test by placing it inside `bin/nt_86``` or  ```bin/nt_86` depending on what architecture you built  
+
+to modify which architecture or version of visual studio, open `build_launcher_visual_studio.bat` with any text editor and modify the variables `set vsv= ` for the year of the version of your visual studio, sometimes it may not always work if you have installed it in a different location, but in this case I am following the standard installation, and for the architecture you modify the variable `set cpuarch= ` supporting the values `​​86` or `64`
+
+</details>
+
+</div>
+  <details>
+   <summary> Linux </summary>  
   
-## Launcher Free ThirdParty Resources.
+  to compile on linux you need `gcc` and some additional dependencies related to `x11` and `cef`  
+  
+`libx11-dev libxcomposite-dev libxrandr-dev libxtst-dev libxext-dev
+libxfixes-dev libxrender-dev libxcursor-dev libgconf-2-dev
+libglib2.0-dev libnss3-dev libatk1.0-dev libasound2-dev libxdamage-dev libdl-dev
+libpthread-stubs0-dev librt-dev`  
+  
+  to compile just run `build_launcher_gcc_linux.sh` which will generate a `x64` binary file locally `lpc_launcher.elf`, and you can test it by placing it inside `bin/linux_64`
 
-Launcher [Newtonsoft.json.dll](https://github.com/JamesNK/Newtonsoft.Json/releases/tag/13.0.3 ) v12.01  
-Launcher [WpfAnimatedGif.dll](https://github.com/XamlAnimatedGif/WpfAnimatedGif) v1.4.18  
-Launcher [System.Web.Http.dll](https://www.nuget.org/packages/microsoft.aspnet.webapi.client/5.2.6) v5.2.61128.0  ASP.NET  
-Launcher [System.ValueTuple.dll](https://dotnet.microsoft.com/pt-br/download/dotnet-framework/net462) v4.6.26515.6  NET.FRMW  
-Launcher [System.Net.Http.Formatting.dll](https://www.nuget.org/packages/microsoft.aspnet.webapi.client/5.2.6) v5.2.61128.0  ASP.NET  
-Launcher [System.Diagnostics.FileVersionInfo.dll](https://dotnet.microsoft.com/pt-br/download/dotnet-framework/net462) v4.6.24705.1 NET-FRMW  
-Launcher [Microsoft.IdentityModel.Tokens.dll](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/5.4.0) v5.4.0.60123  Microsoft IdentityModel  
-Launcher [Microsoft.IdentityModel.Logging.dll](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/5.4.0) v5.4.0.60123  Microsoft IdentityModel  
-Launcher [libGLESv2.dll](https://github.com/adobe/angle/tree/master/src/libGLESv2) v2.1.0.0  
-Launcher [libEGL.dll](https://github.com/adobe/angle/tree/master/src/libEGL) v2.1.00  
-Launcher [libcef.dll](https://www.nuget.org/packages/AZ.ChromiumFX) v3.3578.1870.0  I didn't find this version.  
-Launcher [d3dcompiler_47.dll](https://strontic.github.io/xcyclopedia/library/d3dcompiler_47.dll-F63597DF3B9348FFC0700915768987D1.html) v10.0.17134.12  
-Launcher [chrome_elf.dll](https://chromium.googlesource.com/chromium/src/+/master/chrome/chrome_elf/) v71.0.3578.98 ??  
-Launcher [chrome_elf.dll](https://chromereleases.googleblog.com/2018/12/stable-channel-update-for-desktop_12.html) v71.0.3578.98 ??  
-Launcher [CefSharp.Wpf.dll](https://www.nuget.org/packages/CefSharp.Common/71.0.2) v71.0.2.0  
-Launcher [CefSharp.dll](https://www.nuget.org/packages/CefSharp.Common/71.0.2) v71.0.2.0  
-Launcher [CefSharp.Core.dll](https://www.nuget.org/packages/CefSharp.Common/71.0.0) v71.0.0.0  
-Launcher [CefSharp.BrowserSubprocess.Core.dll](https://www.nuget.org/packages/CefSharp.Common/71.0.0) v71.0.0.0  
-Launcher [CefSharp.BrowserSubprocess.exe](https://www.nuget.org/packages/CefSharp.Common/71.0.2) v71.0.2.0  
-Launcher CefSharp Source [Link](https://github.com/cefsharp/CefSharp/releases/tag/v71.0.2) v71.0.2  
-Launcher CefSharp Source [Link](https://github.com/cefsharp/CefSharp/releases/tag/v71.0.0) v71.0.0  
+</details>
 
-### What are these remaining files for? 
 
-#### ``` cef.pak, cef_100_percent.pak, cef_200_percent.pak, cef_extensions.pak ```: These are CEF (Chromium Embedded Framework) resource packs. They contain data such as texts, images, settings, and other resources necessary for the built-in browser to function. The "100_percent" and "200_percent" versions refer to the resolution of the assets (100% and 200% for high DPI devices).  
 
-#### ``` devtools_resources.pak ```: This file contains the resources used by the Chromium Developer Tools, which can be accessed in Chromium-based browsers.  
-
-#### ``` icudtl.dat: ```: This file contains internationalization and language support data, necessary for CEF to support different languages ​​and text encodings (via ICU - International Components for Unicode).  
-
-#### ``` snapshot_blob.bin ```: This file is part of the V8 engine (Chromium's JavaScript engine). It stores a snapshot (an initial "image") of the JavaScript virtual machine's memory state to speed up loading.  
-
-#### ``` v8_context_snapshot.bin ```: This file is used by V8 to initialize JavaScript execution contexts more quickly. It contains a predefined capture of a JavaScript environment that can be loaded directly instead of being generated dynamically.  
-
-#### Many of the files are related to the Chromium Embedded Framework (CEF), which the launcher appears to use to embed a Chromium-based browser within the application. This allows the launcher interface to utilize web technologies and execute scripts, such as JavaScript, in a secure and controlled environment. The .pak and .bin files are part of the support for web rendering, internationalization, and efficient JavaScript execution.  
 
 
 
