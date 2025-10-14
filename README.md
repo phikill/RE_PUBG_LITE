@@ -1,4 +1,4 @@
-[![discord](https://shields.io/discord/1334106568253509692?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/hmdVw2pR)
+# [![discord](https://shields.io/discord/1334106568253509692?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/pYpMuTDfAG) <- click to join !  
 
 
 v <strike>1.4.2.423 </strike>  
