@@ -35,7 +35,7 @@ PUBG LITE game reverse engineering, for educational purposes.
 ## Game Lobby 
 
 Lobby Code : Branch  [ogbg_lobby](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_lobby)  
-##### WORKS ON ALL VERSIONS OF THE GAME  
+##### *WORKS ON ALL VERSIONS OF THE GAME*  
 
 ```@PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="https://phikill.github.io/RE_PUBG_LITE/custom_lobby/index.html" -AllowJoinAnyMatchState -stdout -LOG -cmd -NOSPLASH -nothreadtimeout```
 
@@ -52,9 +52,9 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
 
 ## Game Launcher
 
-##### WORKS ON ALL VERSIONS OF THE GAME 
+##### *WORKS ON ALL VERSIONS OF THE GAME*   
 
- I'm decompiling the launcher and making it in pure C, with support for ~~Linux~~~ and even ~~Windows XP~~.  
+ I'm decompiling the launcher and making it in pure C, with support for ~~Linux~~ and even ~~Windows XP~~.  
 ### Currently, I only have Windows, and I've disabled XP support for now, as it doesn't make sense.  
 
 The current launcher code is not publicly available, but you can download its binary file.  
