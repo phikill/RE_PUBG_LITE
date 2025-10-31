@@ -54,8 +54,8 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
 
 ##### WORKS ON ALL VERSIONS OF THE GAME 
 
-### I'm decompiling the launcher and making it in pure C, with support for ~~Linux~~~ and even ~~Windows XP~~~.  
-## Currently, I only have Windows, and I've disabled XP support for now, as it doesn't make sense.  
+ I'm decompiling the launcher and making it in pure C, with support for ~~Linux~~~ and even ~~Windows XP~~.  
+### Currently, I only have Windows, and I've disabled XP support for now, as it doesn't make sense.  
 
 The current launcher code is not publicly available, but you can download its binary file.  
 ## Release Link :[Launcher Release](https://github.com/phikill/RE_PUBG_LITE/releases/tag/decompile_dev)  
