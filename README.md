@@ -16,16 +16,21 @@ v <strike>1.4.2.423 </strike>
 Discord: h4tiux  
 [Telegram OG:BG](https://t.me/ogbattlegrounds)  
 
-### Progress % 
+### Progress 0.3% 
 
- the game and launcher are still not buildable.  
- I currently work in the game lobby and authentications.  
+I messed around a bit by decompiling the game launcher.
+
+Now I'm trying to bypass the game's anti-debugging; remember, TRYING doesn't mean I'll succeed, but I have faith that one day I will.
+
 
 
 
 
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
 PUBG LITE game reverse engineering, for educational purposes.  
+
+# Game Backups
+ ### LINK: [Pubg Lite Versions](https://docs.google.com/spreadsheets/d/1IHKbZCIqBKopSOlVbpHOP9RoFpKclbAfpKhAF2aYa2U/edit?gid=0)
 
 ## Game Lobby 
 
@@ -47,8 +52,14 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
 
 ## Game Launcher
 
+##### WORKS ON ALL VERSIONS OF THE GAME 
 
-I'm decompiling the launcher and making it in pure C, with support for Linux and even Windows XP.  
+### I'm decompiling the launcher and making it in pure C, with support for ~~Linux~~~ and even ~~Windows XP~~~.  
+## Currently, I only have Windows, and I've disabled XP support for now, as it doesn't make sense.  
+
+The current launcher code is not publicly available, but you can download its binary file.  
+## Release Link :[Launcher Release](https://github.com/phikill/RE_PUBG_LITE/releases/tag/decompile_dev)  
+ 
 
  Cef Working o Windows XP  
 <img src="web_help_files/lpc_launcher_nt.png" alt="launcher_windows" width="600">
