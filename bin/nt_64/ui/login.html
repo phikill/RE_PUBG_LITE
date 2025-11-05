@@ -1,0 +1,501 @@
+<html>
+    <head>
+        <link
+            href="https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,700|Teko:400,700&amp;subset=cyrillic,vietnamese"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/login.css">
+        <!-- Google Tag Manager --
+        <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WHWTBZX');
+        </script>
+        !-- End Google Tag Manager --
+        <script src="https://www.google.com/recaptcha/api.js?render=6LfapbYUAAAAAGqqePOX3oiNl5O0L7YWwoztq0cC"></script> -->
+        <script>
+            var launcher;
+            var timer = null;
+            var isLoading = false;
+            
+
+            var translations = 
+            {
+                "en": {
+                    "E-MAIL ADDRESS": "E-MAIL ADDRESS",
+                    "PASSWORD": "PASSWORD",
+                    "Remember Email Address": "Remember Email Address",
+                    "LOGIN": "LOGIN",
+                    "- I have no account": "- I have no account",
+                    "- I forgot my password": "- I forgot my password"
+                },
+                "pt": {
+                    "E-MAIL ADDRESS": "ENDEREÇO DE E-MAIL",
+                    "PASSWORD": "SENHA",
+                    "Remember Email Address": "Lembrar endereço de e-mail",
+                    "LOGIN": "ENTRAR",
+                    "- I have no account": "- Não tenho uma conta",
+                    "- I forgot my password": "- Esqueci minha senha"
+                },
+                "es": {
+                    "E-MAIL ADDRESS": "DIRECCIÓN DE CORREO",
+                    "PASSWORD": "CONTRASEÑA",
+                    "Remember Email Address": "Recordar correo",
+                    "LOGIN": "INICIAR SESIÓN",
+                    "- I have no account": "- No tengo cuenta",
+                    "- I forgot my password": "- Olvidé mi contraseña"
+                }
+            };
+
+            function getLanguage() 
+            {
+                var lang = navigator.language || navigator.userLanguage || "en";
+                lang = lang.toLowerCase();
+                if (translations.hasOwnProperty(lang)) return lang;
+                
+                // fallback para idiomas gerais (ex: 'pt-br' → 'pt')
+                var shortLang = lang.split('-')[0];
+                if (translations.hasOwnProperty(shortLang)) return shortLang;
+
+                return "en"; // padrão
+            }
+
+            function translatePage(lang) 
+            {
+                var dict = translations[lang];
+                var keys = Object.keys(dict);
+                var all = document.querySelectorAll('body, body *');
+
+                for (var i = 0; i < all.length; i++) {
+                    var el = all[i];
+
+                    // Traduz texto visível
+                    if(el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) 
+                    {
+                        var original = el.textContent.trim();
+                        if(dict.hasOwnProperty(original)) 
+                        {
+                            el.textContent = dict[original];
+                        }
+                    }
+
+                    // Traduz placeholder
+                    if (el.placeholder && dict.hasOwnProperty(el.placeholder)) {
+                        el.placeholder = dict[el.placeholder];
+                    }
+
+                    // Traduz value (ex: input submit)
+                    if (el.value && dict.hasOwnProperty(el.value)) {
+                        el.value = dict[el.value];
+                    }
+                }
+            }
+
+            window.onload = function() 
+            {
+                var lang = getLanguage(); // Detecta idioma
+                translatePage(lang);      // Aplica tradução
+
+                if(window.opener && window.opener !== window) 
+                {
+                    window.opener.location.href = location.href;
+                    window.close();
+                }
+                
+                /*
+                if(window.CefSharp) 
+                {
+                    window.CefSharp.BindObjectAsync('_launcher_object_').then(function() 
+                    {
+                        launcher = window._launcher_object_;
+                        launcher.getSavedId().then(function (email) 
+                        {
+                            if(email) 
+                            {
+                                document.getElementById('email-input').value = email;
+                                document.getElementById('save-checkbox').checked = true;
+                            }
+                        });
+                    });
+                }
+                else 
+                {
+                    launcher = {
+                        close: function () { console.log('close!'); },
+                        minimize: function () { console.log('minimize!'); },
+                        openDefaultBrowser: function (link) { console.log('open browser ' + link + '!'); },
+                        saveEmail: function() { console.log('store email'); }
+                    };
+                }*/
+
+                
+
+                if(window.bindLauncherAsync) 
+                {
+                    window.bindLauncherAsync().then(obj => {
+                        if(obj) 
+                        {
+                            // CEF environment
+                            launcher = obj;
+                            //launcher.openDefaultBrowser("http://ogbg.dev"); // test
+
+                            launcher.getSavedId().then(function(email) 
+                            {
+                                if(email) 
+                                {
+                                    document.getElementById('email-input').value = email;
+                                    document.getElementById('save-checkbox').checked = true;
+                                }
+                            });
+                        } 
+                        else 
+                        {
+                            console.log("No CEF objects detected");
+                        }
+                    });
+                } 
+                else 
+                {
+                    // Normal browser environment
+                    console.log("Running outside of CEF Launcher");
+                    launcher = {
+                        launcher_close: function () { console.log('close!'); },
+                        launcher_minimize: function () { console.log('minimize!'); },
+                        openDefaultBrowser: function (link) { console.log('open browser ' + link + '!'); },
+                        saveEmail: function() { console.log('store email'); }
+                    };
+                    window.bindLauncherAsync = () => Promise.resolve(null); // optional, to avoid future errors
+                }
+
+
+
+
+                
+
+                window.addEventListener('keyup', function(e) 
+                {
+                    if(event.getModifierState && event.getModifierState("CapsLock")) 
+                    {
+                        setMessage("Caps Lock is on.");
+                    } 
+                    else 
+                    {
+                        hideMessage();
+                    }
+
+                    if(e.keyCode === 13) // enter button
+                    {
+                        login();
+                    }
+                })
+            }
+
+            function openSocialPopup(platform) 
+            {
+                try 
+                {
+                    launcher.saveEmail('');
+                } catch(e) 
+                {
+                    console.log(e);
+                }
+
+                const sizes = {
+                    discord: {
+                        width: 845,
+                        height: 900,
+                    },
+                    facebook: {
+                        width: 1080,
+                        height: 900,
+                    },
+                    google: {
+                        width: 845,
+                        height: 900,
+                    },
+                    line: {
+                        width: 845,
+                        height: 900,
+                    },
+                    reddit: {
+                        width: 845,
+                        height: 900,
+                    },
+                    twitter: {
+                        width: 845,
+                        height: 900,
+                    },
+                    vk: {
+                        width: 845,
+                        height: 900,
+                    }
+                }
+
+                var x = screen.width/2 - sizes[platform].width/2;
+                var y = screen.height/2 - sizes[platform].height/2;
+                var url = 'http://account.ogbg.dev/oidc/interaction/social/'
+                    + platform
+                    + '?display=popup&oidc_client=26995eff-42b5-4606-8f2f-4fce296ecd2a';
+
+                window.open(url,
+                            'FACEBOOK_LOGIN',
+                            'width=' + sizes[platform].width + ',height=' + sizes[platform].height + ',left=' + x + ',top=' + y);
+
+                if(platform === 'vk') 
+                {
+                    window.setTimeout(function() 
+                    {
+                        window.open(url,
+                            'FACEBOOK_LOGIN',
+                            'width=' + sizes[platform].width + ',height=' + sizes[platform].height + ',left=' + x + ',top=' + y);
+                    }, 400);
+                }
+            }
+
+            function closeWindow() 
+            {
+                
+                if(launcher) 
+                {
+                    launcher.launcher_close();
+                }    
+            }
+
+            function minimize() 
+            {             
+                if(launcher) 
+                {
+                    launcher.launcher_minimize();
+                    //launcher.Alert("Youre Ugly!", "Launcher message !");
+                    //launcher.onLogin("abcd123", "nickname", "mail@mail.com", false, "nah", "nah");
+                }
+            }
+
+            function openLink(link) 
+            {
+                if(launcher)
+                {
+                    //launcher.openDefaultBrowser(location.origin + link); // the location is local file dont work , file:// 
+                    launcher.openDefaultBrowser(link); // need specifie full link
+                }
+            }
+
+            function resendActivation(event) 
+            {
+                event.preventDefault();
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/profile/resend', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({_csrf: 'PsJHbcwK-UQoZStoGM4A0Ny_DRLSJci4_ICs'}));
+                xhr.onload = function() 
+                {
+                    if(this.responseText) 
+                    {
+                        var result = JSON.parse(this.responseText);
+                        if (result.message === 'register.emailed') 
+                        {
+                            setMessage("Activation email sent.");
+                            var resendButton = document.getElementById('resend-button');
+                            resendButton.parentNode.removeChild(resendButton);
+                        }
+                    }
+                }
+            }
+
+            function setMessage(message) 
+            {
+                document.getElementById('notification').innerHTML = message;
+                document.getElementById('notification').className = 'notification';
+
+                clearTimeout(timer);
+                timer = setTimeout(hideMessage, 15 * 1000);
+            }
+
+            function hideMessage() 
+            {
+                document.getElementById('notification').className = 'notification hide';
+            }
+
+            function validate() 
+            {
+                var email = document.getElementById('email-input').value;
+                var password = document.getElementById('pw-input').value;
+                
+                if(!email || email.length === 0) 
+                {
+                    setMessage("An email address is required.");
+                    return false;
+                }
+                
+                if(!(/.*@+.*/.test(email))) 
+                {
+                    setMessage("Please enter a valid email address.");
+                    return false;
+                }
+                
+                if(!password || password.length === 0) 
+                {
+                    setMessage("A password is required.");
+                    return false;
+                }
+                return true;
+            }
+
+            function saveEmail() 
+            {
+                if(document.getElementById('save-checkbox').checked) 
+                {
+                    launcher.saveEmail(document.getElementById('email-input').value);
+                } 
+                else 
+                {
+                    launcher.saveEmail('');
+                }
+            }
+
+            function login() 
+            {
+                /*
+                let recaptchaInput = document.getElementsByName('recaptcha')[0];
+
+                if(!validate() || isLoading) 
+                {
+                    return;
+                }
+
+
+                launcher.saveEmail('');
+                grecaptcha.ready(function() 
+                {
+                    grecaptcha.execute('6LfapbYUAAAAAGqqePOX3oiNl5O0L7YWwoztq0cC', {action: 'submit'}).then(function(token) 
+                    {
+                        recaptchaInput.value = token;
+                        document.forms[0].method = 'post';
+                        document.forms[0].submit();
+                        isLoading = true;
+                    });
+                });*/
+
+                var nicknameInput = document.getElementById('email-input');
+                var nickname = nicknameInput.value;
+
+                if(!nickname || nickname.trim() === '') 
+                {
+                    setMessage('Please enter a nickname!');
+                    return;
+                }
+
+                launcher.onLogin("abcd123", nickname, "mail@mail.com", false, "nah", "nah");
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <!--
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHWTBZX"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        !-- End Google Tag Manager (noscript) -->
+        <form class="" action="/auth/local" method="post" >
+            <img class="top-yellow-bar"
+                src="assets/img/yellowbar.png"/>
+            <div class="top-menu">
+                <button class="button minimize" type="button" onclick="minimize();">
+                    <img src="assets/img/btn_window_minimize.png" alt="lpc_minimize">
+                </button>
+                <button class="button close" type="button" onclick="closeWindow();">
+                    <img src="assets/img/btn_window_close.png" alt="lpc_close">
+                </button>
+            </div>
+            <img class="logo"
+                alt="PUBG Lite Logo"
+                src="assets/img/pubglite.png"/>
+                <div class="notification hidden" id="notification"></div>
+            <input type="hidden" name="_csrf" value="PsJHbcwK-UQoZStoGM4A0Ny_DRLSJci4_ICs"/>
+            <input type="hidden" name="oidc_client" value="26995eff-42b5-4606-8f2f-4fce296ecd2a"/>
+            <input type="hidden" id="recaptcha" name="recaptcha" value=""/>
+            
+            <input
+                class="input-field"
+                type="text"
+                name="email"
+                id="email-input"
+                placeholder="insert nickname"
+            />
+            <!--
+            <input
+                class="input-field"
+                type="text"
+                name="email"
+                id="email-input"
+                placeholder="E-MAIL ADDRESS"
+            />
+            < !-- <input
+                class="input-field"
+                type="password"
+                name="password"
+                id="pw-input"
+                placeholder="PASSWORD"
+            /> -->
+            <input class="faction-input" type="text" name="faction" tabindex="-1"/>
+            <label>
+                <input
+                    class="checkbox checkbox-left"
+                    type="checkbox"
+                    id="save-checkbox"
+                    name="savedId"
+                />
+                <!-- <span class="checkbox-label checkbox-left">Remember Email Address</span> -->
+            </label>
+            <button type="button" class="submit" onclick="login()">LOGIN</button>
+            <div class="platform-button-wrapper">
+                    <a href="#" onclick="openSocialPopup('discord')">
+                        <div class="social-login discord-login">
+                            <img width="20px" height="20px" src="assets/icons/white/discord.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('facebook')">
+                        <div class="social-login fb-login">
+                            <img width="20px" height="20px" src="assets/icons/white/facebook.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('google')">
+                        <div class="social-login google-login">
+                            <img width="20px" height="20px" src="assets/icons/g-logo.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('reddit')">
+                        <div class="social-login reddit-login">
+                            <img width="20px" height="20px" src="assets/icons/snoo_head.png"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('vk')">
+                        <div class="social-login vk-login">
+                            <img width="20px" height="20px" src="assets/icons/vk-logo.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('twitter')">
+                        <div class="social-login twitter-login">
+                            <img width="20px" height="20px" src="assets/icons/w_twitter.png"/>
+                        </div>
+                    </a>
+            </div>
+            
+            <!--  OLD CODE
+            <a class="link" onclick="openLink('/register?client_id=26995eff-42b5-4606-8f2f-4fce296ecd2a')">
+                    - I have no account
+            </a>
+            <a class="link" onclick="openLink('/forgot?client_id=26995eff-42b5-4606-8f2f-4fce296ecd2a')">
+                    - I forgot my password
+            </a> -->
+
+            <a class="link" onclick="openLink('http://account.ogbg.dev/register?client_id=26995eff-42b5-4606-8f2f-4fce296ecd2a')">
+                    - I have no account
+            </a>
+            <a class="link" onclick="openLink('http://account.ogbg.dev/forgot?client_id=26995eff-42b5-4606-8f2f-4fce296ecd2a')">
+                    - I forgot my password
+            </a>
+        </form>
+    </body>
+</html>

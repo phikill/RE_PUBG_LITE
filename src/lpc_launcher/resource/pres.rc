@@ -1,0 +1,36 @@
+#include<WINDOWS.H>
+
+#include"StringTable7.rc"
+#include"StringTable8.rc"
+#include"StringTable9.rc"
+
+BASE_ICON ICON "src/lpc_launcher/resource/app.ico"
+BASE_ICON_SMALL ICON "src/lpc_launcher/resource/app_small.ico"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION VER_MAJOR, VER_MINOR, VER_BUILD, VER_REVISION
+PRODUCTVERSION VER_MAJOR, VER_MINOR, VER_BUILD, VER_REVISION
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN 
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "OG:BG\0"
+            VALUE "FileDescription", "OG:BG Game Launcher\0"
+            VALUE "FileVersion", VER_STRING"\0"
+            VALUE "InternalName", "lpc_launcher.exe\0"
+            VALUE "LegalCopyright", "\xA9 2025 - OG:Battlegrounds \0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "lpc_launcher.exe\0"
+            VALUE "ProductName", "OG:BG Launcher\0"
+            VALUE "ProductVersion", "Dev Version " VER_STRING "\0"
+        END
+    END
+
+    BLOCK "VarFileInfo"
+    BEGIN
+            VALUE "Translation", 0x000, 0x04B0
+    END
+END
+

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "profiles": [
+    { "id": "24bf8754", "name": "1.7.10" },
+    { "id": "340ed0d0", "name": "Snapshot" },
+    { "id": "optifine", "name": "OptiFine" }
+  ]
+}

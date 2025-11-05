@@ -1,0 +1,31 @@
+
+
+
+STRINGTABLE
+LANGUAGE 0x000, 0x1
+{
+    #if defined(__WATCOMC__)
+        112   "update init fail (0x%08lX, %s)"
+        113,  "download launcher ini fail (0x%08lX, %s)"
+        114,  "check launcher ini fail (0x%08lX, %s)"
+        115,  "check update fail (0x%08lX, %s)"
+        116,  "update fail (0x%08lX, %s)"
+        117,  "null launcher info (0x%08lX, %s)"
+        118,  "invalid launcher (0x%08lX, %s)"
+        119,  "invalid launcher info (0x%08lX, %s)"
+        120,  "invalid launcher module (0x%08lX, %s)"
+        121,  "invalid launcher module function (0x%08lX, %s)"
+    #else
+        112,   "update init fail (0x%I64X, %s)"
+        113,  "download launcher ini fail (0x%I64X, %s)"
+        114,  "check launcher ini fail (0x%I64X, %s)"
+        115,  "check update fail (0x%I64X, %s)"
+        116,  "update fail (0x%I64X, %s)"
+        117,  "null launcher info (0x%I64X, %s)"
+        118,  "invalid launcher (0x%I64X, %s)"
+        119,  "invalid launcher info (0x%I64X, %s)"
+        120,  "invalid launcher module (0x%I64X, %s)"
+        121,  "invalid launcher module function (0x%I64X, %s)"
+    #endif
+}
+

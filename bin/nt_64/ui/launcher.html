@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PUBG Lite</title>
+    <!-- 
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,100|Teko:100,400,300,700|Oswald:400,500,700|Noto+Sans+JP:400,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WHWTBZX');</script> -->
+  <link href="assets/css/launcher.css?hash=c6af275e29fd2c6644cf" rel="stylesheet"></head>
+  <body>
+  <!--
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHWTBZX"  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript> -->
+
+    <div id="app"></div>
+    
+
+
+    <script>
+
+      var editorWindow = null;
+
+      function open_profile_editor_window(profile_id) 
+      {
+        const url = 'profile_editor.html?profile_id=' + encodeURIComponent(profile_id);
+
+        const width = 400;
+        const height = 600;
+
+        // Calcula centro da tela
+        const left = (screen.width / 2) - (width / 2);
+        const top = (screen.height / 2) - (height / 2);
+
+        const windowFeatures = `width=${width},height=${height},left=${left},top=${top},resizable=no,scrollbars=yes`;
+
+        if (!editorWindow || editorWindow.closed) {
+          editorWindow = window.open(url, 'Profile Editor', windowFeatures);
+        } else {
+          editorWindow.focus();
+          editorWindow.location.href = url;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () 
+      {
+          // Espera o React carregar o botão principal
+          const checkExist = setInterval(function () 
+          {
+            const gameIndicator = document.querySelector(".front-src-launcher-GameIndicator-GameIndicator__GameIndicator--2H-73");
+            const mainBtnWrapper = document.querySelector(".front-src-launcher-GameIndicator-GameIndicator__GameIndicator-MainbtnWrapper--1Yd__");
+
+              if (gameIndicator && mainBtnWrapper) 
+              {
+                  clearInterval(checkExist);
+
+                  // Cria o seletor de perfil
+                  const profileWrapper = document.createElement("div");
+                  profileWrapper.className = "front-src-launcher-GameIndicator-GameIndicator__GameIndicator-ProfileConfigSelector";
+
+                  profileWrapper.innerHTML = `
+                      <select id="profileSelector">
+                          <option selected>Profile 1</option>
+                          <option>Profile 2gjuntgjungtutuntungtungutnuntunhtunhtunhtungutnt</option>
+                          <option>Profile 3</option>
+                          <option>Profile 4</option>
+                          <option>Profile 5</option>
+                          <option>Profile 6</option>
+                          <option>Profile 7</option>
+                      </select>
+                    <!-- 
+                      <div class="profileButtons">
+                          <button id="btnNewProfile">NEW</button>
+                          <button id="btnEditProfile">EDIT</button>
+                      </div> -->
+                    <div class="profileButtons">
+                          <button id="btnNewProfile">NEW</button>
+                          <button id="btnEditProfile">EDIT</button>
+                      </div>
+                  `;
+
+                  open_profile_editor_window("PICANHA");
+
+
+                  // Insere o seletor antes do botão principal
+                  gameIndicator.insertBefore(profileWrapper, mainBtnWrapper);
+                  gameIndicator.style.position = "relative";
+              }
+          }, 300);
+      });
+    </script>
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125508473-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-125508473-2');
+    </script> -->
+  <script type="text/javascript" src="assets/js/launcher.js"></script>
+  </body>
+</html>

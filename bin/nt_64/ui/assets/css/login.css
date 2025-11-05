@@ -1,0 +1,457 @@
+body 
+{
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    max-height: 100vh;
+    background: 
+        linear-gradient(45deg, #2a2a2a 25%, transparent 25%),
+        linear-gradient(-45deg, #2a2a2a 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2a2a2a 75%),
+        linear-gradient(-45deg, transparent 75%, #2a2a2a 75%),
+        #1a1a1a;
+    background-size: 4px 4px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+img, label, input, a 
+{
+    display: block;
+}
+
+input, a, button 
+{
+    font-family: 'Teko', 'Oswald', 'Microsoft Jhenghei', sans-serif;
+}
+
+form 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0b0c0d;
+    box-sizing: border-box;
+    width: 400px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 38px 16px 16px 16px;
+    overflow: hidden;
+    
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255,255,255,0.03) 2px,
+            rgba(255,255,255,0.03) 4px
+        ),
+        radial-gradient(
+            circle at 30% 40%,
+            rgba(139, 69, 19, 0.1) 0%,
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 70% 60%,
+            rgba(139, 69, 19, 0.08) 0%,
+            transparent 25%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 40%,
+            rgba(0,0,0,0.2) 50%,
+            transparent 60%
+        );
+    
+    border: none;
+    position: relative;
+    
+    box-shadow: 
+        inset 0 8px 12px -8px rgba(255, 255, 255, 0.1),
+        inset 0 -8px 12px -8px rgba(0, 0, 0, 0.8),
+        inset 8px 0 12px -8px rgba(255, 255, 255, 0.05),
+        inset -12px 0 20px -8px rgba(0, 0, 0, 0.9),
+        0 0 0 3px #3a3a3a,
+        4px 0 25px rgba(0, 0, 0, 0.8),
+        -2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+form::before {
+    content: "";
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: 
+        radial-gradient(
+            circle at center,
+            #8b4513 0%,
+            #5d2f0f 30%,
+            #0b0c0d 70%
+        );
+    border-radius: 50%;
+    box-shadow: 
+        inset 0 0 5px #000,
+        0 0 8px rgba(139, 69, 19, 0.4);
+    z-index: 2;
+}
+
+form::after {
+    content: "";
+    position: absolute;
+    top: 65px;
+    right: 26px;
+    width: 25px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(139, 69, 19, 0.6),
+        transparent
+    );
+    transform: rotate(-15deg);
+    z-index: 1;
+}
+
+form::backdrop {
+    background: 
+        linear-gradient(
+            135deg,
+            transparent 0%,
+            rgba(50, 50, 50, 0.1) 45%,
+            rgba(20, 20, 20, 0.3) 50%,
+            rgba(50, 50, 50, 0.1) 55%,
+            transparent 100%
+        );
+}
+
+form {
+    border-radius: 2px;
+}
+
+form {
+    background-clip: padding-box;
+    border: solid 2px transparent;
+}
+
+form::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: 
+        linear-gradient(
+            135deg,
+            #5a5a5a 0%,
+            #3a3a3a 25%,
+            #2a2a2a 50%,
+            #3a3a3a 75%,
+            #5a5a5a 100%
+        );
+    border-radius: 4px;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.top-yellow-bar 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.top-menu 
+{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.button 
+{
+    border: none;
+    cursor: pointer;
+    height: 17px;
+    margin-left: 10px;
+    opacity: 0.5;
+    padding: 0;
+    width: 17px;
+}
+
+.button img 
+{
+    display: block;     /* remove espaço embaixo da imagem */
+    width: 100%;        /* ocupa todo o botão */
+    height: 100%;
+    pointer-events: none; /* evita que clique seja bloqueado pelo <img> */
+}
+
+.logo 
+{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 417px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.checkbox 
+{
+    position: absolute;
+    left: -1000px;
+}
+
+.checkbox:checked::after 
+{
+    content: " ";
+    position: absolute;
+    border-bottom: 2px solid #f2a900;
+    border-right: 2px solid #f2a900;
+    width: 5px;
+    height: 12px;
+    top: 0px;
+    transform: rotateZ(40deg);
+}
+
+.checkbox.checkbox-left:checked::after 
+{
+    left: 1023px;
+}
+
+.checkbox.checkbox-right:checked::after 
+{
+    left: 1362px;
+}
+
+.checkbox-label 
+{
+    font-family: 'Roboto', 'Microsoft Jhenghei', sans-serif;
+    font-size: 18px;
+    color: #999999;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.checkbox-label.checkbox-left 
+{
+    padding-left: 5px;
+}
+
+.checkbox-label.checkbox-right 
+{
+    padding-right: 5px;
+}
+
+.checkbox-label.checkbox-left::before 
+{
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    vertical-align: middle;
+    background-color: #707070;
+    border: 1px solid #909090;
+    content: " ";
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.checkbox-label.checkbox-right::after 
+{
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    vertical-align: middle;
+    background-color: #707070;
+    border: 1px solid #909090;
+    content: " ";
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.faction-input 
+{
+    position: absolute;
+    left: -9999px;
+}
+
+.input-field 
+{
+    background-color: rgba(48, 34, 0, 0.6);
+    border-color: #765200;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 2px;
+    margin-bottom: 1.2rem;
+    height: 51px;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: calc(0.625em - 1px);
+    padding-right: calc(0.625em - 1px);
+    padding-top: calc(0.375em - 1px);
+    width: 100%;
+}
+
+.input-field:active 
+{
+    border-color: #765200;
+    box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+}
+
+.input-field::placeholder 
+{
+    color: #e7a200;
+}
+
+.discord-login 
+{
+    background-color: #7289da;
+}
+
+.fb-login 
+{
+    background-color: #4267b2;
+}
+
+.google-login 
+{
+    background-color: white;
+}
+
+.line-login 
+{
+    background-color: #13b018;
+}
+
+.reddit-login 
+{
+    background-color: #ff4500;
+}
+
+.twitter-login 
+{
+    background-color: #247db3;
+}
+
+.vk-login 
+{
+    background-color: #4872a3;
+}
+
+.social-login 
+{
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.platform-button-wrapper 
+{
+    display: flex;
+    justify-content: center;
+    alighn-items: center;
+    flex-wrap: wrap;
+}
+
+.platform-button-wrapper a 
+{
+    margin-right: 10px;
+}
+
+.platform-button-wrapper a:last-child 
+{
+    margin-right: 0px;
+}
+
+.hidden 
+{
+    display: none;
+}
+
+.link 
+{
+    color: #f2aa00;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.link-icon 
+{
+    width: 20px;
+    height: 20px;
+}
+
+.error-link 
+{
+    font-size: 16px;
+    font-family: 'Roboto', 'Microsoft Jhenghei', sans-serif;
+    display:inline;
+}
+
+.notification 
+{
+    font-family: 'Roboto', 'Microsoft Jhenghei', sans-serif;
+    padding: 10px;
+    background-color: #f7c95e;
+    border-radius: 4px;
+    position: absolute;
+    width: calc(100% - 50px);
+    bottom: 15px;
+    transition: bottom 0.3s;
+    word-break: break-all;
+}
+.notification.hide 
+{
+    bottom: -200px;
+}
+
+.resend-button 
+{
+    display: inherit;
+    margin: 10px auto;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #f2aa00;
+    border: 1px solid transparent;
+}
+
+.resend-button:hover 
+{
+    background-color: #e7a200;
+}
+
+.rtl 
+{
+    text-align: right;
+}
+
+.submit 
+{
+    background-color: #f2aa00;
+    color: #222222;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 7px;
+    width: 100%;
+}
+
+.submit:hover 
+{
+    background-color: #e7a200;
+}
