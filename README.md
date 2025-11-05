@@ -1,4 +1,4 @@
-# [![discord](https://shields.io/discord/1334106568253509692?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/pYpMuTDfAG) <- click to join !  
+
 
 
 v <strike>1.4.2.423 </strike>  
@@ -6,22 +6,10 @@ v <strike>1.4.2.423 </strike>
 
 
 ### STATUS  
-  ![Status](http://img.shields.io/badge/ACTIVE-active.png)
+  OFFLINE Maybe I'll get involved with that in the future.  
 
-### collaborate with the project. 
-
- Any help is always welcome.  
-
-#### If anyone knows how to disable antidebugging and generate an SDK for the latest versions, please contact H4tiux.  
-Discord: h4tiux  
-[Telegram OG:BG](https://t.me/ogbattlegrounds)  
 
 ### Progress 0.3% 
-
-I messed around a bit by decompiling the game launcher.
-
-Now I'm trying to bypass the game's anti-debugging; remember, TRYING doesn't mean I'll succeed, but I have faith that one day I will.
-
 
 
 
