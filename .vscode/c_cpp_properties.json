@@ -1,0 +1,27 @@
+{
+  "version": 4,
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": ["${workspaceFolder}/include"],
+      "defines": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c89",
+      "intelliSenseMode": "linux-gcc-x64"
+    },
+    {
+      "name": "Mac",
+      "includePath": ["${workspaceFolder}/include"],
+      "compilerPath": "/usr/bin/clang",
+      "cStandard": "c89",
+      "intelliSenseMode": "macos-clang-x64"
+    },
+    {
+      "name": "Win",
+      "includePath": ["${workspaceFolder}\\include"],
+      "compilerPath": "C:\\Program Files\\LLVM\\bin\\clang.exe",
+      "cStandard": "c89",
+      "intelliSenseMode": "windows-clang-x64"
+    }
+  ]
+}

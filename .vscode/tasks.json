@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build with Watcom",
+      "type": "shell",
+      "command": "wcl386",
+      "args": [
+        "-I=include",
+        "src/main.c",
+        "-fe=bin/main_watcom.exe"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build with VS2019",
+      "type": "shell",
+      "command": "cl",
+      "args": [
+        "/Iinclude",
+        "src\\main.c",
+        "/Fe:bin\\main_vs2019.exe"
+      ],
+      "options": {
+        "env": {
+          "PATH": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\Hostx64\\x64;${env:PATH}"
+        }
+      },
+      "group": "build"
+    },
+    {
+      "label": "Build with VS2022",
+      "type": "shell",
+      "command": "cl",
+      "args": [
+        "/Iinclude",
+        "src\\main.c",
+        "/Fe:bin\\main_vs2022.exe"
+      ],
+      "options": {
+        "env": {
+          "PATH": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64;${env:PATH}"
+        }
+      },
+      "group": "build"
+    }
+  ]
+}
