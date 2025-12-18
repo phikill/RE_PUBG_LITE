@@ -15,6 +15,283 @@ body {
     font-size: larger;
 }
 
+@charset "UTF-8";
+@-webkit-keyframes icon-new{
+    from{
+        -webkit-transform:translate(50%,-50%) scale(.6);
+        transform:translate(50%,-50%) scale(.6)
+    }
+    to{
+        -webkit-transform:translate(50%,-50%) scale(1);
+        transform:translate(50%,-50%) scale(1)
+    }
+}
+body,html{
+    width:100%;
+    height:100%;
+    overflow:hidden
+}
+a,abbr,acronym,address,app,applet,article,aside,audio,b,big,blockquote,body,button,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,input,ins,kbd,label,legend,li,main,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,tt,u,ul,var,video{
+    margin:0;
+    padding:0;
+    border:0;
+    vertical-align:baseline
+}
+body{
+    box-sizing:border-box;
+    color:#fff;
+    font-size:1.66666667vh;
+    font-weight:400;
+    background-color:transparent;
+    -webkit-user-select:none;
+    cursor:default
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+    display:block
+}
+ol,ul{
+    list-style:none
+}
+blockquote,q{
+    quotes:none
+}
+blockquote:after,blockquote:before,q:after,q:before{
+    content:'';
+    content:none
+}
+table{
+    border-collapse:collapse;
+    border-spacing:0
+}
+table td,table th{
+    vertical-align:middle
+}
+a{
+    text-decoration:none;
+    color:#fff;
+    cursor:pointer
+}
+em,i{
+    font-style:normal
+}
+button,input[type=text],textarea{
+    box-sizing:border-box;
+    cursor:pointer
+}
+textarea{
+    resize:none;
+    border:none
+}
+button,input[type=text]{
+    padding:0;
+    border:none;
+    background-color:transparent
+}
+input[type=password],input[type=text]
+{
+    padding:0 .92592593vh
+}
+input[disabled]
+{
+    opacity:.2;
+    cursor:none
+}
+a,button,input,textarea
+{
+    outline:0
+}
+button
+{
+    font-weight:700
+}
+
+
+#app /* hide entire app   */
+{
+    opacity: 0;
+    transition: opacity 2.0s ease;
+    
+}
+#app.show {
+    opacity: 1;
+}
+
+
+/*  loading screen splash */
+.pubg-splash-lpc
+{
+    position:relative;
+    width:100%;
+    height:100vh;
+    /* background:url(resources/pubg-splash-lpc.b05369ec2109e05e2043.jpg) center 0/cover no-repeat; */
+    /* background:url(resources/pubg_splash_Ipc.og_bg.jpg) center 0/cover no-repeat; */
+    background-size: cover;
+}
+
+.pubg-splash-lpc h3.logo-lpc
+{
+    overflow:hidden;
+    text-indent:-10000px; 
+    position:absolute;
+    bottom:10.18518519vh;
+    left:50%;
+    width:52.40740741vh;
+    height:23.24074074vh;
+    margin:0 0 0 -26.2037037vh;
+    /* background:url(resources/pubg-logo-lpc.9a4209d7d9d50e2c3f88.png) center 0/cover no-repeat; */
+    background:url(../styles_img/pubg-logo-lpc.og_bg.png) center 0/cover no-repeat;
+    background-size:contain;
+}
+
+.pubg-splash-lpc 
+.connect
+{
+    position:absolute;
+    bottom:6.01851852vh;
+    left:0;
+    display:flex;
+    justify-content:center;
+    width:100%;
+    text-transform:uppercase
+}
+.pubg-splash-lpc .connect .spinner
+{
+    width:3.7037037vh;
+    height:3.7037037vh
+}
+.pubg-splash-lpc 
+.connect p{
+    padding-left:.92592593vh;
+    font-size:2.59259259vh
+}
+@-webkit-keyframes connectRotate{
+    from{
+        -webkit-transform:rotate(0);
+        transform:rotate(0)
+    }
+    to{
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg)
+    }
+}
+@keyframes connectRotate{
+    from{
+        -webkit-transform:rotate(0);
+        transform:rotate(0)
+    }
+    to{
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg)
+    }
+}
+
+.spinner
+{
+     display:inline-block;
+     width:7.5vh;
+     height:7.5vh;
+     animation:.538s steps(13) infinite loagingAnimation-animationX, 6.994s steps(13) infinite loagingAnimation-animationY;
+     background:url(../styles_img/load_120.0f13c4dc8934bf00.png);
+     background-size:1300% 1300% 
+}
+
+#border-black 
+{
+     background: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes loagingAnimation-animationX
+{
+     0%{
+         background-position-x:0% 
+    }
+     to{
+         background-position-x:-1300% 
+    }
+}
+@keyframes loagingAnimation-animationY
+{
+     0%{
+         background-position-y:0% 
+    }
+     to{
+         background-position-y:-1300% 
+    }
+}
+
+/* system message */
+.system-message{
+    position:absolute;
+    left:0;
+    bottom:16.2037037vh;
+    width:100%;
+    z-index:99999999;
+    display:flex;
+    flex-direction:column;
+    pointer-events:none
+}
+
+.system-message li{
+    margin:.37037037vh 0;
+    text-align:center
+}
+.system-message li p{
+    box-sizing:border-box;
+    display:inline-block;
+    position:relative;
+    height:3.7037037vh;
+    line-height:3.42592593vh;
+    padding:0 15.74074074vh;
+    font-size:2.03703704vh;
+    background-image:-webkit-linear-gradient(left,rgba(0,0,0,0),#000 35%,#000 65%,rgba(0,0,0,0) 100%)
+}
+.system-message li p:after,.system-message li p:before{
+    content:'';
+    position:absolute;
+    left:0;
+    display:block;
+    width:100%;
+    height:.09259259vh;
+    opacity:.25;
+    background-image:-webkit-linear-gradient(left,rgba(255,255,255,0),#fff 45%,#fff 55%,rgba(255,255,255,0) 100%)
+}
+.system-message li p:before{
+    top:0
+}
+.system-message li p:after{
+    bottom:0
+}
+.interval-message{
+    opacity:0;
+    display:inline-block;
+    position:absolute;
+    left:50%;
+    bottom:10.18518519vh;
+    -webkit-transform:translate(-50%,0);
+    transform:translate(-50%,0);
+    font-size:2.22222222vh;
+    text-align:center;
+    color:#fff;
+    -webkit-animation:3s 2 alternate interval-message;
+    animation:3s 2 alternate interval-message;
+    font-family:'Noto Sans CJK KR'!important
+}
+@-webkit-keyframes interval-message{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
+@keyframes interval-message{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
 
 
 /* For Buttons  */

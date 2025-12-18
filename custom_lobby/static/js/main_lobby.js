@@ -28,6 +28,10 @@ var serverList =
             //ip: "playerunknownsbattlegrounds.asuscomm.com:8888"
         },
         {
+            name: "xxMrYashXX",
+            ip: "147.185.221.27:14545"
+        },
+        {
             name: "LOCALHOST - 127.0.0.1",
             description: "connect to localhost",
             ip: "127.0.0.1:7777"
@@ -150,6 +154,7 @@ var routers =
                 
                 //$("#join-server-text").text('Joining...');
                 $("#join-server-hint").text("Trying: " + app.currentServer.ip);
+                engine.trigger('PlaySound', 'Play_UI_ClickPlay');
                 engine.trigger('JoinToDedicatedServer', app.currentServer.ip, "");
             } 
             catch(e) 
@@ -321,6 +326,7 @@ function initVue()
 
             call_PLAY_PUBLIC_MATCH: function () 
             {
+                
                 setTimeout(function () {PLAY_PUBLIC_MATCH();}, 0);
                 return true; // para o v-if funcionar
             },
@@ -458,7 +464,20 @@ window.onload = function()
                 document.getElementById("client-version-alert").textContent = alertText;
             }
         
+            
+
             createRole(); 
+
+            setTimeout(function() 
+            {
+                
+                
+                document.querySelector('.pubg-splash-lpc').style.display = 'none';
+                document.getElementById('app').classList.add('show');
+            }, 4000);
+            
+            //engine.trigger('LobbyLoadingComplete'); 
+
 
         }
 
@@ -608,6 +627,8 @@ window.onload = function()
 
         function PLAY_PUBLIC_MATCH()
         {
+
+
             // camera
         
             // - LOBBY VIEW PLAY
@@ -630,6 +651,8 @@ window.onload = function()
 
         function CUSTOMIZE_WARDROBE() 
         {
+            //engine.trigger('PlaySound', "UI_hall_click");
+
             engine.trigger('CameraTransitionCustomWardrobe'); // Invetory , camera, or shop
         }
 
@@ -925,7 +948,7 @@ window.onload = function()
             }
 
             //var ipAddress = serverMap + "?listen";  // montar string no formato esperado
-            var ipAddress = serverMap + "?listen";  // montar string no formato esperado
+            var ipAddress = serverMap + "?listen?game=/Game/BluePrints/Core/BP_BattleRoyalTrainingGameMode.BP_BattleRoyalTrainingGameMode_C";  // montar string no formato esperado
 
             engine.trigger('JoinToDedicatedServer', ipAddress, "");
             debug("It looks like the map didn't load: " + serverMap);
@@ -943,6 +966,75 @@ window.onload = function()
             engine.trigger('JoinToDedicatedServer', ipAddress, "")
 
         }*/
+
+        /*  
+            make engine sounds
+
+            engine.trigger('PlaySound', "");
+
+                Play_UI_hall_Close
+                UI_hall_click
+                Play_UI_click3
+                Play_UI_hall_BoxOpen
+                Play_UI_hall_StartGame
+
+                Play_Lose
+                Play_UI_Click
+                Play_UI_click2
+                Play_UI_click3
+                Play_UI_click4
+                Play_UI_ClickPlay
+                Play_UI_GradingInitial
+                Play_UI_GradingOld
+                Play_UI_hall_Activity
+                Play_UI_hall_boxGet
+                Play_UI_hall_BoxOpen
+                Play_UI_hall_boxSend
+                Play_UI_hall_click_paging
+                Play_UI_hall_Close
+                Play_UI_hall_CloseFriendsList
+                Play_UI_hall_Cloth
+                Play_UI_hall_Corps
+                Play_UI_hall_CountDown
+                Play_UI_hall_DanDown
+                Play_UI_hall_DanUP
+                Play_UI_hall_Decomposer
+                Play_UI_hall_DecomposerCartoon
+                Play_UI_hall_FriendsList
+                Play_UI_hall_InvitationFriends
+                Play_UI_hall_LOGO
+                Play_UI_hall_Militaryrank_Upgrade
+                Play_UI_hall_OpenFriendsList
+                Play_UI_hall_Pattern_close
+                Play_UI_hall_Pattern_open
+                Play_UI_hall_Question
+                Play_UI_hall_Ranking
+                Play_UI_hall_RankUP
+                Play_UI_hall_Receive
+                Play_UI_hall_refuse
+                Play_UI_hall_Season
+                Play_UI_hall_Set
+                Play_UI_hall_Shopping_Get
+                Play_UI_hall_SpecialItems
+                Play_UI_hall_StartGame
+                Play_UI_hall_Story
+                Play_UI_hall_Teaching
+                Play_UI_hall_Warehouse_paging
+                Play_UI_RoyalePassGet
+                Play_UI_RoyalePassUp
+                Play_UI_Select
+                Play_Win
+                UI_hall_click
+                UI_hall_mailbox
+                UI_hall_Return
+                UI_hall_Shopping
+                UI_hall_Shopping_open
+                UI_hall_Warehouse
+
+
+
+        */
+
 
         //engine.trigger('DestroyLobbyCharacter', 0); // normal PUBG is DestoryLobbyCharacter
         

@@ -17,7 +17,7 @@
             {   
                 "lpc": "provider={provider}&ticket={ticket}&playerNetId={playerNetId}&cc={cc}&clientGameVersion={clientGameVersion}"    
             }, 
-            "verreq": "1.4.2",     
+            "verreq": "1.4.0",     
             "LayoutMode": "",     
             "LanpartyHome": "" 
         }
@@ -27,13 +27,16 @@
     </script>
 
 
+
     <link rel="stylesheet" href="static/fonts/agency.css">
     <link rel="stylesheet" href="static/fonts/overpass.css"> <!-- CS:GO MAP AS SCRIPT HEHE -->
     <link rel="stylesheet" href="static/css/style.css">
     <script src="static/js/socket.io.min.js"></script>
+    
     <script src="static/js/jquery-2.2.0.min.js"></script> <!-- ALERT: This is choking and interfering with lobby loading.-->
     <script src="static/js/jquery-ui-1.11.4.min.js"></script>
     <script src="static/js/jquery.selectBoxIt-3.8.1.min.js"></script>
+    
     <script src="static/js/coherent.js"></script>
     <script src="static/js/coherent.mock.js"></script>
     <script src="static/js/mock.entry.js"></script>
@@ -48,18 +51,34 @@
 
 <body oncontextmenu="return false;">
     
+    <app>
+        <section class="pubg-splash-lpc" style="background: url(static/styles_img/pubg_splash_Ipc.og_bg.jpg) center 0/cover no-repeat !important; background-size: cover !important;">
+            <h3 class="logo-lpc">BATTLEGROUNDS</h3>
+            <div class="connect" id="border-black">
+                <span class="spinner"></span>
+                <p class="">INITIALIZING...</p>
+            </div>
 
+        </section>
+    </app>
+    <outer-app></outer-app>
+
+    <!--
+    <ul class="system-message">
+    <li><p>test message.</p></li>
+</ul> -->
+    
     <div id="app">
 
         <h1 class="title-text">OG:BG - LITE</h1>
-        <h2 class="subtitle-text"> SANDUBAO EDITION </h2>
+        <h2 class="subtitle-text"> Backtrace EDITION </h2>
 
 
         <div class="right-menu noselect">
             <div 
                 v-for="router in routers" 
                 :class="['right-menu-item', { active: router.active == true}, 'noselect']"
-                @click.stop="setRouter(router)">
+                @click.stop="setRouter(router); engine.trigger('PlaySound', 'UI_hall_click');">
                 <span>{{router.name}}</span>
             </div>
         </div>
@@ -69,7 +88,7 @@
                 class="right-submenu-item" 
                 v-for="router in currentRouter.child" 
                 :class="[{'active': router.active == true}, 'noselect']"
-                @click="setSubRouter(router)">
+                @click="setSubRouter(router); engine.trigger('PlaySound', 'UI_hall_click');">
                 <span>{{router.name}}</span>
             </p>
         </div>
@@ -132,21 +151,22 @@
         
         <p id="client-version-alert" class="pubg-client-ver"></p>
         
+        <!-- @click="engine.trigger('PlaySound', 'UI_hall_click');" 
+             @click="engine.trigger('PlaySound', Play_UI_hall_StartGame');"
+        --> 
 
         <!-- Painel principal PLAY -->
-        <div v-if="currentRouter.name === 'PLAY'" class="view-panel active">
+        <div v-if="currentRouter.name === 'PLAY'"  class="view-panel active">
             <div v-if="getActiveSubrouterName() === 'PUBLIC MATCH'">
                 <h2></h2>
                 <p></p>
 
                 <span style="display: none" v-if="call_PLAY_PUBLIC_MATCH()"></span>
 
-                
-
                     <div class="game-play-container">
                         <div class="join-server-container">
                             <div style="font-size: 2vh;color: lightgray;margin-bottom: 0.5vh;">REGION</div>
-                            <button v-for="server in serverList"
+                            <button v-for="server in serverList" @click="engine.trigger('PlaySound', 'UI_hall_click');" 
                                     v-bind:class="{'sel-server-button': true, 'active': server.name === currentServer.name}"
                                     :id="server.name"
                                     v-on:click="selectServer(server)">
@@ -156,7 +176,7 @@
                         <br>
                         <div style="display: flex;flex-direction: row;align-items: flex-end;">
                             <!-- <button class="join-server-button" onclick="joinServer()" id="join"> -->
-                                <button class="join-server-button" @click="joinServer" id="join">
+                                <button class="join-server-button" @click="joinServer(); engine.trigger('PlaySound', 'Play_UI_hall_StartGame')" id="join">
                                 <span id="join-server-text">START</span>
                                 <span id="join-server-hint" style="padding: 0;margin: 0;font-size: 0.5em;"></span>
                             </button>
@@ -171,16 +191,16 @@
                 <h2></h2>
                 <p></p>
             </div>
-            <div v-else-if="getActiveSubrouterName() === 'CUSTOM MATCH'"> <!-- PLAY - CUSTOM MATCH MODE -->
+            <div v-else-if="getActiveSubrouterName() === 'CUSTOM MATCH'" > <!-- PLAY - CUSTOM MATCH MODE -->
                 
                 <span style="display: none" v-if="call_PLAY_CUSTOM_MATCH()"></span>
 
                 <!-- step (1) -->
                 <div class="custom-match-title-text-create "> 
                     <span>CREATE MATCH</span>
-                    <div class="play_custom_match_box_session_name">
+                    <div class="play_custom_match_box_session_name" @click="engine.trigger('PlaySound', 'UI_hall_click');">
                       <img src="static/icons/ico-setting.png" alt="" class="icon">
-                      <input type="text" placeholder="INPUT SESSION NAME">
+                      <input type="text" placeholder="INPUT SESSION NAME | THIS DONT WORK! | no need this at moment">
                     </div> 
                 </div>
 
@@ -200,10 +220,10 @@
                 </div>
 
                 <div class="modos-container">
-                  <div class="modo-box" onclick="customMatch_SelectMode('NORMAL_MODE')">NORMAL MODE</div>
-                  <div class="modo-box" onclick="customMatch_SelectMode('ZOMBIE_MODE')">ZOMBIE MODE</div>
-                  <div class="modo-box" onclick="customMatch_SelectMode('WAR_MODE')">WAR MODE</div>
-                  <div class="modo-box" onclick="customMatch_SelectMode('ESPORTS_MODE')">ESPORTS MODE</div>
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('NORMAL_MODE');">NORMAL MODE</div>
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('ZOMBIE_MODE');">ZOMBIE MODE</div>
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('WAR_MODE');">WAR MODE</div>
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('ESPORTS_MODE');">ESPORTS MODE</div>
                 </div>
 
                 <div id="img-modo" class="modo-img"></div>
@@ -212,41 +232,41 @@
                 <div class="options-container">
                     <div class="custom_match_options_selection">
                         <label>MAP</label>
-                        <span onclick="anteriorMapa()">&lt;</span>
+                        <span onclick="anteriorMapa(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
                         <div class="valor" id="mapaAtual">TRAINING</div>
-                        <span onclick="proximoMapa()">&gt;</span>
+                        <span onclick="proximoMapa(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
                     </div>
 
                     <div class="custom_match_options_selection">
                         <label>PERSPECTIVE</label>
-                        <span onclick="nextPerspectiveMode()">&lt;</span>
+                        <span onclick="nextPerspectiveMode(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
                         <div class="valor" id="currentPerspective">TPP</div>
-                        <span onclick="prevPerspectiveMode()">&gt;</span>
+                        <span onclick="prevPerspectiveMode(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
                     </div>
 
                     <div class="barra">
                         <label>PLAYERS</label>
-                        <input type="range" min="1" max="100" value="100" oninput="atualizaPlayers(this.value)">
+                        <input type="range" min="1" max="100" value="100" oninput="atualizaPlayers(this.value); engine.trigger('PlaySound', 'Play_UI_click3');">
                         <span id="valorPlayers">100</span>
                     </div>
 
                     <div class="barra">
                         <label>TEAM MEMBERS</label>
-                        <input type="range" min="1" max="4" value="4" oninput="customMatch_updateTeamMembers(this.value)">
+                        <input type="range" min="1" max="4" value="4" oninput="customMatch_updateTeamMembers(this.value); engine.trigger('PlaySound', 'Play_UI_click3');">
                         <span id="customMatch_MembersValue">4</span>
                     </div>
 
                     <div class="custom_match_options_selection">
                         <label>WEATHER</label>
-                        <span onclick="nextWeatherState()">&lt;</span>
+                        <span onclick="nextWeatherState(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
                         <div class="valor" id="currentWeatherState">CLEAR</div>
-                        <span onclick="prevWeatherState()">&gt;</span>
+                        <span onclick="prevWeatherState(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
                     </div>
                 </div>
 
                 
 
-                <!--
+                
                 <div class="side-container">
                         <div class="custom-match-card" onclick="joinServerPlay()">
                             <div class="title">
@@ -257,7 +277,7 @@
                                 this is not a discord button anymore, this is to create a local server.
                             </div>
                         </div>
-                </div> -->
+                </div>
 
                 <div class="container" style="position: relative;">
                         <div class="custom-match-button-create" onclick="joinServerPlay()">
