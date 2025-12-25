@@ -20,7 +20,7 @@ const char* get_email(UserLocalConfig* cfg)
 }*/
 
 
-#define MAX_EMAIL_LENGTH 128
+#define MAX_EMAIL_LENGTH 1024
 #define MAX_LANG_LENGTH 16
 
 typedef struct 
@@ -42,35 +42,18 @@ const char* getEmail(const UserLocalConfig* cfg);
 const char* getDefaultLanguage(const UserLocalConfig* cfg);
 */
 
-void initUserLocalConfig(UserLocalConfig* cfg) 
-{
-    cfg->email[0] = '\0';
-    cfg->defaultLanguage[0] = '\0';
-}
 
-void setEmail(UserLocalConfig* cfg, const char* email) 
-{
-    strncpy(cfg->email, email, MAX_EMAIL_LENGTH - 1);
-    cfg->email[MAX_EMAIL_LENGTH - 1] = '\0';
-}
+void initUserLocalConfig(UserLocalConfig* cfg);
 
-void setDefaultLanguage(UserLocalConfig* cfg, const char* lang) 
-{
-    strncpy(cfg->defaultLanguage, lang, MAX_LANG_LENGTH - 1);
-    cfg->defaultLanguage[MAX_LANG_LENGTH - 1] = '\0';
-}
+void setEmail(UserLocalConfig* cfg, const char* email);
 
-const char* getEmail(const UserLocalConfig* cfg) 
-{
-    return cfg->email;
-}
+void setDefaultLanguage(UserLocalConfig* cfg, const char* lang);
 
-const char* getDefaultLanguage(const UserLocalConfig* cfg) 
-{
-    return cfg->defaultLanguage;
-}
+const char* getEmail(const UserLocalConfig* cfg);
 
+const char* getDefaultLanguage(const UserLocalConfig* cfg);
 
+UserLocalConfig LoadUserLocalConfig();
 
 
 

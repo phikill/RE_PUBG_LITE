@@ -26,11 +26,21 @@
 
     <script>
 
+        var launcher_object = null;
+
+
       var editorWindow = null;
+
+      // query string dont work :(
 
       function open_profile_editor_window(profile_id) 
       {
-        const url = 'profile_editor.html?profile_id=' + encodeURIComponent(profile_id);
+        sessionStorage.setItem('profileEditor_profileId', profile_id);
+
+        const url = 'profile_editor.html';
+
+
+        //const url = 'profile_editor.html?profile_id=' + encodeURIComponent(profile_id);
 
         const width = 400;
         const height = 600;
@@ -49,52 +59,151 @@
         }
       }
 
-      document.addEventListener("DOMContentLoaded", function () 
-      {
-          // Espera o React carregar o botão principal
-          const checkExist = setInterval(function () 
-          {
+      window.bindLauncherAsync().then(obj => {
+                                    if(!obj) 
+                                    {
+                                        console.log("No CEF objects detected");
+                                        return;
+                                    }
+
+                                    launcher_object = obj;
+                                    //launcher_object.Alert(" YouRe UGLY !", " HAHAHAHAHA");
+
+
+                                    });
+
+      
+
+
+    document.addEventListener("DOMContentLoaded", function () 
+    {
+        // Wait the React load main button
+        const checkExist = setInterval(function() 
+        {
             const gameIndicator = document.querySelector(".front-src-launcher-GameIndicator-GameIndicator__GameIndicator--2H-73");
             const mainBtnWrapper = document.querySelector(".front-src-launcher-GameIndicator-GameIndicator__GameIndicator-MainbtnWrapper--1Yd__");
 
-              if (gameIndicator && mainBtnWrapper) 
-              {
-                  clearInterval(checkExist);
-
-                  // Cria o seletor de perfil
-                  const profileWrapper = document.createElement("div");
-                  profileWrapper.className = "front-src-launcher-GameIndicator-GameIndicator__GameIndicator-ProfileConfigSelector";
-
-                  profileWrapper.innerHTML = `
-                      <select id="profileSelector">
-                          <option selected>Profile 1</option>
-                          <option>Profile 2gjuntgjungtutuntungtungutnuntunhtunhtunhtungutnt</option>
-                          <option>Profile 3</option>
-                          <option>Profile 4</option>
-                          <option>Profile 5</option>
-                          <option>Profile 6</option>
-                          <option>Profile 7</option>
-                      </select>
-                    <!-- 
-                      <div class="profileButtons">
-                          <button id="btnNewProfile">NEW</button>
-                          <button id="btnEditProfile">EDIT</button>
-                      </div> -->
-                    <div class="profileButtons">
-                          <button id="btnNewProfile">NEW</button>
-                          <button id="btnEditProfile">EDIT</button>
-                      </div>
-                  `;
-
-                  open_profile_editor_window("PICANHA");
+            if(gameIndicator && mainBtnWrapper) 
+            {
+                clearInterval(checkExist);
+                initializeProfileSelector(gameIndicator, mainBtnWrapper);
+            }
 
 
-                  // Insere o seletor antes do botão principal
-                  gameIndicator.insertBefore(profileWrapper, mainBtnWrapper);
-                  gameIndicator.style.position = "relative";
-              }
-          }, 300);
-      });
+
+        }, 300);
+    });
+
+    function initializeProfileSelector(gameIndicator, mainBtnWrapper) 
+    {
+        // Creates profile selector
+        const profileWrapper = document.createElement("div");
+        profileWrapper.className = "front-src-launcher-GameIndicator-GameIndicator__GameIndicator-ProfileConfigSelector";
+
+        profileWrapper.innerHTML = `
+            <select id="profileSelector">
+                <option value="">Create a profile...</option>
+                <option value="123">Profile 1</option>
+                <option value="456">Profile 2</option>
+                <option value="A4002_8922">Profile 3</option>
+                <option value="789">Profile 4</option>
+                <option value="101">Profile 5</option>
+                <option value="112">Profile 6</option>
+                <option value="131">Profile 7</option>
+            </select>
+
+            <div class="profileButtons">
+                <button id="btnNewProfile">NEW</button>
+                <button id="btnEditProfile">EDIT</button>
+            </div>
+        `;
+
+        // Insert selector before main button
+        gameIndicator.insertBefore(profileWrapper, mainBtnWrapper);
+        gameIndicator.style.position = "relative";
+
+        // Config events
+        setupProfileSelectorEvents();
+    }
+
+    function setupProfileSelectorEvents() 
+    {
+        // Função auxiliar para obter o ID selecionado
+        function getSelectedProfileId() 
+        {
+            const selector = document.getElementById('profileSelector');
+            return selector ? selector.value : null;
+        }
+
+        // Função auxiliar para obter o nome do perfil selecionado
+        function getSelectedProfileName() 
+        {
+            const selector = document.getElementById('profileSelector');
+            if(!selector || selector.selectedIndex < 0) return null;
+            return selector.options[selector.selectedIndex].textContent;
+        }
+
+        // Botão NEW
+        document.getElementById('btnNewProfile').addEventListener('click', function() 
+        {
+            // '0' ou 'new' para indicar novo perfil
+            open_profile_editor_window('0');
+        });
+
+        // Botão EDIT
+        document.getElementById('btnEditProfile').addEventListener('click', function() 
+        {
+            const profileId = getSelectedProfileId();
+            
+            if(!profileId) 
+            {
+                //alert('Please select a profile to edit!');
+
+                launcher_object.Alert(" Please select a profile to edit! \n either the currently selected object is not a valid profile or is corrupted", "Profile Editor Error!");
+                return;
+            }
+            
+            const profileName = getSelectedProfileName();
+            console.log(`Editing profile: ${profileName} (ID: ${profileId})`);
+            
+            open_profile_editor_window(profileId);
+        });
+
+        // Enter no seletor também abre o editor
+        document.getElementById('profileSelector').addEventListener('keypress', function(e) 
+        {
+            if(e.key === 'Enter') 
+            {
+                const profileId = getSelectedProfileId();
+                if(profileId) 
+                {
+                    open_profile_editor_window(profileId);
+                }
+            }
+        });
+    }
+
+    // **FUNÇÃO GLOBAL para ser usada de qualquer lugar**
+    window.getCurrentProfileId = function() 
+    {
+        const selector = document.getElementById('profileSelector');
+        return selector ? selector.value : null;
+    };
+
+    window.getCurrentProfileData = function() 
+    {
+        const selector = document.getElementById('profileSelector');
+        if (!selector || selector.selectedIndex < 0) return null;
+        
+        return {
+            id: selector.value,
+            name: selector.options[selector.selectedIndex].textContent
+        };
+    };
+
+
+
+
     </script>
     <!-- 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125508473-2"></script>

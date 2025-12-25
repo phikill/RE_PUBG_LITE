@@ -112,7 +112,7 @@ int SetSavedId();
 
 void HeartBeat();
 
-char GetSavedId();
+const char* GetSavedId(void);
 
 char GetLang();
 

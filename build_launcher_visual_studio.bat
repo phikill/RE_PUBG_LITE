@@ -168,6 +168,9 @@ echo.
 @cl /c %compile_flags%  ^
 /I "src" /I "src/include" /I "src/lpc_launcher" "src/lpc_launcher/LauncherView/MainWindow.c" /Fo"bin/lpc_launcher/"
 
+@cl /c %compile_flags%  ^
+/I "src" /I "src/include" /I "src/lpc_launcher" "src/lpc_launcher/LauncherView/UserLocalConfig.c" /Fo"bin/lpc_launcher/"
+
 
 echo.
 echo ==== BUILD -- display_manager_nt.c -- )

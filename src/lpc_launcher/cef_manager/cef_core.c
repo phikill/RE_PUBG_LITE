@@ -317,7 +317,6 @@ void LoadUrl(cef_browser_t* browser, const char* url)
         return;
     }
 
-    memset(&cef_url, 0, sizeof(cef_string_t));
 
     cef_string_utf8_to_utf16(url, strlen(url), &cef_url);
 
@@ -333,7 +332,6 @@ int cef_setup_pre_display(void* platformConnection, int argc, char** argv, cef_a
     cef_main_args_t main_args = {0};
     int             exit_code = 0;
 
-    memset(&main_args, 0, sizeof(cef_main_args_t));
 
     #ifdef _WIN32
         main_args.instance = (HINSTANCE)platformConnection;
@@ -361,8 +359,7 @@ int cef_setup_post_display(void* platformConnection, int argc, char** argv, cef_
     cef_main_args_t main_args = {0};
     cef_settings_t settings   = {0};
 
-    memset(&main_args, 0, sizeof(cef_main_args_t));
-    memset(&settings, 0, sizeof(cef_settings_t));
+
 
     #ifdef _WIN32
         main_args.instance = (HINSTANCE)platformConnection;

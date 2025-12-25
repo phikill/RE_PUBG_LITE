@@ -6,6 +6,7 @@
 
 #include"lpc_launcher/LauncherView/__App.h"
 #include"lpc_launcher/LauncherMain/LOG_manager.h"
+#include"lpc_launcher/LauncherView/UserLocalConfig.h"
 
 int HeartBeatTick = 3000;
 
@@ -187,6 +188,8 @@ int OnLogin(const char *sessionId,
 
     getFileURL("ui/launcher.html", url, 1024);
 
+        GetSavedId();
+
     updateDragRegion(progDragRegion, 0, 0, 1152, 30);
     setWindowSize(progDisplay, MainWindowWidth, MainWindowHeight);
     ResizeBrowser(g_client.browser[0], MainWindowWidth, MainWindowHeight);
@@ -238,6 +241,7 @@ const char *GetLoginInfo(void)
         sessionId, loginTime, email, accountGuid
     );
 
+
     return json;
 }
 
@@ -288,9 +292,30 @@ void HeartBeat()
 
 }
 
-char GetSavedId() 
+const char* GetSavedId(void) 
 {
-    return 0;
+    static char text[1024] = "\0";
+    UserLocalConfig userLocalConfig;
+
+    userLocalConfig = LoadUserLocalConfig();
+    if(userLocalConfig.email[0] != '\0')
+    {
+
+        strncpy(text, userLocalConfig.email, MAX_EMAIL_LENGTH - 1);
+        text[MAX_EMAIL_LENGTH - 1] = '\0';
+        printf("\n DBG GetSavedId() from LauncherObject.c : %s \n", text);
+
+    }
+    else
+    {
+        text[0] = '\0';
+
+        printf("\n DBG GetSavedId() from LauncherObject.c VALUE IS NULL \n");
+    }
+
+
+
+    return text;
 }
 
 char GetLang() 

@@ -1,9 +1,13 @@
 <html>
     <head>
-        <link
+        <!-- <link
             href="https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,700|Teko:400,700&amp;subset=cyrillic,vietnamese"
             rel="stylesheet"
         />
+        -->
+
+        <link rel="stylesheet" href="assets/fonts/font_offline.css">
+
         <link rel="stylesheet" href="assets/css/login.css">
         <!-- Google Tag Manager --
         <script>
@@ -171,7 +175,8 @@
 
 
 
-
+                let saved = launcher.getSavedId();
+                console.log("ID salvo:", saved);
                 
 
                 window.addEventListener('keyup', function(e) 

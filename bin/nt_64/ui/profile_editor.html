@@ -1,78 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile Viewer</title>
-    <style>
-        body { font-family: Arial; padding: 20px; }
-        .profile { background: #e3f2fd; padding: 15px; margin: 10px 0; }
-        .error { background: #ffebee; color: #c62828; padding: 15px; }
-    </style>
-</head>
-<body>
-    <h1>Visualizador de Profile</h1>
-    <div id="content"></div>
+<script>
+window.onload = function() 
+{
+    const profileId = sessionStorage.getItem('profileEditor_profileId');
+    
+    if(profileId) 
+    {
+        document.getElementById("info").textContent = 
+            "Perfil selecionado: " + profileId;
+        // Limpa após usar (opcional)
+        sessionStorage.removeItem('profileEditor_profileId');
+    } 
+    else 
+    {
+        document.getElementById("info").textContent = 
+            "Nenhum perfil selecionado";
+    }
+};
+</script>
 
-    <script>
-        // Tenta obter o profile_id de várias formas
-        function getProfileId() {
-            // 1. Tenta pela URL primeiro
-            const urlParams = new URLSearchParams(window.location.search);
-            let profileId = urlParams.get('profile_id');
-            
-            // 2. Se não encontrou na URL, tenta pelo localStorage
-            if (!profileId) {
-                profileId = localStorage.getItem('cef_profile_id');
-                if (profileId) {
-                    localStorage.removeItem('cef_profile_id'); // Limpa após uso
-                }
-            }
-            
-            // 3. Tenta pelo window.name (outra alternativa)
-            if (!profileId && window.name) {
-                profileId = window.name;
-            }
-            
-            return profileId;
-        }
-
-        function displayProfile() {
-            const profileId = getProfileId();
-            const content = document.getElementById('content');
-            
-            if (profileId) {
-                content.innerHTML = `
-                    <div class="profile">
-                        <h2>Profile ID Encontrado:</h2>
-                        <p><strong>Valor:</strong> ${profileId}</p>
-                        <p><small>Método: ${getDetectionMethod()}</small></p>
-                    </div>
-                `;
-            } else {
-                content.innerHTML = `
-                    <div class="error">
-                        <h2>Nenhum Profile ID encontrado</h2>
-                        <p>Tente uma destas opções:</p>
-                        <ul>
-                            <li>URL: ?profile_id=SEU_VALOR</li>
-                            <li>localStorage: cef_profile_id</li>
-                            <li>window.name</li>
-                        </ul>
-                    </div>
-                `;
-            }
-        }
-
-        function getDetectionMethod() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('profile_id')) return 'Parâmetro URL';
-            if (localStorage.getItem('cef_profile_id')) return 'localStorage';
-            if (window.name) return 'window.name';
-            return 'Não detectado';
-        }
-
-        // Inicializa
-        document.addEventListener('DOMContentLoaded', displayProfile);
-    </script>
-</body>
-</html>
+<div id="info"></div>

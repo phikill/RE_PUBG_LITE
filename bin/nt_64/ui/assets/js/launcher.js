@@ -44178,7 +44178,8 @@
 						value: function() {
 								var e = A(regeneratorRuntime.mark(function e() {
 									return regeneratorRuntime.wrap(function(e) {
-										for(;;) switch(e.prev = e.next) {
+										for(;;) switch(e.prev = e.next) 
+										{
 											case 0:
 												return this.addEventListener(),
 													e.next = 3,
