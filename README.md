@@ -68,10 +68,11 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
  I'm decompiling the launcher and making it in pure C, with support for ~~Linux~~ and even ~~Windows XP~~.  
 ### Currently, I only have Windows, and I've disabled XP support for now, as it doesn't make sense.  
 
-The current launcher code is not publicly available, but you can download its binary file.  
-## Release Link :[Launcher Release](https://github.com/phikill/RE_PUBG_LITE/releases/tag/decompile_dev)  
+### You can download this branch here; it contains the source code and the binary file in ```bin/nt_64/```.   
+## Branch Link :[Launcher Source Code](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_game_launcher)  
  
 
+## IGNORE, OLD PHOTOS , the first steps of the project , It only works now on ```Windows x64```.
  Cef Working o Windows XP  
 <img src="web_help_files/lpc_launcher_nt.png" alt="launcher_windows" width="600">
 
