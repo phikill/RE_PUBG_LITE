@@ -71,8 +71,25 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
 ### You can download this branch here; it contains the source code and the binary file in ```bin/nt_64/```.   
 ## Branch Link :[Launcher Source Code](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_game_launcher)  
  
+ Login Page - nickname only  
+<img src="web_help_files/lpc_launcher_login_01.png" alt="launcher_windows_login" width="600">  
 
-## IGNORE, OLD PHOTOS , the first steps of the project , It only works now on ```Windows x64```.
+ Login Page - nickname Set *```CHICKEN```*  in capital  
+<img src="web_help_files/lpc_launcher_login_02.png" alt="launcher_windows_login_2" width="600">  
+
+ Main Page - there is little here   
+<img src="web_help_files/lpc_launcher_main_page.png" alt="launcher_windows_mainPage" width="600">  
+
+### The ```LauncherIpc.dll``` implementations work.  
+
+ Nickname inside Game - set in launcher - lobby view 0.7.0.1  
+<img src="web_help_files/ingame_nickname_01.png" alt="launcher_windows_ingame" width="600">  
+
+ Nickname inside Game - set in launcher - Training Mode 0.7.0.1  
+<img src="web_help_files/ingame_nickname_02.png" alt="launcher_windows_ingame_2" width="600">  
+
+
+## IGNORE, OLD PHOTOS , the first steps of the project , It only works now on ```Windows 7 x64``` or higher .
  Cef Working o Windows XP  
 <img src="web_help_files/lpc_launcher_nt.png" alt="launcher_windows" width="600">
 
