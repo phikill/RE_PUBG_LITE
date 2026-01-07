@@ -17,11 +17,12 @@ v <strike>1.4.2.423 </strike>
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
 PUBG LITE game reverse engineering, for educational purposes.  
 
-# Game Backups  
+# -> Download Section<- Game Backups  
  ### GOOGlE DOCS LINK: [Pubg Lite Versions](https://docs.google.com/spreadsheets/d/1IHKbZCIqBKopSOlVbpHOP9RoFpKclbAfpKhAF2aYa2U/edit?gid=0)  
 
+### 📦 OR With a Better! Summary
 <details>
-  <summary>Or here</summary>
+  <summary>➡️ Click Summary</summary>
   
   ### 🟢[1.4.2.681 (02.22.2021) link 1](https://drive.google.com/drive/folders/19vs1__70kZsb7YQScpdWKtGa2-Xwi9gj)  
   ### 🟢[1.4.2.681 (02.22.2021) link 2](https://archive.org/details/pubglitebuild)  
