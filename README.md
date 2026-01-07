@@ -24,7 +24,7 @@ I want a free roam version of this game, which is why I'm working hard on the pr
  ### *Yes, there will be bots in the future; the OGBG team is working on it.*  
 
 # -> ⬇️ Download Section<- Game Backups  
- ### GOOGlE DOCS LINK: [Pubg Lite Versions](https://docs.google.com/spreadsheets/d/1IHKbZCIqBKopSOlVbpHOP9RoFpKclbAfpKhAF2aYa2U/edit?gid=0)  
+ ### GOOGLE DOCS LINK: [Pubg Lite Versions](https://docs.google.com/spreadsheets/d/1IHKbZCIqBKopSOlVbpHOP9RoFpKclbAfpKhAF2aYa2U/edit?gid=0)  
 
 ### 📦 OR With a Better! Summary
 <details>
