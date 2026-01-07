@@ -6,10 +6,11 @@ v <strike>1.4.2.423 </strike>
 
 
 ### STATUS  
-  OFFLINE Maybe I'll get involved with that in the future.  
+  ### 🟢 Active, currently debugging the game's binary using an SDK generator and IDA and Ghidra.
 
+ #### I recently got the game's vehicles working and helped with the automatic landing fix.  
 
-### Progress 0.3% 
+### Progress 0.4% 
 
 
 
