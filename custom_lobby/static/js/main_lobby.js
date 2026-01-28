@@ -947,8 +947,8 @@ window.onload = function()
                 return;
             }
 
-            //var ipAddress = serverMap + "?listen";  // montar string no formato esperado
-            var ipAddress = serverMap + "?listen?game=/Game/BluePrints/Core/BP_BattleRoyalTrainingGameMode.BP_BattleRoyalTrainingGameMode_C";  // montar string no formato esperado
+            var ipAddress = serverMap + "?listen";  // montar string no formato esperado
+            //var ipAddress = serverMap + "?listen?game=/Game/BluePrints/Core/BP_BattleRoyalTrainingGameMode.BP_BattleRoyalTrainingGameMode_C";  // montar string no formato esperado
 
             engine.trigger('JoinToDedicatedServer', ipAddress, "");
             debug("It looks like the map didn't load: " + serverMap);
@@ -1160,4 +1160,5 @@ window.onload = function()
 
 
         
+
 
