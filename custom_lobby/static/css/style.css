@@ -106,6 +106,16 @@ button
 }
 
 
+.view {
+    display: none;
+}
+
+.view.active 
+{
+    display: block;
+}
+
+
 #app /* hide entire app   */
 {
     opacity: 0;
@@ -514,8 +524,271 @@ button
     color: #563d5f;
 }
 
+/* Server List Custom Match  */
 
 
+/* painel central */
+.server-panel
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 560px;
+    height: 560px; /* mais vertical */
+
+    background: linear-gradient(
+        180deg,
+        rgba(25,25,25,0.98),
+        rgba(10,10,10,0.98)
+    );
+
+    border: 2px solid #f2b705; /* PUBG laranja */
+    box-shadow:
+        0 0 0 1px rgba(242,183,5,0.3),
+        0 20px 50px rgba(0,0,0,0.85);
+
+    padding: 18px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* header */
+.server-header
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 13px;
+    color: #f2b705;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* spinner */
+.spinner-server
+{
+    width: 18px;
+    height: 18px;
+    border: 2px solid #444;
+    border-top: 2px solid #f2b705;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin
+{
+    to { transform: rotate(360deg); }
+}
+
+/* filtros */
+.server-filters
+{
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn
+{
+    flex: 1;
+    padding: 9px 6px;
+
+    background: linear-gradient(180deg, #1f1f1f, #151515);
+    border: 1px solid #444;
+    color: #bbb;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    transition: 0.15s;
+}
+
+.filter-btn.active,
+.filter-btn:hover
+{
+    background: #2c2c2c;
+    color: #f2b705;
+    border-color: #f2b705;
+}
+
+/* lista */
+.server-list
+{
+    flex: 1;
+    overflow-y: auto;
+
+    border: 1px solid rgba(242,183,5,0.35);
+    background: rgba(0,0,0,0.25);
+    padding: 8px;
+}
+
+/* scrollbar integrado */
+.server-list::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+.server-list::-webkit-scrollbar-thumb
+{
+    background: linear-gradient(
+        180deg,
+        #f2b705,
+        #b88400
+    );
+    border-radius: 6px;
+}
+
+.server-list::-webkit-scrollbar-track
+{
+    background: rgba(0,0,0,0.4);
+}
+
+/* item */
+.server-item
+{
+    padding: 16px;
+    margin-bottom: 8px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(40,40,40,0.85),
+        rgba(25,25,25,0.85)
+    );
+
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.server-item:hover
+{
+    border-color: #f2b705;
+    background: rgba(55,55,55,0.9);
+}
+
+.server-item.active
+{
+    border-color: #f2b705;
+    box-shadow:
+        inset 0 0 0 1px #f2b705,
+        0 0 12px rgba(242,183,5,0.35);
+}
+
+/* textos */
+.server-name
+{
+    font-size: 25px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.server-info
+{
+    font-size: 17px;
+    color: #ccc;
+    opacity: 0.85;
+}
+
+
+/* botões inferiores */
+.bottom-buttons {
+    position: absolute;
+    bottom: 3vh;
+    left: 3vh;
+
+    display: flex;
+    gap: 1.4vh;
+}
+
+/* botão base */
+.bottom-buttons button {
+    min-width: 24vh;
+    padding: 2vh 2.6vh;
+
+    background: linear-gradient(180deg, #3a3a3a, #1e1e1e);
+    border: 2px solid #f2c200;
+    border-left: 6px solid #f2c200;
+
+    color: #fff2b2;
+    font-size: 1.7vh;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 18px rgba(242,194,0,0.35),
+        0 0 40px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        transform 0.1s;
+}
+
+/* hover */
+.bottom-buttons button:hover {
+    background: linear-gradient(180deg, #4a4a4a, #2a2a2a);
+
+    box-shadow:
+        0 0 26px rgba(242,194,0,0.65),
+        0 0 60px rgba(0,0,0,0.8);
+
+    transform: translateY(-2px);
+}
+
+/* click */
+.bottom-buttons button:active {
+    transform: translateY(1px);
+
+    box-shadow:
+        0 0 12px rgba(242,194,0,0.5),
+        inset 0 0 12px rgba(0,0,0,0.6);
+}
+
+
+/*  Custom Match - Join From a Custom IP  */
+
+.connect-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.connect-box input 
+{
+    width: 220px;
+    padding: 10px;
+    background: #111;
+    border: 1px solid #444;
+    color: #ddd;
+    outline: none;
+}
+
+.connect-box button 
+{
+    padding: 10px 16px;
+    background: #1c1c1c;
+    border: 1px solid #444;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.connect-box button:hover 
+{
+    background: #2b2b2b;
+}
+
+
+/*  Create Custom Match   */
 .custom-match-title-text-create 
 {
     font-family: 'PUBG Sans Regular';
@@ -764,11 +1037,15 @@ button
     min-width: 20vh; /* Largura mínima opcional para padronizar */
 }
 
-  .modo-box.ativo 
-  {
-    border-color: white;
-    background: rgba(100, 100, 100, 0.6);
-  }
+.modo-box.active 
+{
+    border: 2px solid #4caf50;
+    background: rgba(100, 180, 100, 0.4);
+}
+
+.modo-box:hover {
+    background: rgba(90, 90, 90, 0.6);
+}
 
   .modos-container 
   {

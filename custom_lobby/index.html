@@ -31,20 +31,73 @@
     <link rel="stylesheet" href="static/fonts/agency.css">
     <link rel="stylesheet" href="static/fonts/overpass.css"> <!-- CS:GO MAP AS SCRIPT HEHE -->
     <link rel="stylesheet" href="static/css/style.css">
-    <script src="static/js/socket.io.min.js"></script>
     
-    <script src="static/js/jquery-2.2.0.min.js"></script> <!-- ALERT: This is choking and interfering with lobby loading.-->
+
+    <!-- 
+    <script src="static/js/jquery-2.2.0.min.js"></script> < !-- ALERT: This is choking and interfering with lobby loading.-- >
     <script src="static/js/jquery-ui-1.11.4.min.js"></script>
-    <script src="static/js/jquery.selectBoxIt-3.8.1.min.js"></script>
+    <script src="static/js/jquery.selectBoxIt-3.8.1.min.js"></script> -->
     
     <script src="static/js/coherent.js"></script>
     <script src="static/js/coherent.mock.js"></script>
     <script src="static/js/mock.entry.js"></script>
-    <script src="static/js/vue.js"></script>
+    
+    
+    <!-- <script src="static/js/vue.js"></script> -->
+    
+
     <style>
         .view-panel { display: none; }
         .view-panel.active { display: block; }
     </style>
+    <script>
+        (function () // load a random loading background screen
+        {
+
+            var images = [
+                "static/styles_img/pubg_splash_Ipc.og_bg.jpg",
+                "static/styles_img/pubg_splash_Ipc_2.og_bg.jpg",
+                "static/styles_img/pubg_splash_Ipc_3.og_bg.jpg",
+                "static/styles_img/pubg_splash_Ipc_4.og_bg.jpg",
+                "static/styles_img/pubg_splash_Ipc_5.og_bg.jpg"
+            ];
+
+            var index = Math.floor(Math.random() * images.length);
+            var selected = images[index];
+
+            var img = new Image();
+            img.src = selected;
+
+            img.onload = function () 
+            {
+                var css =
+                    ".pubg-splash-lpc {" +
+                    "background: url('" + selected + "') center 0 / cover no-repeat;" +
+                    "}";
+
+                var style = document.createElement("style");
+                style.type = "text/css";
+
+                if(style.styleSheet) 
+                {
+                    style.styleSheet.cssText = css;
+                } 
+                else 
+                {
+                    style.appendChild(document.createTextNode(css));
+                }
+
+                document.getElementsByTagName("head")[0].appendChild(style);
+            };
+
+        })();
+        </script>
+
+        <script>
+            var authData = null;
+
+        </script>
+
 </head>
 
 
@@ -52,7 +105,7 @@
 <body oncontextmenu="return false;">
     
     <app>
-        <section class="pubg-splash-lpc" style="background: url(static/styles_img/pubg_splash_Ipc.og_bg.jpg) center 0/cover no-repeat !important; background-size: cover !important;">
+        <section class="pubg-splash-lpc">
             <h3 class="logo-lpc">BATTLEGROUNDS</h3>
             <div class="connect" id="border-black">
                 <span class="spinner"></span>
@@ -74,6 +127,7 @@
         <h2 class="subtitle-text"> Backtrace EDITION </h2>
 
 
+        <!--
         <div class="right-menu noselect">
             <div 
                 v-for="router in routers" 
@@ -91,8 +145,358 @@
                 @click="setSubRouter(router); engine.trigger('PlaySound', 'UI_hall_click');">
                 <span>{{router.name}}</span>
             </p>
+        </div>-->
+
+        <div class="right-menu noselect">
+            <div class="right-menu-item" onclick="goto('PLAY');      engine.trigger('PlaySound', 'UI_hall_click');" data-router="PLAY">PLAY</div>
+            <div class="right-menu-item" onclick="goto('CUSTOMIZE'); engine.trigger('PlaySound', 'UI_hall_click');" data-router="CUSTOMIZE">CUSTOMIZE</div>
+            <div class="right-menu-item" onclick="goto('STORE');     engine.trigger('PlaySound', 'UI_hall_click');" data-router="STORE">STORE</div>
+            <div class="right-menu-item" onclick="goto('SOCIAL');    engine.trigger('PlaySound', 'UI_hall_click');" data-router="SOCIAL">SOCIAL</div>
         </div>
 
+
+
+
+        <div id="views">
+
+
+            <div id="VIEW_PLAY_PUBLIC_MATCH" class="view">
+
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item active" onclick="goto('PLAY/PUBLIC_MATCH');    engine.trigger('PlaySound', 'UI_hall_click');" data-parent="PLAY">PUBLIC MATCH</div>
+                    <div class="right-submenu-item" data-parent="PLAY">TRAINING MODE</div>
+                    <div class="right-submenu-item" onclick="goto('PLAY/CUSTOM_MATCH');    engine.trigger('PlaySound', 'UI_hall_click');" data-parent="PLAY">CUSTOM MATCH</div>
+                </div>
+                
+                <!-- 
+                <div class="game-play-container">
+                    <div class="join-server-container">
+                            <div style="font-size: 2vh;color: lightgray;margin-bottom: 0.5vh;">REGION</div>
+                            <button v-for="server in serverList" @click="engine.trigger('PlaySound', 'UI_hall_click');" 
+                                    v-bind:class="{'sel-server-button': true, 'active': server.name === currentServer.name}"
+                                    :id="server.name"
+                                    v-on:click="selectServer(server)">
+                                    {{ server.name }}
+                            </button>
+                    </div>
+                    <br>
+                    <div style="display: flex;flex-direction: row;align-items: flex-end;">
+                            < !-- <button class="join-server-button" onclick="joinServer()" id="join"> -- >
+                                <button class="join-server-button" @click="joinServer(); engine.trigger('PlaySound', 'Play_UI_hall_StartGame')" id="join">
+                                <span id="join-server-text">START</span>
+                                <span id="join-server-hint" style="padding: 0;margin: 0;font-size: 0.5em;"></span>
+                            </button>
+                            <div class="player-count" :class="{'hide': currentServer.name != 'AS'}">
+                                {{ playerCountInfo }}
+                            </div>
+                    </div>
+                </div> -->
+                
+
+                <!--
+                <div class="game-play-container">
+                    <div class="join-server-container">
+                        <div style="font-size: 2vh;color: lightgray;margin-bottom: 0.5vh;">REGION</div>
+                        <div id="server-list"></div>
+                    </div>
+                    <br>
+                    <div style="display: flex;flex-direction: row;align-items: flex-end;">
+                        <button class="join-server-button" id="join">
+                            <span id="join-server-text">START</span>
+                            <span id="join-server-hint" style="font-size:0.5em;"></span>
+                        </button>
+                        <div class="player-count hide" id="player-count"></div>
+                    </div>
+                </div> -->
+
+                <div class="game-play-container">
+                    <div class="join-server-container">
+                        <div style="font-size: 2vh;color: lightgray;margin-bottom: 0.5vh;">REGION</div>
+                        <button
+                            class="sel-server-button active"
+                            id="test"
+                            onclick="
+                                engine.trigger('PlaySound', 'UI_hall_click');
+                                app.currentServer = { ip: '127.0.0.1', name: 'LOCALHOST' };">
+                            LOCALHOST - 127.0.0.1
+                        </button>
+                    </div>
+                    <br>
+                    <div style="display: flex;flex-direction: row;align-items: flex-end;">
+                        <button class="join-server-button" onclick="joinServer(); engine.trigger('PlaySound', 'Play_UI_hall_StartGame')" id="join">
+                            <span id="join-server-text">START</span>
+                            <span id="join-server-hint" style="padding: 0;margin: 0;font-size: 0.5em;"></span>
+                        </button>
+                        <div class="player-count hide" id="player-count"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            
+            <div id="VIEW_PLAY_TRAINING_MODE" class="view"></div>
+
+
+            <div id="VIEW_PLAY_CUSTOM_MATCH_SERVER_LIST" class="view">
+
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item" onclick="goto('PLAY/PUBLIC_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');" data-parent="PLAY">PUBLIC MATCH</div>
+                    <div class="right-submenu-item" data-parent="PLAY">TRAINING MODE</div>
+                    <div class="right-submenu-item active" onclick="goto('PLAY/CUSTOM_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');"data-parent="PLAY">CUSTOM MATCH</div>
+                </div>
+
+
+
+                <div class="server-panel">
+
+                    <!-- HEADER -->
+                    <div class="server-header">
+                        <div class="spinner"></div>
+                        <span class="server-status">SEARCHING FOR SERVERS...</span>
+                    </div>
+
+                    <!-- FAKE FILTERS -->
+                    <div class="server-filters">
+                        <button class="filter-btn active">ALL</button>
+                        <button class="filter-btn">LOW PING</button>
+                        <button class="filter-btn">SQUAD</button>
+                        <button class="filter-btn">CUSTOM</button>
+                    </div>
+
+                    <!-- LISTA -->
+                    <div class="server-list" id="server-list">
+                        <div class="server-item active">
+                            <div class="server-name">ASIA #1</div>
+                            <div class="server-info">64/100 • 42ms</div>
+                        </div>
+
+                        <div class="server-item">
+                            <div class="server-name">EUROPE #3</div>
+                            <div class="server-info">98/100 • 71ms</div>
+                        </div>
+
+                        <div class="server-item">
+                            <div class="server-name">LOCALHOST</div>
+                            <div class="server-info">1/8 • LAN</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BOTÕES INFERIORES -->
+                <div class="bottom-buttons">
+                    <button onclick=" ">JOIN CUSTOM MATCH</button>
+                    <button onclick="goto('PLAY/CUSTOM_MATCH/CREATE_CUSTOM_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');">CREATE CUSTOM MATCH</button>
+                    <button onclick="goto('PLAY/CUSTOM_MATCH/JOIN_FROM_CUSTOM_IP'); engine.trigger('PlaySound', 'UI_hall_click');">JOIN FROM IP</button>
+                </div>
+
+            </div>
+
+            <div id="VIEW_PLAY_CUSTOM_MATCH_JOIN_FROM_CUSTOM_IP" class="view">
+
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item" onclick="goto('PLAY/PUBLIC_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');" data-parent="PLAY">PUBLIC MATCH</div>
+                    <div class="right-submenu-item" data-parent="PLAY">TRAINING MODE</div>
+                    <div class="right-submenu-item active" onclick="goto('PLAY/CUSTOM_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');"data-parent="PLAY">CUSTOM MATCH</div>
+                </div>
+
+
+                <div class="connect-box">
+                        <input
+                            type="text"
+                            id="ip-input"
+                            placeholder="127.0.0.1:7777">
+                        <button onclick="connectByIP(); engine.trigger('PlaySound', 'UI_hall_click');">CONNECT</button>
+
+                </div>
+
+
+                <div class="bottom-buttons">
+                    <button onclick="goto('PLAY/CUSTOM_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');">BACK</button>
+                </div>
+                
+
+            </div>
+
+
+            <div id="VIEW_PLAY_CREATE_CUSTOM_MATCH" class="view">
+                
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item" onclick="goto('PLAY/PUBLIC_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');" data-parent="PLAY">PUBLIC MATCH</div>
+                    <div class="right-submenu-item" data-parent="PLAY">TRAINING MODE</div>
+                    <div class="right-submenu-item active" onclick="goto('PLAY/CUSTOM_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');"data-parent="PLAY">CUSTOM MATCH</div>
+                </div>
+
+                                <!-- step (1) -->
+                <div class="custom-match-title-text-create "> 
+                    <span>CREATE MATCH</span>
+                    <div class="play_custom_match_box_session_name" onclick="engine.trigger('PlaySound', 'UI_hall_click');">
+                      <img src="static/icons/ico-setting.png" alt="" class="icon">
+                      <input type="text" placeholder="INPUT SESSION NAME | THIS DONT WORK! | no need this at moment">
+                    </div> 
+                </div>
+
+                <div class="custom-match-title-text-select-mode "> 
+                    <img src="static/icons/step_2.png" class="step-icon" alt="Step Icon">
+                    <span>SELECT MODE</span>
+                </div>
+
+                <div class="custom-match-title-text-preset "> 
+                    <img src="static/icons/step_3.png" class="step-icon" alt="Step Icon">
+                    <span>PRESET</span>
+                </div>
+
+                <div class="custom-match-title-text-options "> 
+                    <img src="static/icons/step_4.png" class="step-icon" alt="Step Icon">
+                    <span>OPTIONS</span>
+                </div>
+
+                <div class="modos-container">
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode(this, 'DEFAULT');">DEFAULT</div>
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode(this, 'TRAINING');">TRAINING</div>
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode(this, 'BATTLE_ROYALE_FOREST');">BATTLE ROYALE FOREST</div>
+                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode(this, 'BATTLE_ROYALE_DESERT');">BATTLE ROYALE DESERT</div>
+                </div>
+
+                <div id="img-modo" class="modo-img"></div>
+
+                <div class="options-container">
+                    <div class="custom_match_options_selection">
+                        <label>MAP</label>
+                        <span onclick="anteriorMapa(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
+                        <div class="valor" id="mapaAtual">TRAINING</div>
+                        <span onclick="proximoMapa(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
+                    </div>
+
+                    <div class="custom_match_options_selection">
+                        <label>PERSPECTIVE</label>
+                        <span onclick="nextPerspectiveMode(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
+                        <div class="valor" id="currentPerspective">TPP</div>
+                        <span onclick="prevPerspectiveMode(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
+                    </div>
+
+                    <div class="barra">
+                        <label>PLAYERS</label>
+                        <input type="range" min="1" max="100" value="100" oninput="atualizaPlayers(this.value); engine.trigger('PlaySound', 'Play_UI_click3');">
+                        <span id="valorPlayers">100</span>
+                    </div>
+
+                    <!-- 
+                    <div class="barra">
+                        <label>TEAM MEMBERS</label>
+                        <input type="range" min="1" max="4" value="4" oninput="customMatch_updateTeamMembers(this.value); engine.trigger('PlaySound', 'Play_UI_click3');">
+                        <span id="customMatch_MembersValue">4</span>
+                    </div> -->
+
+                    <!-- 
+                    <div class="custom_match_options_selection">
+                        <label>WEATHER</label>
+                        <span onclick="nextWeatherState(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
+                        <div class="valor" id="currentWeatherState">CLEAR</div>
+                        <span onclick="prevWeatherState(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
+                    </div>
+                    -->
+                    
+                </div>
+
+                
+
+                <!-- 
+                <div class="side-container">
+                        <div class="custom-match-card" onclick="joinServerPlay()">
+                            <div class="title">
+                                <img src="static/icons/ico-setting.png" alt="" class="discord-icon-bg">
+                                &ensp;test box!
+                            </div>
+                            <div class="content">
+                                this is not a discord button anymore, this is to create a local server.
+                            </div>
+                        </div>
+                </div>-->
+
+                <!-- 
+                <div class="container" style="position: relative;">
+                        <div class="custom-match-button-create" onclick="joinServerPlay()">
+                            <div class="title">
+                                <span>HOST MATCH !</span>
+                            </div>
+                        </div>
+                </div> -->
+
+                <div class="bottom-buttons">
+                    <button onclick="goto('PLAY/CUSTOM_MATCH'); engine.trigger('PlaySound', 'UI_hall_click');">BACK</button>
+                    <button onclick="joinServerPlay();">Host Custom Match</button>
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div id="VIEW_CUSTOMIZE_WARDROBE" class="view">
+
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item active" onclick="goto('CUSTOMIZE/WARDROBE'); engine.trigger('PlaySound', 'UI_hall_click');" data-parent="CUSTOMIZE">WARDROBE</div>
+                    <div class="right-submenu-item" data-parent="CUSTOMIZE">WEAPONS</div>
+                    <div class="right-submenu-item" data-parent="CUSTOMIZE">GEAR</div>
+                    <div class="right-submenu-item" data-parent="CUSTOMIZE">EMOTES</div>
+                    <div class="right-submenu-item" onclick="goto('CUSTOMIZE/APPEARANCE'); engine.trigger('PlaySound', 'UI_hall_click');" data-parent="CUSTOMIZE">APPEARANCE</div>
+                </div>
+
+
+
+            </div>
+            
+            <div id="VIEW_CUSTOMIZE_APPEARANCE" class="view">
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item" onclick="goto('CUSTOMIZE/WARDROBE'); engine.trigger('PlaySound', 'UI_hall_click');" data-parent="CUSTOMIZE">WARDROBE</div>
+                    <div class="right-submenu-item" data-parent="CUSTOMIZE">WEAPONS</div>
+                    <div class="right-submenu-item" data-parent="CUSTOMIZE">GEAR</div>
+                    <div class="right-submenu-item" data-parent="CUSTOMIZE">EMOTES</div>
+                    <div class="right-submenu-item active" onclick="goto('CUSTOMIZE/APPEARANCE'); engine.trigger('PlaySound', 'UI_hall_click');" data-parent="CUSTOMIZE">APPEARANCE</div>
+                </div>
+
+            </div>
+
+
+            <div id="VIEW_STORE" class="view"></div>
+            
+
+            <div id="VIEW_SOCIAL_PROFILE" class="view">
+                
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item active" data-parent="SOCIAL">PROFILE</div>
+                    <div class="right-submenu-item" data-parent="SOCIAL">FRIENDS</div>
+                    <div class="right-submenu-item" data-parent="SOCIAL">RANK</div>
+                </div>
+
+            </div>
+
+            <div id="VIEW_SOCIAL_FRIENDS" class="view">
+                
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item" data-parent="SOCIAL">PROFILE</div>
+                    <div class="right-submenu-item active" data-parent="SOCIAL">FRIENDS</div>
+                    <div class="right-submenu-item" data-parent="SOCIAL">RANK</div>
+                </div>
+
+            </div>
+
+            <div id="VIEW_SOCIAL_RANK" class="view">
+                
+                <div class="right-submenu noselect">
+                    <div class="right-submenu-item" data-parent="SOCIAL">PROFILE</div>
+                    <div class="right-submenu-item" data-parent="SOCIAL">FRIENDS</div>
+                    <div class="right-submenu-item active" data-parent="SOCIAL">RANK</div>
+                </div>
+
+            </div>
+        
+
+        </div>
 
 
         <!-- user-info-section.html -->
@@ -144,219 +548,14 @@
 
 
 
-        <p class="debug-text" :class="{'hide': !isDebug}">{{ debugInfo }}</p>
-        <p class="serial-text">{{ userSerial }}</p>
+        <!-- <p class="debug-text" :class="{'hide': !isDebug}">{{ debugInfo }}</p> -->
+        <p class="serial-text" id="userSerial"></p>
 
-        <p class="bottom-text">OG:BattleGrounds Team, test lobby : {{ gameVersion }}</p>
+        <p class="bottom-text"> OG:BattleGrounds Team, test lobby : <span id="gameVersion"></span></p>
         
         <p id="client-version-alert" class="pubg-client-ver"></p>
+
         
-        <!-- @click="engine.trigger('PlaySound', 'UI_hall_click');" 
-             @click="engine.trigger('PlaySound', Play_UI_hall_StartGame');"
-        --> 
-
-        <!-- Painel principal PLAY -->
-        <div v-if="currentRouter.name === 'PLAY'"  class="view-panel active">
-            <div v-if="getActiveSubrouterName() === 'PUBLIC MATCH'">
-                <h2></h2>
-                <p></p>
-
-                <span style="display: none" v-if="call_PLAY_PUBLIC_MATCH()"></span>
-
-                    <div class="game-play-container">
-                        <div class="join-server-container">
-                            <div style="font-size: 2vh;color: lightgray;margin-bottom: 0.5vh;">REGION</div>
-                            <button v-for="server in serverList" @click="engine.trigger('PlaySound', 'UI_hall_click');" 
-                                    v-bind:class="{'sel-server-button': true, 'active': server.name === currentServer.name}"
-                                    :id="server.name"
-                                    v-on:click="selectServer(server)">
-                                    {{ server.name }}
-                            </button>
-                        </div>
-                        <br>
-                        <div style="display: flex;flex-direction: row;align-items: flex-end;">
-                            <!-- <button class="join-server-button" onclick="joinServer()" id="join"> -->
-                                <button class="join-server-button" @click="joinServer(); engine.trigger('PlaySound', 'Play_UI_hall_StartGame')" id="join">
-                                <span id="join-server-text">START</span>
-                                <span id="join-server-hint" style="padding: 0;margin: 0;font-size: 0.5em;"></span>
-                            </button>
-                            <div class="player-count" :class="{'hide': currentServer.name != 'AS'}">
-                                {{ playerCountInfo }}
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'TRAINING MODE'">
-                <h2></h2>
-                <p></p>
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'CUSTOM MATCH'" > <!-- PLAY - CUSTOM MATCH MODE -->
-                
-                <span style="display: none" v-if="call_PLAY_CUSTOM_MATCH()"></span>
-
-                <!-- step (1) -->
-                <div class="custom-match-title-text-create "> 
-                    <span>CREATE MATCH</span>
-                    <div class="play_custom_match_box_session_name" @click="engine.trigger('PlaySound', 'UI_hall_click');">
-                      <img src="static/icons/ico-setting.png" alt="" class="icon">
-                      <input type="text" placeholder="INPUT SESSION NAME | THIS DONT WORK! | no need this at moment">
-                    </div> 
-                </div>
-
-                <div class="custom-match-title-text-select-mode "> 
-                    <img src="static/icons/step_2.png" class="step-icon" alt="Step Icon">
-                    <span>SELECT MODE</span>
-                </div>
-
-                <div class="custom-match-title-text-preset "> 
-                    <img src="static/icons/step_3.png" class="step-icon" alt="Step Icon">
-                    <span>PRESET</span>
-                </div>
-
-                <div class="custom-match-title-text-options "> 
-                    <img src="static/icons/step_4.png" class="step-icon" alt="Step Icon">
-                    <span>OPTIONS</span>
-                </div>
-
-                <div class="modos-container">
-                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('NORMAL_MODE');">NORMAL MODE</div>
-                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('ZOMBIE_MODE');">ZOMBIE MODE</div>
-                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('WAR_MODE');">WAR MODE</div>
-                  <div class="modo-box" onclick="engine.trigger('PlaySound', 'UI_hall_click'); customMatch_SelectMode('ESPORTS_MODE');">ESPORTS MODE</div>
-                </div>
-
-                <div id="img-modo" class="modo-img"></div>
-
-
-                <div class="options-container">
-                    <div class="custom_match_options_selection">
-                        <label>MAP</label>
-                        <span onclick="anteriorMapa(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
-                        <div class="valor" id="mapaAtual">TRAINING</div>
-                        <span onclick="proximoMapa(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
-                    </div>
-
-                    <div class="custom_match_options_selection">
-                        <label>PERSPECTIVE</label>
-                        <span onclick="nextPerspectiveMode(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
-                        <div class="valor" id="currentPerspective">TPP</div>
-                        <span onclick="prevPerspectiveMode(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
-                    </div>
-
-                    <div class="barra">
-                        <label>PLAYERS</label>
-                        <input type="range" min="1" max="100" value="100" oninput="atualizaPlayers(this.value); engine.trigger('PlaySound', 'Play_UI_click3');">
-                        <span id="valorPlayers">100</span>
-                    </div>
-
-                    <div class="barra">
-                        <label>TEAM MEMBERS</label>
-                        <input type="range" min="1" max="4" value="4" oninput="customMatch_updateTeamMembers(this.value); engine.trigger('PlaySound', 'Play_UI_click3');">
-                        <span id="customMatch_MembersValue">4</span>
-                    </div>
-
-                    <div class="custom_match_options_selection">
-                        <label>WEATHER</label>
-                        <span onclick="nextWeatherState(); engine.trigger('PlaySound', 'Play_UI_click3');">&lt;</span>
-                        <div class="valor" id="currentWeatherState">CLEAR</div>
-                        <span onclick="prevWeatherState(); engine.trigger('PlaySound', 'Play_UI_click3');">&gt;</span>
-                    </div>
-                </div>
-
-                
-
-                
-                <div class="side-container">
-                        <div class="custom-match-card" onclick="joinServerPlay()">
-                            <div class="title">
-                                <img src="static/icons/ico-setting.png" alt="" class="discord-icon-bg">
-                                &ensp;test box!
-                            </div>
-                            <div class="content">
-                                this is not a discord button anymore, this is to create a local server.
-                            </div>
-                        </div>
-                </div>
-
-                <div class="container" style="position: relative;">
-                        <div class="custom-match-button-create" onclick="joinServerPlay()">
-                            <div class="title">
-                                <span>CREATE !</span>
-                            </div>
-                        </div>
-                </div>
-
-
-            </div>
-        </div>
-
-        <!-- Painel CUSTOMIZE -->
-        <div v-if="currentRouter.name === 'CUSTOMIZE'" class="view-panel active">
-            <div v-if="getActiveSubrouterName() === 'WARDROBE'">
-                <h2></h2>
-                <p></p>
-
-                <span style="display: none" v-if="call_CUSTOMIZE_WARDROBE()"></span> <!-- change lobby camera -->
-
-            
-
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'WEAPONS'">
-                <h2></h2>
-                <p></p>
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'GEAR'">
-                <h2></h2>
-                <p></p>
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'EMOTES'">
-                <h2></h2>
-                <p></p>
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'APPEARANCE'">
-                <h2></h2>
-                <p></p>
-            
-                <span style="display: none" v-if="call_CUSTOMIZE_APPEARANCE()"></span>
-            </div>
-        </div>
-
-        <!-- Painel STORE -->
-        <div v-if="currentRouter.name === 'STORE'" class="view-panel active">
-            <h2>Store</h2>
-            <p></p>
-
-            <span style="display: none" v-if="call_STORE()"></span>
-        </div>
-
-        <!-- Painel FRIENDS -->
-        <div v-if="currentRouter.name === 'SOCIAL'" class="view-panel active">
-            <div v-if="getActiveSubrouterName() === 'PROFILE'">
-                <h2>Profile Page</h2>
-                <p></p>a
-
-                <div id="output" 
-                    style="color: #0f0; 
-                            background: rgba(0,0,0,0.7); 
-                            padding: 10px; 
-                            margin: 10px; 
-                            font-family: monospace; 
-                            font-size: 1.2em;">
-                </div>
-
-                <span style="display: none" v-if="call_testOutputsDebug()"></span>
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'FRIENDS'">
-                <h2>Friends Page</h2>
-                <p></p>
-                <span style="display: none" v-if="call_clearDebug()"></span>
-            </div>
-            <div v-else-if="getActiveSubrouterName() === 'RANK'">
-                <h2>RANK PAGE</h2>
-                <p></p>
-            </div>
-        </div>
 
     </div> <!-- <div id="app"> -->
 

@@ -1,118 +1,201 @@
 //main_lobby.js
-// NOTA! o Coherent UI GT funciona sobre a base  JS ES5 (2009)
+// NOTE! Coherent UI GT runs on the JS ES5 (2009) base.
 // <(´=⩊=`)>
 
+var CURRENT_PATH = "";
+
+function goto(path) 
+{
+    if (CURRENT_PATH === path) return;
+
+        CURRENT_PATH = path;
+        location.hash = path;
+        route(path);
+}
+
+function route(path) 
+{
+
+    //clearPage();
+    hideAllViews();
+
+    switch(path) 
+    {
+
+        case "PLAY":
+            setActiveMenu('PLAY');
+            goto("PLAY/PUBLIC_MATCH");
+            break;
+
+            case "PLAY/PUBLIC_MATCH":
+                setActiveMenu('PLAY');
+                PLAY_PUBLIC_MATCH();
+                showView("VIEW_PLAY_PUBLIC_MATCH");
+                break;
+
+            case "PLAY/TRAINING_MODE":
+                setActiveMenu('PLAY');
+                break;
+
+            case "PLAY/CUSTOM_MATCH":
+                setActiveMenu('PLAY');
+                PLAY_CUSTOM_MATCH();
+                goto("PLAY/CUSTOM_MATCH/SERVER_LIST");
+                break;
+
+                case "PLAY/CUSTOM_MATCH/SERVER_LIST":
+                    setActiveMenu('PLAY');
+                    PLAY_CUSTOM_MATCH();
+                    showView("VIEW_PLAY_CUSTOM_MATCH_SERVER_LIST");
+                    break;
+
+                case "PLAY/CUSTOM_MATCH/JOIN_FROM_CUSTOM_IP":
+                    setActiveMenu('PLAY');
+                    PLAY_CUSTOM_MATCH();
+                    showView("VIEW_PLAY_CUSTOM_MATCH_JOIN_FROM_CUSTOM_IP");
+                    break;
+
+                case "PLAY/CUSTOM_MATCH/CREATE_CUSTOM_MATCH":
+                    setActiveMenu('PLAY');
+                    PLAY_CUSTOM_MATCH();
+                    showView("VIEW_PLAY_CREATE_CUSTOM_MATCH");
+                    break;
+
+        case "CUSTOMIZE":
+            setActiveMenu('CUSTOMIZE');
+            goto("CUSTOMIZE/WARDROBE");
+            break;
+
+            case "CUSTOMIZE/WARDROBE":
+
+                setActiveMenu('CUSTOMIZE');
+                CUSTOMIZE_WARDROBE();
+                showView("VIEW_CUSTOMIZE_WARDROBE");
+                break;
+
+            case "CUSTOMIZE/WEAPONS":
+                setActiveMenu('CUSTOMIZE');
+                break;
+
+            case "CUSTOMIZE/GEAR":
+                setActiveMenu('CUSTOMIZE');
+                break;
+
+            case "CUSTOMIZE/EMOTES":
+                setActiveMenu('CUSTOMIZE');
+                break;
+
+            case "CUSTOMIZE/APPEARANCE":
+                setActiveMenu('CUSTOMIZE');
+                CUSTOMIZE_APPEARANCE();
+                showView("VIEW_CUSTOMIZE_APPEARANCE");
+                break;
+
+        case "STORE":
+            setActiveMenu('STORE');
+            break;
+
+        case "SOCIAL":
+            setActiveMenu('SOCIAL');
+            goto("CUSTOMIZE/PROFILE");
+            break;
+
+            case "SOCIAL/PROFILE":
+                setActiveMenu('SOCIAL');
+                    break;
+
+            case "SOCIAL/FRIENDS":
+                setActiveMenu('SOCIAL');
+                    break;
+
+            case "SOCIAL/RANK":
+                setActiveMenu('SOCIAL');
+                    break;
+
+
+
+        default:
+            //pageNotFound();
+            break;
+    }
+}
+
+
+function clearPage() // hide entire app page
+{
+    document.getElementById("app").innerHTML = "";
+}
+
+function hideAllViews() 
+{
+    var views = document.getElementsByClassName("view");
+    for (var i = 0; i < views.length; i++) 
+    {
+        views[i].classList.remove("active");
+    }
+}
+
+function showView(id) 
+{
+    document.getElementById(id).classList.add("active");
+}
+
+function setActiveMenu(routerName)
+{
+    var items = document.querySelectorAll('.right-menu-item');
+
+    for (var i = 0; i < items.length; i++)
+    {
+        if (items[i].getAttribute('data-router') === routerName)
+            items[i].classList.add('active');
+        else
+            items[i].classList.remove('active');
+    }
+}
+
+
+
+
+
 var serverList = 
-    [
-        {
-            name: "AS - Asia Server",
-            description: "Asia Server",
-            //ip: "218.93.206.88:52525"
-        },
-        {
-            name: "NA - North American",
-            description: "North Amercian Server",
-            //ip: "40.124.122.51:8888"
-        },
-        {
-            name: "OCE",
-            //ip: "119.17.151.38:8888"
-        },
-        {
-            name: "SA - South America",
-            description: "Possivel Brasil sil",
-            //ip: "pubgsabrasil.servegame.com:8888"
-        },
-        {
-            name: "EU - N",
-            //ip: "playerunknownsbattlegrounds.asuscomm.com:8888"
-        },
-        {
-            name: "xxMrYashXX",
-            ip: "147.185.221.27:14545"
-        },
-        {
-            name: "LOCALHOST - 127.0.0.1",
-            description: "connect to localhost",
-            ip: "127.0.0.1:7777"
+[
+    {
+        name: "test",
+        description: "Asia Server",
+        //ip: "PUBG_Forest?listen?game=/Game/BluePrints/Core/BP_BattleRoyaleGameMode_PUBG.BP_BattleRoyaleGameMode_PUBG_C"
+    },
+    {
+        name: "NA - North American",
+        description: "North Amercian Server",
+        //ip: "40.124.122.51:8888"
+    },
+    {
+        name: "OCE",
+        //ip: "119.17.151.38:8888"
+    },
+    {
+        name: "SA - South America",
+        description: "Possivel Brasil sil",
+        //ip: "pubgsabrasil.servegame.com:8888"
+    },
+    {
+        name: "EU - N",
+        //ip: "playerunknownsbattlegrounds.asuscomm.com:8888"
+    },
+    {
+        name: "xxMrYashXX",
+        ip: "147.185.221.16:20034"
+    },
+    {
+        name: "LOCALHOST - 127.0.0.1",
+        description: "connect to localhost",
+        ip: "127.0.0.1:7777"
 
-        }
-    ]
+    }
+]
 
-var routers = 
-    [
-        {
-            name: "PLAY",
-            active: true,
-            child: 
-                [
-                    {
-                        name: "PUBLIC MATCH",
-                        active: true,
-                    },
-                    {
-                        name: "TRAINING MODE",
-                        active: false,
-                    },
-                    {
-                        name: "CUSTOM MATCH",
-                        active: false,
-                    }
-                ]
-        },
-        {
-            name: "CUSTOMIZE",
-            active: false,
-            child: 
-                [
-                    {
-                        name: "WARDROBE",
-                        active: true,
-                    },
-                    {
-                        name: "WEAPONS",
-                        active: false,
-                    },
-                    {
-                        name: "GEAR",
-                        active: false,
-                    },
-                    {
-                        name: "EMOTES",
-                        active: false,
-                    },
-                    {
-                        name: "APPEARANCE",
-                        active: false,
-                    }
-                ]
-        },
-        {
-            name: "STORE",
-            active: false,
-            
-        },
-        {
-            name: "SOCIAL",
-            active: false,
-            child: 
-                [
-                    {
-                        name: "PROFILE",
-                        active: true,
-                    },
-                    {
-                        name: "FRIENDS",
-                        active: false,
-                    },
-                    {
-                        name: "RANK",
-                        active: false,
-                    }
-                ]
-            
-        }
-    ]
+
+var app;
 
     /*
         function selectServer(val) 
@@ -132,19 +215,7 @@ var routers =
         function selectServer(server) 
         {
             app.currentServer = server;
-            if (server.name == "AS") 
-            {
-                $.ajax({
-                    url: "GetPlayerNum?region=ASIA",
-                    type: "GET",
-                    dataType: "text",
-                    success: function (data) 
-                    {
-                        app.playerCountInfo = data;
-                    }
-                })
-            }
-            // updateServerStatus();
+            
         }
 
         function joinServer() 
@@ -153,9 +224,10 @@ var routers =
             { // - DOC - ("JoinToDedicatedServer", function (serverAddress, udpEncryptionKey) 
                 
                 //$("#join-server-text").text('Joining...');
-                $("#join-server-hint").text("Trying: " + app.currentServer.ip);
+                //$("#join-server-hint").text("Trying: " + app.currentServer.ip);
                 engine.trigger('PlaySound', 'Play_UI_ClickPlay');
-                engine.trigger('JoinToDedicatedServer', app.currentServer.ip, "");
+                engine.trigger('JoinToDedicatedServer', app.currentServer.ip + "?PlayerName=" + authData.Player, ""); // connect with nickname
+                //engine.trigger('JoinToDedicatedServer', app.currentServer.ip, ""); // only connect
             } 
             catch(e) 
             {
@@ -164,11 +236,26 @@ var routers =
         }
 
 
+function connectByIP() 
+{
+    var ip = document.getElementById("ip-input").value.trim();
+
+    if(!ip) 
+    {
+        console.warn("IP vazio");
+        return;
+    }
 
 
-var app;
 
-var authData = null;
+    engine.trigger('JoinToDedicatedServer', ip + "?PlayerName=" + authData.Player, "");
+
+    // Exemplo:
+    // engine.trigger("JoinToDedicatedServer", ip, "");
+}
+
+
+
 
 // Simula async engine.call (pode já ser uma promise)
 function getAuthData(callback) 
@@ -190,6 +277,13 @@ function getAuthData(callback)
         {
             authData = r;
             callback(r);
+
+            authData.debugInfo = "info:" + JSON.stringify(r);
+            authData.userSerial = r.userSerial;
+            authData.Player = r.userSerial.toString().split('-')[0];
+            authData.gameVersion = r.fullGameVersion;
+            authData.playerNetId = r.playerNetId;
+            authData.uID = r.id;
         });
     } 
     else 
@@ -198,192 +292,50 @@ function getAuthData(callback)
     }
 }
 
-function initVue()
+function waitForEngine(callback) 
 {
-    
-    /*// Simulando engine.call
-    if(typeof engine !== "undefined") 
+    var attempts = 0;
+
+    var timer = setInterval(function () 
     {
+        attempts++;
 
-        var result = engine.call('GetClientAuthData');
-        result.then(function (r) 
+        if (typeof engine !== "undefined" && engine.call) 
         {
-            app.debugInfo = "info:" + JSON.stringify(r);
-            app.userSerial = r.userSerial;
-            app.Player = r.userSerial.toString().split('-')[0];
-            app.gameVersion = r.fullGameVersion;
-            app.playerNetId = r.playerNetId;
-            app.uID = r.id;
-
-        });
-    }*/
-
-
-    app = new Vue(
-    {
-        el: '#app',
-        data: function() 
-        {
-            // Garante que tudo está inicializado (ou cria objetos vazios se não estiverem)
-            /*return {
-                serverList: typeof serverList !== 'undefined' ? serverList : [],
-                //Player: "player",
-                Player: "player",
-                userSerial: "userSerial",
-                currentServer: typeof serverList !== 'undefined' && serverList.length > 0 ? serverList[0] : null,
-                debugInfo: "Here is debugInfo",
-                isDebug: false,
-                routers: typeof routers !== 'undefined' ? routers : [],
-                currentRouter: typeof routers !== 'undefined' && routers.length > 0 ? routers[0] : null,
-                playerCountInfo: "Wait for Update",
-                gameVersion: ""
-            };
-        },*/
-            return {
-                serverList: typeof serverList !== 'undefined' ? serverList : [],
-                Player: authData ? authData.userSerial.toString().split('-')[0] : "player",
-                userSerial: authData ? authData.userSerial : "userSerial",
-                currentServer: typeof serverList !== 'undefined' && serverList.length > 0 ? serverList[0] : null,
-                //debugInfo: authData ? "info:" + JSON.stringify(authData) : "debug info not loaded",
-                debugInfo: "Here is debugInfo",
-                isDebug: false,
-                routers: typeof routers !== 'undefined' ? routers : [],
-                currentRouter: typeof routers !== 'undefined' && routers.length > 0 ? routers[0] : null,
-                playerCountInfo: "Wait for Update",
-                gameVersion: authData ? authData.fullGameVersion : ""
-            };
-        },
-        methods: 
-        {
-            selectServer: selectServer,
-            joinServer: joinServer,
-            getServerByName: getServerByName,
-            
-            // Compatível com ES5 (Coherent)
-            setRouter: function(router) 
-            {
-                var i;
-
-                // Desativa todos
-                if(this.routers && this.routers.length > 0) 
-                {
-                    for (i = 0; i < this.routers.length; i++) 
-                    {
-                        this.routers[i].active = false;
-                    }
-                }
-
-                router.active = true;
-                this.currentRouter = router;
-
-                // Ativa primeiro filho se houver
-                if(router.child && router.child.length > 0) 
-                {
-                    for (i = 0; i < router.child.length; i++) 
-                    {
-                        router.child[i].active = false;
-                    }
-                    router.child[0].active = true;
-                }
-
-                this.navigateTo(router.name);
-            },
-
-            setSubRouter: function(subrouter) 
-            {
-                var i;
-                if (!this.currentRouter || !this.currentRouter.child) return;
-
-                for (i = 0; i < this.currentRouter.child.length; i++) 
-                {
-                    this.currentRouter.child[i].active = false;
-                }
-
-                subrouter.active = true;
-
-                this.navigateTo(this.currentRouter.name + " > " + subrouter.name);
-            },
-
-            navigateTo: function(routeName) 
-            {
-                console.log("SPA Navegando para:", routeName);
-            },
-            
-            getActiveSubrouterName: function () 
-            {
-                if (!this.currentRouter || !this.currentRouter.child) return null;
-
-                for (var i = 0; i < this.currentRouter.child.length; i++) 
-                {
-                    if (this.currentRouter.child[i].active) 
-                    {
-                        return this.currentRouter.child[i].name;
-                    }
-                }
-
-                return null;
-            },
-
-            call_PLAY_PUBLIC_MATCH: function () 
-            {
-                
-                setTimeout(function () {PLAY_PUBLIC_MATCH();}, 0);
-                return true; // para o v-if funcionar
-            },
-            call_PLAY_CUSTOM_MATCH: function () 
-            {
-                setTimeout(function () {PLAY_CUSTOM_MATCH();}, 0);
-                return true; // para o v-if funcionar
-            },
-
-            call_CUSTOMIZE_WARDROBE: function () // CUSTOMIZE > WARDROBE
-            {
-                setTimeout(function () {CUSTOMIZE_WARDROBE();}, 0);
-                return true; // para o v-if funcionar
-            },
-
-            call_CUSTOMIZE_APPEARANCE: function () // CUSTOMIZE > APPEARANCE
-            {
-                setTimeout(function () {CUSTOMIZE_APPEARANCE();}, 0);
-                return true; // para o v-if funcionar
-            },
-
-            call_STORE: function () // CUSTOMIZE > WARDROBE
-            {
-                setTimeout(function () {LOBBY_STORE();}, 0);
-                return true; // para o v-if funcionar
-            },
-
-            //testOutputsDebug
-            call_testOutputsDebug: function () // CUSTOMIZE > WARDROBE
-            {
-                setTimeout(function () {testOutputsDebug();}, 0);
-                return true; // para o v-if funcionar
-            },
-            call_clearDebug: function () // CUSTOMIZE > WARDROBE
-            {
-                setTimeout(function () {clearDebug();}, 0);
-                return true; // para o v-if funcionar
-            },
-
-
+            clearInterval(timer);
+            callback();
         }
-    });
+
+        if (attempts > 200) { // ~10s
+            clearInterval(timer);
+            console.error("Engine is not loaded :( ");
+        }
+    }, 50);
+}
 
 
-    
-};
 
 
-
-
+/*
 window.onload = function() 
 {
     // starts visual components only after data is loaded.
     getAuthData(function (data) 
     {
-        initVue();
+        //initVue();
         initLobby();
+
+    });
+};*/
+
+window.onload = function () 
+{
+    waitForEngine(function () 
+    {
+        getAuthData(function (data) 
+        {
+            initLobby();
+        });
     });
 };
 
@@ -464,7 +416,8 @@ window.onload = function()
                 document.getElementById("client-version-alert").textContent = alertText;
             }
         
-            
+                document.getElementById("userSerial").textContent = authData.userSerial;
+                document.getElementById("gameVersion").textContent = authData.fullGameVersion;
 
             createRole(); 
 
@@ -476,6 +429,8 @@ window.onload = function()
                 document.getElementById('app').classList.add('show');
             }, 4000);
             
+            goto("PLAY/PUBLIC_MATCH");
+
             //engine.trigger('LobbyLoadingComplete'); 
 
 
@@ -495,9 +450,9 @@ window.onload = function()
             //engine.trigger('CameraTransitionHome'); // equals a lobby 0, singleplayer : 'CameraTransitionSolo'
             //engine.trigger('CameraTransitionPlay'); // same ? equals a lobby 0;
 
-            //engine.trigger('CameraTransitionSolo');  // 1 - shows lobby character 0 only
+            engine.trigger('CameraTransitionSolo');  // 1 - shows lobby character 0 only
             //engine.trigger('CameraTransitionDuo');   // 2 - move camera for 2 players in lobby
-            engine.trigger('CameraTransitionSquad'); // 4 - move camera for 4 players in lobby
+            //engine.trigger('CameraTransitionSquad'); // 4 - move camera for 4 players in lobby
 
             //engine.trigger('CameraTransitionCustomMatch'); // move camera to car and blur , custom match
             //engine.trigger('CameraTransitionCareer'); // same the same as custom match , CameraTransitionCustomMatch
@@ -511,14 +466,14 @@ window.onload = function()
             //engine.trigger('CameraTransitionCustomAppearance'); // customize character, hair, faces, gender etc.
 
             engine.trigger('DestroyLobbyCharacter', 0);
-            engine.trigger('DestroyLobbyCharacter', 1);
-            engine.trigger('DestroyLobbyCharacter', 2);
-            engine.trigger('DestroyLobbyCharacter', 3);
+            //engine.trigger('DestroyLobbyCharacter', 1);
+            //engine.trigger('DestroyLobbyCharacter', 2);
+            //engine.trigger('DestroyLobbyCharacter', 3);
 
             engine.trigger('CreateLobbyCharacter', 0, false, "", authData.playerNetId);
-            engine.trigger('CreateLobbyCharacter', 1, true, "", "playerID1");
-            engine.trigger('CreateLobbyCharacter', 2, false, "","playerID2");
-            engine.trigger('CreateLobbyCharacter', 3, true, "","playerID3");
+            //engine.trigger('CreateLobbyCharacter', 1, true, "", "playerID1");
+            //engine.trigger('CreateLobbyCharacter', 2, false, "","playerID2");
+            //engine.trigger('CreateLobbyCharacter', 3, true, "","playerID3");
 
             engine.trigger('UpdateLobbyCharacter', 0,
             {
@@ -555,6 +510,7 @@ window.onload = function()
                 ]
             });
 
+            /*
             engine.trigger('UpdateLobbyCharacter', 1,
             {
                 "Gender":true,
@@ -615,7 +571,7 @@ window.onload = function()
                     "3005",     // legs
                     "405020",   // foots
                 ]
-            });
+            });*/
 
             engine.trigger('UpdateLobbyCharacterRank', 0, 8);
             engine.trigger('SetLobbyCharacterHost', 0); // Change King of group  
@@ -636,10 +592,23 @@ window.onload = function()
             //engine.trigger('CameraTransitionHome'); // equals a lobby 0, singleplayer : 'CameraTransitionSolo'
             //engine.trigger('CameraTransitionPlay'); // same ? equals a lobby 0;
 
-            //engine.trigger('CameraTransitionSolo');  // 1 - shows lobby character 0 only
+            engine.trigger('CameraTransitionSolo');  // 1 - shows lobby character 0 only
             //engine.trigger('CameraTransitionDuo');   // 2 - move camera for 2 players in lobby
-            engine.trigger('CameraTransitionSquad'); // 4 - move camera for 4 players in lobby
+            //engine.trigger('CameraTransitionSquad'); // 4 - move camera for 4 players in lobby
         }
+
+
+
+        function CREATE_PLAY_PUBLIC_MATCH()
+        {
+
+        }
+
+
+
+
+
+
 
         function PLAY_CUSTOM_MATCH()
         {
@@ -695,39 +664,44 @@ window.onload = function()
         }
 
 
+        var gamemodeString = "";
+        var customMatchMode = null;
 
-        /*
-        function customMatch_SelectMode(modo) 
+        
+        function customMatch_SelectMode(el, mode)
         {
-            const boxes = document.querySelectorAll('.modo-box');
-            boxes.forEach(b => b.classList.remove('ativo'));
-
-            const imagem = document.getElementById('img-modo');
-            imagem.classList.add('ativo');
-
-            if (modo === 'NORMAL_MODE') 
+            if (mode === "DEFAULT")
             {
-                imagem.style.backgroundImage = "url('normal.jpg')";
+                gamemodeString = "";
             }
-            
-            if (modo === 'ZOMBIE_MODE') 
+            else if (mode === "TRAINING")
             {
-                imagem.style.backgroundImage = "url('zombie.jpg')";
+                gamemodeString =
+                    "/Game/BluePrints/Core/BP_BattleRoyalTrainingGameMode.BP_BattleRoyalTrainingGameMode_C";
             }
-            
-            if (modo === 'WAR_MODE') 
+            else if (mode === "BATTLE_ROYALE_FOREST")
             {
-                imagem.style.backgroundImage = "url('war.jpg')";
+                gamemodeString =
+                    "/Game/BluePrints/Core/Forest/BP_BattleRoyaleGameMode_PUBG.BP_BattleRoyaleGameMode_PUBG_C";
             }
-            
-            if (modo === 'ESPORTS_MODE') 
+            else if (mode === "BATTLE_ROYALE_DESERT")
             {
-                imagem.style.backgroundImage = "url('esports.jpg')";
+                gamemodeString =
+                    "/Game/BluePrints/Core/Desert/BP_BattleRoyaleGameMode_Desert_1.BP_BattleRoyaleGameMode_Desert_1_C";
             }
 
-            const boxAtivo = Array.from(boxes).find(b => b.textContent.toLowerCase().includes(modo));
-            if (boxAtivo) boxAtivo.classList.add('ativo');
-        }*/
+            customMatchMode = mode;
+
+            // remove active de todos
+            var boxes = document.querySelectorAll('.modo-box');
+            for (var i = 0; i < boxes.length; i++)
+            {
+                boxes[i].classList.remove('active');
+            }
+
+            // ativa o clicado
+            el.classList.add('active');
+        }
 
 
 
@@ -825,10 +799,15 @@ window.onload = function()
         }
 
 
+        var playerLimit;
+
         // Player Limit in Custom Match > Create
 
         function atualizaPlayers(v) 
         {
+
+            playerLimit = v;
+
             document.getElementById('valorPlayers').textContent = v;
         }
 
@@ -947,10 +926,13 @@ window.onload = function()
                 return;
             }
 
-            var ipAddress = serverMap + "?listen";  // montar string no formato esperado
-            //var ipAddress = serverMap + "?listen?game=/Game/BluePrints/Core/BP_BattleRoyalTrainingGameMode.BP_BattleRoyalTrainingGameMode_C";  // montar string no formato esperado
 
-            engine.trigger('JoinToDedicatedServer', ipAddress, "");
+
+            var ipAddress = serverMap + "?PlayerName=Host_Server?listen?MaxPlayers=" + playerLimit + "?game=" + gamemodeString;  // montar string no formato esperado
+            //var ipAddress = serverMap + "?PlayerName=Host_Server?listen?game=/Game/BluePrints/Core/BP_BattleRoyalTrainingGameMode.BP_BattleRoyalTrainingGameMode_C";  // training
+			//var ipAddress = serverMap + "?listen?game=/Game/BluePrints/Core/BP_BattleRoyaleGameMode_PUBG.BP_BattleRoyaleGameMode_PUBG_C"; // battleroyale
+            
+			engine.trigger('JoinToDedicatedServer', ipAddress, "");
             debug("It looks like the map didn't load: " + serverMap);
         }
 
@@ -1160,5 +1142,4 @@ window.onload = function()
 
 
         
-
 
