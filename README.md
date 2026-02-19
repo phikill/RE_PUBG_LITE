@@ -10,7 +10,7 @@ v <strike>1.4.2.423 </strike>
 
  #### I recently got the game's vehicles working and helped with the automatic landing fix.  
 
-### Progress 0.4% 
+### Progress 0.7% 
 
 
 
