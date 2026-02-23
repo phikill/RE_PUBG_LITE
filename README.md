@@ -1,4 +1,4 @@
-
+[![discord](https://shields.io/discord/1334106568253509692?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/E5vXyRd4ks)
 
 
 v <strike>1.4.2.423 </strike>  
