@@ -103,34 +103,49 @@ some tools that I use to modify the game
 
 name of the tools so I don't forget  
 
+
+ ### *navigate through the game's resources.*  
+
 .PAK files exploring [PUBG Lite Explorer by Warranty Voider](https://github.com/zeroKilo/PUBGLiteExplorerWV)  
-UMODEL 
+[UMODEL](https://www.gildor.org/en/projects/umodel)   
+[FModel](https://fmodel.app/)   
+[UAssetGUI](https://github.com/atenfyr/UAssetGUI)  
+[UnrealLocres](https://github.com/Snoozeds/UnrealLocresEditor)  
+
+
+### *Network manipulation and Backend*
+
+Wireshark 
+EchoMirage
+[FakeNet](https://github.com/fireeye/flare-fakenet-ng/releases)  
+Cain & Abel
+Postman
+
+
+
 
 depends22_x64  
-FModel  
+  
 JWlink  
-SmartSteamEmu143  
 uasm256_x86  
 umodel_win32  
 CheatEngine  
 node.js  
-UAssetGUI  
-UnrealLocres  
-Wireshark  
+  
+
+ 
 Xenos_2.3.2  
 Ghidra  
-7zip  
 xvolkolak  
-ForceToolKit  
-SublimeText  
+ForceToolKit   
 RegShot  
 winapiexec64  
 QuickUnpack 4.3  
 Process Explorer  
 Detect It Easy DIE  
 OpenHashTab  
-EchoMirage  
-[FakeNet](https://github.com/fireeye/flare-fakenet-ng/releases)  
+  
+
 Nmap  
 HXD  
 ImHex  
@@ -143,8 +158,8 @@ X64DBG
 CyberChef  
 XOpcodeCalc  
 Hollows_Hunter  
-Cain & Abel  
-Postman  
+  
+  
   
 
 
