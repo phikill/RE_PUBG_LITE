@@ -21,6 +21,38 @@ And also to have control over the game, I want to do funny things.
 In short, the game is working but needs several things fixed to make it stable and functional.  
 
 
+## NOTE! Current issues - that have not yet been repaired
+
+### As a side Note, the issue with items dropping on the ground wasn't fixed until version 0.7.0.1, because other versions are packed.   
+
+#### Vehicles
+ - [x] Being able to drive  - Fix by ```PHIKILL```
+ - [x] character positioned correctly in the seats  - Fix by ```PHIKILL```
+ - [ ] to be able to get out of the vehicle  
+ - [ ] correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  
+
+#### Character 
+ - [ ] When aiming with ADS, the animation should be correct.  
+ - [ ] When looking around, the server replicates the character rotation according to the yaw while it is stationary.  
+ - [x] receive and give damage - *needs to improve*  - Fix By ```H4tiux```
+ - [x] successfully landing - *needs to improve* - Fix By ```JerryPrimeDev``` and ```PHIKILL```  
+ - [ ] Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped.
+
+#### World
+ - [ ] Relevance correction based on distance from the camera's ```viewTarget```. - This problem causes physics-based actors to fall when they are far from the host's camera.  
+ - [ ] DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.  
+ - [ ] Item spawning on maps  
+ - [ ] Vehicle spawning on maps  
+
+
+#### Weapons
+ - [ ] Replicate gunshots, including impact, decals, effects, and damage.  
+ - [x] reloading weapons in newer versions - Fix By ```H4tiux```
+ - [ ] The Grenades timings has been corrected to 5 seconds instead of 2.5.  
+
+### Other issues in newer versions were fixed by H4tiux, such as the camera in the battle royale plane, getting out of the plane, crash problems, and others.
+
+
 ## Game Lobby 
 
 ### Lobby Code : -> [ogbg_lobby](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_lobby)  
@@ -115,49 +147,70 @@ name of the tools so I don't forget
 
 ### *Network manipulation and Backend*
 
-Wireshark  
-EchoMirage  
+[Wireshark](https://www.wireshark.org/) 
+[EchoMirage](https://sourceforge.net/projects/echomirage.oldbutgold.p/)  
 [FakeNet](https://github.com/fireeye/flare-fakenet-ng/releases)  
-Cain & Abel  
-Postman  
+[Cain & Abel](https://sectools.org/tool/cain/)   
+[Postman](https://www.postman.com/)   
+[node.js](https://nodejs.org/)   
+[Nmap](https://nmap.org/)   
 
 
+### *Direct Modification to the binary*
 
+QuickUnpack 4.3  
+[xvolkolak Unpacker](https://n10info.blogspot.com/2018/03/xvolkolak-010.html)    
+[Detect It Easy DIE](https://github.com/horsicq/Detect-It-Easy)    
+[HXD](https://mh-nexus.de/en/hxd/)    
+[ImHex](https://imhex.werwolv.net/)    
 
-depends22_x64  
+##### Launcher Binaries and C# things
+[dnSpy](https://dnspy.org/)    
+[ILSpy](https://ilspy.org/)    
+
+### *Manipulating values ​​in memory*
+
+[CheatEngine](https://www.cheatengine.org/)  
+
+### *Unreal Engine Dumpers, and others*  
+
+[Dumper-7](https://github.com/Encryqed/Dumper-7)   
+[UE4-Function-Address-Finder](https://github.com/patrickBakin/UE4-Function-Address-Finder)   
+[Unreal Engine Uasset Viewer/Editor](https://github.com/kaiheilos/Utilities)  
+[Kismet Analyzer](https://github.com/trumank/kismet-analyzer)  
+
+### *Analyze system calls and usage of the Win32 API, among other things.*
+
+[depends22_x64](https://www.dependencywalker.com/)    
+[winapiexec64](https://ramensoftware.com/winapiexec)    
+[Xenos_2.3.2](https://github.com/DarthTon/Xenos/releases)    
+[X64DBG](https://x64dbg.com/)  
+[Ghidra](https://github.com/NationalSecurityAgency/ghidra)     
+[Error Lookup](https://github.com/henrypp/errorlookup)    
+[FileGrab](https://sourceforge.net/projects/filegrab/)    
+[ForceToolKit](https://autoclose.net/forcetoolkit.html)    
+[RegShot](https://sourceforge.net/projects/regshot/)     
+[Process Explorer](https://www.majorgeeks.com/files/details/microsoft_process_explorer.html)   
+[OpenHashTab](https://github.com/namazso/OpenHashTab)    
+
+[JWlink](https://github.com/JWasm/JWlink)    
+[UASM](https://github.com/Terraspace/UASM)   
+
   
-JWlink  
-uasm256_x86  
-umodel_win32  
-CheatEngine  
-node.js  
+
+### *other utilities*
+  
+[CyberChef](https://gchq.github.io/CyberChef/)    
+[XOpcodeCalc](https://github.com/horsicq/XOpcodeCalc)  
+[Hollows_Hunter](https://github.com/hasherezade/hollows_hunter)  
+ 
+   
+  
+
+
   
 
  
-Xenos_2.3.2  
-Ghidra  
-xvolkolak  
-ForceToolKit   
-RegShot  
-winapiexec64  
-QuickUnpack 4.3  
-Process Explorer  
-Detect It Easy DIE  
-OpenHashTab  
-  
-
-Nmap  
-HXD  
-ImHex  
-FileGrab  
-Error Lookup  
-dnSpyEx64  
-ILSpy  
-Delphi IDR  
-X64DBG  
-CyberChef  
-XOpcodeCalc  
-Hollows_Hunter  
   
   
   
