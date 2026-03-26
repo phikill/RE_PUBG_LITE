@@ -109,31 +109,35 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
  and the same code working on linux  
 <img src="web_help_files/lpc_launcher_linux.png" alt="launcher_linux" width="600">
 
+
+
+
+
 ## Server Panel
 
 I created this Server Panel to remotely control the server from a browser, view its status, and more.  
 
 More implementations and bug fixes will follow in the future.  
 
-<img src="web_help_files/server_panel.png" alt="server_panel" width="600">  
+<img src="web_help_files/server_panel.png" alt="server_panel" width="1000">  
 
 #### You can switch maps and gamemode blueprints.   
-<img src="web_help_files/server_panel_change_map.png" alt="server_panel_map_change" width="600">  
+<img src="web_help_files/server_panel_change_map.png" alt="server_panel_map_change" width="1000">  
 
 #### The players' positions will be represented on the 2D map.   
 
-<img src="web_help_files/server_panel_game_compare.png" alt="server_panel_position_comparision" width="600">  
+<img src="web_help_files/server_panel_game_compare.png" alt="server_panel_position_comparision" width="1000">  
 
 #### You can call Unreal console commands from the page; there are some tick issues at the moment, but I'll fix that later.   
-<img src="web_help_files/server_panel_unreal_console.png" alt="server_panel_console" width="600">  
+<img src="web_help_files/server_panel_unreal_console.png" alt="server_panel_console" width="1000">  
 
 
 #### You can spawn vehicles from the page; there are some tick issues at the moment, but I'll fix that later.
-<img src="web_help_files/server_panel_vehicle_spawn.png" alt="server_panel_vehicle_spawn" width="600">  
+<img src="web_help_files/server_panel_vehicle_spawn.png" alt="server_panel_vehicle_spawn" width="1000">  
 
 
 #### You can kick any players you want out of the match.
-<img src="web_help_files/server_panel_kick_player.png" alt="server_panel_kick_player" width="600"> 
+<img src="web_help_files/server_panel_kick_player.png" alt="server_panel_kick_player" width="1000"> 
 
 
 # ⬇️ Download Section <- Game Backups  
