@@ -1,3 +1,0 @@
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherIpcManaged\LauncherIpcManaged\obj\Debug\net452\LauncherIpcManaged.csproj.AssemblyReference.cache
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherIpcManaged\LauncherIpcManaged\obj\Debug\net452\LauncherIpcManaged.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherIpcManaged\LauncherIpcManaged\obj\Debug\net452\LauncherIpcManaged.csproj.CoreCompileInputs.cache
