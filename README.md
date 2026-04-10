@@ -9,3 +9,11 @@ You can join our *Discord* server by clicking the button above.
 PUBG LITE game reverse engineering, for educational purposes.  
 
 
+It's a bit broken for now, but the main elements are:  
+
+such as changing maps, observing the position of players on the map, and calling console commands.  
+
+The car spawn can crash your server if called outside of the designated time, so don't even try to use it.  
+
+
+including unreal commands for spawning things   
