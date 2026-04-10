@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OGBG - Server Panel</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #eee;
+        }
+        #layout {
+            display: flex;
+            height: 100vh;
+        }
+        #sidebar {
+            width: 300px;
+            background: #1a1a1a;
+            border-right: 1px solid #333;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        #mapHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        #mapName {
+            font-size: 20px;
+        }
+        #changeMapBtn {
+            background: #333;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        #changeMapBtn:hover {
+            background: #444;
+            border-color: #ffd400;
+            color: #ffd400;
+        }
+        #playerList {
+            height: 80%;
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 10px;
+        }
+        #main {
+            flex: 1;
+            position: relative;
+        }
+        #mapCanvas {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            pointer-events: none;
+        }
+        
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #ffd400;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .modal-close:hover {
+            background: #333;
+            color: #fff;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            background: #222;
+            border: 1px solid #333;
+            color: #eee;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .form-group select:hover {
+            border-color: #ffd400;
+        }
+        
+        .form-group select:focus {
+            outline: none;
+            border-color: #ffd400;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .modal-btn {
+            padding: 8px 16px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .modal-btn-primary {
+            background: #ffd400;
+            color: #000;
+            border-color: #ffd400;
+        }
+        
+        .modal-btn-primary:hover {
+            background: #ffdb33;
+        }
+        
+        .modal-btn-secondary {
+            background: #333;
+            color: #eee;
+        }
+        
+        .modal-btn-secondary:hover {
+            background: #444;
+        }
+
+        /* PLAYER ROW */
+        .player-row {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:6px 4px;
+            border-bottom:1px solid #222;
+        }
+
+        .player-options-btn {
+            background:#333;
+            color:#eee;
+            border:1px solid #555;
+            border-radius:4px;
+            padding:2px 8px;
+            cursor:pointer;
+        }
+
+        /* ===== TOPBAR ===== */
+        #topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #151515;
+            border-bottom: 1px solid #333;
+            display: flex;
+            z-index: 2000;
+        }
+
+        /* mesma largura da sidebar */
+        #topbar-left {
+            width: 300px;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            border-right: 1px solid #333;
+        }
+
+        #companyLogo {
+            height: 40px;
+        }
+
+        /* área de botões */
+        #topbar-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 15px;
+        }
+
+        .tool-btn {
+            background: #222;
+            color: #eee;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .tool-btn:hover {
+            border-color: #ffd400;
+            color: #ffd400;
+        }
+
+        /* empurra layout para baixo da toolbar */
+        #layout {
+            margin-top: 60px;
+        }
+
+        /* ===== CONSOLE ===== */
+        #consoleLog {
+            height: 250px;
+            background: #000;
+            border: 1px solid #333;
+            padding: 10px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        #consoleInput {
+            background: #222;
+            border: 1px solid #333;
+            color: #eee;
+            padding: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOP TOOLBAR ===== -->
+    <div id="topbar">
+        <div id="topbar-left">
+            <img src="ui/ogbg/ogbg_logo.webp" id="companyLogo">
+        </div>
+
+        <div id="topbar-right">
+            <button class="tool-btn" id="openConsoleBtn">🖥 Console </button>
+
+            <button class="tool-btn" id="openSpawnSection">
+                <img src="ui/team_playerstatus_vehicle.png" alt="" class="btn-icon" style="width: 14px; height: 14px;">
+                <span>SpawnVehicle</span>
+            </button>
+
+
+            <!--
+            <button class="tool-btn">
+                ⚙ Settings
+            </button>
+            -->
+        </div>
+    </div>
+    <div id="layout">
+        <div id="sidebar">
+            <div id="mapHeader">
+                <div id="mapName">Map: ...</div>
+                <button id="changeMapBtn">Change Map</button>
+            </div>
+            <div>Players: <span id="playerCount">0</span></div>
+            <hr>
+            <div id="playerList"></div>
+        </div>
+        <div id="main">
+            <canvas id="mapCanvas"></canvas>
+        </div>
+    </div>
+
+    <!-- Modal para seleção de mapa (inicialmente oculto) -->
+    <div id="mapModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change Map</h2>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="mapSelect">Map:</label>
+                    <select id="mapSelect">
+                        <option value="PUBG_Desert">Miramar</option>
+                        <option value="PUBG_Forest">Erangel</option>
+                        <option value="shooting_range4">Training Ground</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gameModeSelect">Game Mode:</label>
+                    <select id="gameModeSelect">
+                        <option value="">Default</option>
+                        <option value="/Game/BluePrints/Core/PcLite/BP_BattleRoyalTrainingGameModePC.BP_BattleRoyalTrainingGameModePC_C">Training FeMale</option>
+                        <option value="/Game/BluePrints/Core/BP_BattleRoyalTrainingGameMode.BP_BattleRoyalTrainingGameMode_C">Training Male</option>
+                        <option value="/Game/BluePrints/Core/Forest/BP_BattleRoyaleGameMode_PUBG.BP_BattleRoyaleGameMode_PUBG_C">Battle Royale Forest</option>
+                        <option value="/Game/BluePrints/Core/Desert/BP_BattleRoyaleGameMode_Desert_1.BP_BattleRoyaleGameMode_Desert_1_C">Battle Royale Desert</option>
+                    </select>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="modal-btn modal-btn-secondary" id="cancelModalBtn">Cancel</button>
+                    <button class="modal-btn modal-btn-primary" id="applyMapBtn">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLAYER MODAL -->
+    <div id="playerModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div id="playerModalTitle">Player</div>
+                <button id="closePlayerModal">X</button>
+            </div>
+            <div class="modal-body">
+                <button class="modal-btn modal-btn-primary" id="kickPlayerBtn"> Kick Player </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SERVER CONSOLE ===== -->
+    <div id="consoleModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content" style="width:700px;">
+            <div class="modal-header">
+                <h2>Server Console</h2>
+                <button class="modal-close" id="closeConsoleBtn">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div id="consoleLog"></div>
+
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <input id="consoleInput" placeholder="type the Unreal Engine command :" style="flex:1;">
+                    <button class="modal-btn modal-btn-primary" id="sendConsoleCmd">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SPAWN VEHICLE PANEL ===== -->
+    <div id="spawnModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content" style="width:800px;">
+
+            <div class="modal-header">
+                <h2>Spawn Vehicle</h2>
+                <button class="modal-close" id="closeSpawnBtn">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <!-- preview -->
+                <div style="text-align:center; margin-bottom:20px;">
+                    <img id="spawnPreview"
+                         src="ui/vehicles/default.png"
+                         style="width:300px; height:180px; object-fit:contain; border:1px solid #333;">
+                </div>
+
+                <!-- lista -->
+                <div id="vehicleList"
+                     style="height:150px; overflow-y:auto; border:1px solid #333; padding:8px;">
+                </div>
+
+                <!-- spawn options -->
+                <div style="margin-top:15px;">
+                    <label>Spawn Mode</label>
+
+                    <div style="display:flex; gap:10px; margin-top:8px; flex-wrap:wrap;">
+                        <button class="modal-btn modal-btn-primary" id="spawnBasicBtn">Basic Spawn</button>
+                        <button class="modal-btn modal-btn-secondary" id="spawnLocationBtn">Spawn at XYZ</button>
+                        <button class="modal-btn modal-btn-secondary" id="spawnPlayerBtn">Spawn Near Player</button>
+                    </div>
+                </div>
+
+                <!-- xyz -->
+                <div style="margin-top:15px; display:flex; gap:10px;">
+                    <input id="spawnX" placeholder="X" style="flex:1; background:#222; border:1px solid #333; color:#eee;">
+                    <input id="spawnY" placeholder="Y" style="flex:1; background:#222; border:1px solid #333; color:#eee;">
+                    <input id="spawnZ" placeholder="Z" style="flex:1; background:#222; border:1px solid #333; color:#eee;">
+                </div>
+
+                <!-- player select -->
+                <div style="margin-top:15px;">
+                    <select id="spawnPlayerSelect"
+                            style="width:100%; background:#222; border:1px solid #333; color:#eee;">
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ws = new WebSocket("ws://127.0.0.1:8080/ws");
+        const mapNameEl = document.getElementById("mapName");
+        const playerCountEl = document.getElementById("playerCount");
+        const playerListEl = document.getElementById("playerList");
+        const canvas = document.getElementById("mapCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        // Elementos do modal
+        const mapModal = document.getElementById("mapModal");
+        const changeMapBtn = document.getElementById("changeMapBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+        const cancelModalBtn = document.getElementById("cancelModalBtn");
+        const applyMapBtn = document.getElementById("applyMapBtn");
+        const mapSelect = document.getElementById("mapSelect");
+        const gameModeSelect = document.getElementById("gameModeSelect");
+        
+        const playerModal = document.getElementById("playerModal");
+        const closePlayerModal = document.getElementById("closePlayerModal");
+        const kickPlayerBtn = document.getElementById("kickPlayerBtn");
+        const playerModalTitle = document.getElementById("playerModalTitle");
+
+        let mapDrawRect = {x:0,y:0,w:0,h:0};
+
+        let selectedPlayer = null;
+        let currentPlayers = [];
+
+        /* ===== CONSOLE ===== */
+
+        const consoleModal = document.getElementById("consoleModal");
+        const openConsoleBtn = document.getElementById("openConsoleBtn");
+        const closeConsoleBtn = document.getElementById("closeConsoleBtn");
+        const consoleInput = document.getElementById("consoleInput");
+        const consoleLog = document.getElementById("consoleLog");
+        const sendConsoleCmd = document.getElementById("sendConsoleCmd");
+
+        openConsoleBtn.onclick = () => consoleModal.style.display = "flex";
+        closeConsoleBtn.onclick = () => consoleModal.style.display = "none";
+        consoleModal.onclick = e => { if(e.target===consoleModal) consoleModal.style.display="none"; };
+
+        function logConsole(text, color="#0f0")
+        {
+            const line = document.createElement("div");
+            line.textContent = text;
+            line.style.color = color;
+            consoleLog.appendChild(line);
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+        }
+
+        function sendConsoleCommand()
+        {
+            const cmd = consoleInput.value.trim();
+            if(!cmd) return;
+
+            logConsole("> " + cmd, "#ffd400");
+
+            ws.send(JSON.stringify({
+                type: "server_console",
+                command: cmd
+            }));
+
+            consoleInput.value = "";
+        }
+
+        sendConsoleCmd.onclick = sendConsoleCommand;
+
+        consoleInput.addEventListener("keydown", e => {
+            if(e.key === "Enter") sendConsoleCommand();
+        });
+
+
+        /* ===== VEHICLE DATABASE ===== */
+
+        const VEHICLES = [
+            {
+                name: "Dacia blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Dacia/VH_DAcia.VH_DAcia_C",
+                image: "ui/vehicles/VH_DAcia.png"
+            },
+            {
+                name: "Dacia Orange",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Dacia/VH_Dacia_2.VH_Dacia_2_C",
+                image: "ui/vehicles/VH_Dacia_2.png"
+            },
+            {
+                name: "Dacia Gray",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Dacia/VH_Dacia_3.VH_Dacia_3_C",
+                image: "ui/vehicles/VH_Dacia_3.png"
+            },
+            {
+                name: "Dacia Yellow",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Dacia/VH_Dacia_4.VH_Dacia_4_C",
+                image: "ui/vehicles/VH_Dacia_4.png"
+            },
+            {
+                name: "Buggy Black",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/VH_Buggy/BP_VH_Buggy.BP_VH_Buggy_C",
+                image: "ui/vehicles/BP_VH_Buggy.png"
+            },
+            {
+                name: "Buggy Yellow",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/VH_Buggy/BP_VH_Buggy_2.BP_VH_Buggy_2_C",
+                image: "ui/vehicles/BP_VH_Buggy_2.png"
+            },
+            {
+                name: "Buggy Camouflage Desert",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/VH_Buggy/BP_VH_Buggy_3.BP_VH_Buggy_3_C",
+                image: "ui/vehicles/BP_VH_Buggy_3.png"
+            },
+            {
+                name: "Buggy Red",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/VH_Buggy/BP_VH_Buggy_4.BP_VH_Buggy_4_C",
+                image: "ui/vehicles/BP_VH_Buggy_4.png"
+            },
+            {
+                name: "Buggy Camouflage Forest",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/VH_Buggy/BP_VH_Buggy_5.BP_VH_Buggy_5_C",
+                image: "ui/vehicles/BP_VH_Buggy_5.png"
+            },
+            {
+                name: "Buggy Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/VH_Buggy/BP_VH_Buggy_6.BP_VH_Buggy_6_C",
+                image: "ui/vehicles/BP_VH_Buggy_6.png"
+            },
+            {
+                name: "UAZ Close",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/UAZ01/VH_UAZ01.VH_UAZ01_C",
+                image: "ui/vehicles/VH_UAZ01.png"
+            },
+            {
+                name: "UAZ Leather Close",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/UAZ01/VH_UAZ02.VH_UAZ02_C",
+                image: "ui/vehicles/VH_UAZ02.png"
+            },
+            {
+                name: "UAZ Open",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/UAZ01/VH_UAZ03.VH_UAZ03_C",
+                image: "ui/vehicles/VH_UAZ03.png"
+            },
+            {
+                name: "UAZ Armored",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/UAZ01/VH_UAZ04.VH_UAZ04_C",
+                image: "ui/vehicles/VH_UAZ04.png"
+            },
+            {
+                name: "Pickup Open Black",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_01.PickUp_01_C",
+                image: "ui/vehicles/PickUp_01.png"
+            },
+            {
+                name: "Pickup Open Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_02.PickUp_02_C",
+                image: "ui/vehicles/PickUp_02.png"
+            },
+            {
+                name: "Pickup Open Green",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_03.PickUp_03_C",
+                image: "ui/vehicles/PickUp_03.png"
+            },
+            {
+                name: "Pickup Open Red",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_04.PickUp_04_C",
+                image: "ui/vehicles/PickUp_04.png"
+            },
+            {
+                name: "Pickup Open Brown",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_05.PickUp_05_C",
+                image: "ui/vehicles/PickUp_05.png"
+            },
+            {
+                name: "Pickup Close Black",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_06.PickUp_06_C",
+                image: "ui/vehicles/PickUp_06.png"
+            },
+            {
+                name: "Pickup Close Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_07.PickUp_07_C",
+                image: "ui/vehicles/PickUp_07.png"
+            },
+            {
+                name: "Pickup Close Green",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_08.PickUp_08_C",
+                image: "ui/vehicles/PickUp_08.png"
+            },
+            {
+                name: "Pickup Close Red",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_09.PickUp_09_C",
+                image: "ui/vehicles/PickUp_09.png"
+            },
+            {
+                name: "Pickup Close Brown",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Pickup/PickUp_10.PickUp_10_C",
+                image: "ui/vehicles/PickUp_10.png"
+            },
+            {
+                name: "MiniBus Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/MiniBus/VH_MiniBus_01.VH_MiniBus_01_C",
+                image: "ui/vehicles/VH_MiniBus_01.png"
+            },
+            {
+                name: "Minibus Green",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/MiniBus/VH_MiniBus_02.VH_MiniBus_02_C",
+                image: "ui/vehicles/VH_MiniBus_02.png"
+            },
+            {
+                name: "Minibus Red",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/MiniBus/VH_MiniBus_03.VH_MiniBus_03_C",
+                image: "ui/vehicles/VH_MiniBus_03.png"
+            },
+            {
+                name: "Motorcycle",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Motorcycle/VH_Motorcycle.VH_Motorcycle_C",
+                image: "ui/vehicles/img-vehicles-motorbike.webp"
+            },
+            {
+                name: "Motorcycle Brown",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Motorcycle/VH_Motorcycle_1.VH_Motorcycle_1_C",
+                image: "ui/vehicles/img-vehicles-motorbike.webp"
+            },
+            {
+                name: "Motorcycle SideCart",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/MotorcycleCart/VH_MotorcycleCart.VH_MotorcycleCart_C",
+                image: "ui/vehicles/sidecar-motorbike.webp"
+            },
+            {
+                name: "Motorcycle SideCart Brown",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/MotorcycleCart/VH_MotorcycleCart_1.VH_MotorcycleCart_1_C",
+                image: "ui/vehicles/sidecar-motorbike.webp"
+            },
+            {
+                name: "Aquarail Jetski",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/AquaRail/AquaRail_1.AquaRail_1_C",
+                image: "ui/vehicles/img-vehicles-jetski.webp"
+            },
+            {
+                name: "PG117 Boat",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/PG117/VH_PG117.VH_PG117_C",
+                image: "ui/vehicles/img-vehicles-boat.webp"
+            },
+            {
+                name: "TukTukTuk",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/TukTukTuk/BP_VH_Tuk_1.BP_VH_Tuk_1_C",
+                image: "ui/vehicles/img-vehicles-tukshai.webp"
+            },
+            {
+                name: "Scooter Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Scooter/VH_Scooter.VH_Scooter_C",
+                image: "ui/vehicles/img-vehicles-scooter.webp"
+            },
+            {
+                name: "Scooter Brown",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Scooter/VH_Scooter2.VH_Scooter2_C",
+                image: "ui/vehicles/img-vehicles-scooter.webp"
+            },
+            {
+                name: "Scooter Red",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Scooter/VH_Scooter3.VH_Scooter3_C",
+                image: "ui/vehicles/img-vehicles-scooter.webp"
+            },
+            {
+                name: "Scooter Black",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Scooter/VH_Scooter4.VH_Scooter4_C",
+                image: "ui/vehicles/img-vehicles-scooter.webp"
+            },
+            {
+                name: "Mirado Close Brown",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_close_1.Mirado_close_1_C",
+                image: "ui/vehicles/mirado_close.webp"
+            },
+            {
+                name: "Mirado Close Black",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_close_2.Mirado_close_2_C",
+                image: "ui/vehicles/mirado_close.webp"
+            },
+            {
+                name: "Mirado Close Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_close_3.Mirado_close_3_C",
+                image: "ui/vehicles/mirado_close.webp"
+            },
+            {
+                name: "Mirado Close Red",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_close_4.Mirado_close_4_C",
+                image: "ui/vehicles/mirado_close.webp"
+            },
+            {
+                name: "Mirado Open Brown",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_open_1.Mirado_open_1_C",
+                image: "ui/vehicles/mirado_open.webp"
+            },
+            {
+                name: "Mirado Open Black",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_open_2.Mirado_open_2_C",
+                image: "ui/vehicles/mirado_open.webp"
+            },
+            {
+                name: "Mirado Open Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_open_3.Mirado_open_3_C",
+                image: "ui/vehicles/mirado_open.webp"
+            },
+            {
+                name: "Mirado Open Red",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Mirado/Mirado_open_4.Mirado_open_4_C",
+                image: "ui/vehicles/mirado_open.webp"
+            },
+            {
+                name: "Rony White",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Rony/Rony_01.Rony_01_C",
+                image: "ui/vehicles/Vehicle_Rony.webp"
+            },
+            {
+                name: "Rony Blue",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Rony/Rony_2.Rony_2_C",
+                image: "ui/vehicles/Vehicle_Rony.webp"
+            },
+            {
+                name: "Rony Green",
+                class: "/Game/Arts_PlayerBluePrints/Vehicle/Rony/Rony_3.Rony_3_C",
+                image: "ui/vehicles/Vehicle_Rony.webp"
+            },
+        ];
+
+        let selectedVehicle = VEHICLES[0];
+
+
+        const spawnModal = document.getElementById("spawnModal");
+        const openSpawnBtn = document.getElementById("openSpawnSection");
+        const closeSpawnBtn = document.getElementById("closeSpawnBtn");
+        const spawnPreview = document.getElementById("spawnPreview");
+        const vehicleList = document.getElementById("vehicleList");
+        const spawnPlayerSelect = document.getElementById("spawnPlayerSelect");
+
+        openSpawnBtn.onclick = () => {
+            spawnModal.style.display = "flex";
+            refreshVehicleList();
+            refreshPlayerSelect();
+        };
+
+        closeSpawnBtn.onclick = () => spawnModal.style.display = "none";
+        spawnModal.onclick = e => { if(e.target === spawnModal) spawnModal.style.display="none"; };
+
+        function refreshVehicleList()
+        {
+            vehicleList.innerHTML = "";
+
+            VEHICLES.forEach(v => {
+                const row = document.createElement("div");
+                row.textContent = v.name;
+                row.style.padding = "6px";
+                row.style.cursor = "pointer";
+
+                row.onclick = () => {
+                    selectedVehicle = v;
+                    spawnPreview.src = v.image;
+                };
+
+                vehicleList.appendChild(row);
+            });
+
+            spawnPreview.src = selectedVehicle.image;
+        }
+
+        function refreshPlayerSelect()
+        {
+            spawnPlayerSelect.innerHTML = "";
+
+            currentPlayers.forEach(p => {
+                const opt = document.createElement("option");
+                opt.value = p.name;
+                opt.textContent = p.name;
+                spawnPlayerSelect.appendChild(opt);
+            });
+        }
+
+        function sendSpawnCommand(command)
+        {
+            ws.send(JSON.stringify({
+                type: "server_console",
+                command: command
+            }));
+
+            logConsole("> " + command, "#ffd400");
+        }
+
+        document.getElementById("spawnBasicBtn").onclick = () => 
+        {
+            sendSpawnCommand("LocalSpawnVehicle " + selectedVehicle.class);
+        };
+
+        document.getElementById("spawnLocationBtn").onclick = () => 
+        {
+
+            const x = document.getElementById("spawnX").value || 0;
+            const y = document.getElementById("spawnY").value || 0;
+            const z = document.getElementById("spawnZ").value || 0;
+
+            const cmd = selectedVehicle.class + " " + x + " " + y + " " + z;
+            //sendSpawnCommand(cmd);
+        };
+
+        document.getElementById("spawnPlayerBtn").onclick = () => 
+        {
+
+            const player = spawnPlayerSelect.value;
+            if(!player) return;
+
+            const cmd = selectedVehicle.class + " player " + player;
+            sendSpawnCommand(cmd);
+        };
+
+
+        // MAP MAP MAP MAP MAP MAP
+
+        // Funções para controlar o modal
+        function openModal() 
+        {
+            mapModal.style.display = "flex";
+            // Pre-select current map in dropdown
+            if (currentMapName) 
+            {
+                mapSelect.value = currentMapName;
+            }
+        }
+        
+        function closeModal() 
+        {
+            mapModal.style.display = "none";
+        }
+        
+        // Event listeners para o modal
+        changeMapBtn.addEventListener("click", openModal);
+        closeModalBtn.addEventListener("click", closeModal);
+        cancelModalBtn.addEventListener("click", closeModal);
+        
+        // Fechar modal ao clicar fora
+        mapModal.addEventListener("click", (event) => {
+            if (event.target === mapModal) 
+            {
+                closeModal();
+            }
+        });
+        
+        // Aplicar mudanças
+        applyMapBtn.addEventListener("click", () => {
+            const selectedMap = mapSelect.value;
+            const selectedMode = gameModeSelect.value;
+            
+            // Enviar comando para o servidor via WebSocket
+            if (ws.readyState === WebSocket.OPEN) 
+            {
+                ws.send(JSON.stringify({
+                    type: "change_map",
+                    map: selectedMap,
+                    gameMode: selectedMode
+                }));
+            }
+            
+            closeModal();
+        });
+
+        function resizeCanvas() 
+        {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+        }
+        
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        const playerFOV = new Image();
+        playerFOV.src = "ui/team04_mapplayer_FOV.png";
+
+        /* ícones de times */
+        const teamIcons = {};
+        const TEAM_NUMBER_ICON_FILES = {
+            "00": "ui/team_playericon_player00.png",
+            "01": "ui/team_playericon_player01.png",
+            "02": "ui/team_playericon_player02.png"
+        };
+
+        /* arquivos de minimap */
+        let currentMapImage = null;
+        let currentMapName = "";
+
+        const MAP_FILES = {
+            "PUBG_Desert": "ui/maps/Miramar_Minimap.png",
+            "PUBG_Forest": "ui/maps/Erangel_Minimap.png",
+            "shooting_range4": "ui/maps/Shooting_Range_Map.png"
+        };
+
+        /* limites do mundo para cada mapa */
+        const MAP_BOUNDS = {
+            "shooting_range4": { minX:-1488.88, minY:-1488.88, maxX:60461.13, maxY:60461.13 },
+            "PUBG_Desert": { minX:0.0, minY:0.0, maxX:804480.50, maxY:803926.75 },
+            "PUBG_Forest": { minX:0.0, minY:0.0, maxX:805665.81, maxY:805226.94 }
+        };
+
+        /* carrega imagem do mapa */
+        function loadMapImage(mapName) 
+        {
+            if (currentMapName === mapName) return;
+            currentMapName = mapName;
+            const path = MAP_FILES[mapName];
+            if (!path) 
+            {
+                currentMapImage = null;
+                return;
+            }
+            const img = new Image();
+            img.onload = () => {
+                currentMapImage = img;
+                drawPlayers(currentPlayers);
+            };
+            img.src = path;
+        }
+
+        /* carrega imagem do time on-the-fly */
+        function loadTeamIcon(teamId) {
+            if(teamIcons[teamId]) return; // já carregado
+            const path = TEAM_NUMBER_ICON_FILES[teamId];
+            if(!path) return;
+            const img = new Image();
+            img.onload = () => {
+                teamIcons[teamId] = img;
+                drawPlayers(currentPlayers);
+            };
+            img.onerror = () => console.error(`Erro ao carregar ícone do time ${teamId}`);
+            img.src = path;
+            teamIcons[teamId] = img; // coloca imediatamente para não reiniciar
+        }
+
+        /* converte posição do jogo → pixel do canvas */
+        function worldToMap(x, y) {
+            const b = MAP_BOUNDS[currentMapName];
+            if (!b) return { x:0, y:0 };
+            
+            const nx = (x - b.minX) / (b.maxX - b.minX);
+            const ny = (y - b.minY) / (b.maxY - b.minY);
+            
+            return { 
+                x: mapDrawRect.x + nx * mapDrawRect.w, 
+                y: mapDrawRect.y + ny * mapDrawRect.h 
+            };
+        }
+
+        /* desenha mapa mantendo proporção */
+        function drawMap() {
+            if (!currentMapImage) return;
+            
+            const img = currentMapImage;
+            const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+            const w = img.width * scale;
+            const h = img.height * scale;
+            const x = (canvas.width - w) / 2;
+            const y = (canvas.height - h) / 2;
+            
+            mapDrawRect = { x, y, w, h };
+            ctx.drawImage(img, x, y, w, h);
+        }
+
+        /* desenha a label do jogador com caixa + ícone + nome */
+        function drawPlayerLabel(ctx, x, y, name, teamId) {
+            const height = 20;
+            const badgeSize = height;
+            const gap = 8;
+            const paddingRight = 10;
+            
+            ctx.font = "13px Arial";
+            ctx.textBaseline = "middle";
+            const textWidth = ctx.measureText(name).width;
+            const width = badgeSize + gap + textWidth + paddingRight;
+            
+            const boxX = x - 10;
+            const boxY = y - 35;
+
+            // Caixa escura
+            ctx.fillStyle = "rgba(0,0,0,0.75)";
+            ctx.fillRect(boxX, boxY, width, height);
+
+            // Badge amarelo de fundo sempre visível
+            const badgeX = boxX;
+            const badgeY = boxY;
+            ctx.fillStyle = "#ffd400";
+            ctx.fillRect(badgeX, badgeY, badgeSize, badgeSize);
+
+            // Ícone do time
+            let icon = teamIcons[teamId];
+            if (!icon) loadTeamIcon(teamId);
+            if (icon && icon.complete) {
+                ctx.drawImage(icon, badgeX, badgeY, badgeSize, badgeSize);
+            }
+
+            // Nome
+            ctx.fillStyle = "#ffffff";
+            ctx.textAlign = "left";
+            ctx.fillText(name, badgeX + badgeSize + gap, boxY + height / 2);
+        }
+
+        /* desenha todos os jogadores */
+        function drawPlayers(players) {
+            currentPlayers = players; // guarda referência para redraw
+            
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            drawMap();
+
+            for (const p of players) {
+                const pos = worldToMap(p.x, p.y);
+                
+                /* bola amarela */
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 6, 0, Math.PI*2);
+                ctx.fillStyle = "#ffd400";
+                ctx.fill();
+
+                /* centro branco */
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 2, 0, Math.PI*2);
+                ctx.fillStyle = "#ffffff";
+                ctx.fill();
+
+                /* FOV */
+                if(playerFOV.complete) {
+                    ctx.save();
+                    ctx.translate(pos.x, pos.y);
+                    const angle = Number(p.yaw || 0) * Math.PI / 180;
+                    ctx.rotate(angle);
+                    const size = 150;
+                    ctx.drawImage(playerFOV, -size/2, -size/2, size, size);
+                    ctx.restore();
+                }
+
+                /* label com ícone */
+                drawPlayerLabel(ctx, pos.x, pos.y, p.name, p.teamId || "00");
+            }
+        }
+
+        /* lista de jogadores na sidebar *
+        function updatePlayerList(players) {
+            playerListEl.innerHTML = "";
+            for(const p of players) {
+                const div = document.createElement("div");
+                div.textContent = p.name;
+                playerListEl.appendChild(div);
+            }
+        }*/
+
+
+        playerListEl.addEventListener("click", (e) => {
+            const btn = e.target.closest(".player-options-btn");
+            if(!btn) return;
+
+            const index = Number(btn.dataset.index);
+            const player = currentPlayers[index];
+
+            if(!player) {
+                console.error("player não encontrado");
+                return;
+            }
+
+            openPlayerModal(player);
+        });
+
+        let lastPlayerListUpdate = 0;
+        const PLAYER_LIST_UPDATE_INTERVAL = 5000; // 3 segundos (ajuste aqui)
+
+
+        /* ===== PLAYER LIST ===== */
+        function updatePlayerList(players)
+        {
+            const now = performance.now();
+
+            if (now - lastPlayerListUpdate < PLAYER_LIST_UPDATE_INTERVAL)
+                return; // ignora atualização
+
+            lastPlayerListUpdate = now;
+
+            currentPlayers = players;
+            playerListEl.innerHTML = "";
+
+            players.forEach((p, index) => {
+                const row = document.createElement("div");
+                row.className = "player-row";
+
+                const name = document.createElement("div");
+                name.textContent = p.name;
+
+                const btn = document.createElement("button");
+                btn.className = "player-options-btn";
+                btn.textContent = "⋮";
+                btn.dataset.index = index;
+
+                row.appendChild(name);
+                row.appendChild(btn);
+                playerListEl.appendChild(row);
+            });
+        }
+
+        /* ===== PLAYER MODAL ===== */
+        function openPlayerModal(player)
+        {
+            if(!playerModal) {
+                console.error("playerModal não encontrado no DOM");
+                return;
+            }
+
+            selectedPlayer = player;
+            playerModalTitle.textContent = "Player: " + player.name;
+            playerModal.style.display = "flex";
+        }
+
+
+
+        closePlayerModal.onclick = () => playerModal.style.display="none";
+        playerModal.onclick = e => { if(e.target===playerModal) playerModal.style.display="none"; };
+
+        kickPlayerBtn.onclick = () => {
+            if(!selectedPlayer) return;
+
+            ws.send(JSON.stringify({
+                type:"kick_player",
+                playerId:selectedPlayer.id,
+                controller:selectedPlayer.controller,
+                name:selectedPlayer.name
+            }));
+
+            playerModal.style.display="none";
+        };
+
+
+        /* WebSocket */
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            
+            if(data.type === "snapshot") {
+                mapNameEl.textContent = "Map: " + data.map;
+                playerCountEl.textContent = data.players.length;
+                loadMapImage(data.map);
+                updatePlayerList(data.players);
+                drawPlayers(data.players);
+            }
+            
+            // Resposta do servidor para mudança de mapa
+            if(data.type === "map_changed") {
+                // Opcional: mostrar notificação de sucesso
+                console.log(`Map changed to ${data.map} with mode ${data.gameMode}`);
+            }
+        
+            if(data.type === "console_result")
+            {
+                logConsole(data.output || "OK", "#0f0");
+            }
+
+            if(data.type === "console_error")
+            {
+                logConsole(data.error || "ERROR", "#f33");
+            }
+        };
+
+        ws.onopen = () => console.log("connected");
+        ws.onclose = () => console.log("disconnected");
+    </script>
+</body>
+</html>
