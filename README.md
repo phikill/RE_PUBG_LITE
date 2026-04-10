@@ -28,8 +28,8 @@ In short, the game is working but needs several things fixed to make it stable a
 #### Vehicles
  - [x] Being able to drive  - Fix by ```PHIKILL```
  - [x] character positioned correctly in the seats  - Fix by ```PHIKILL```
- - [x] correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  
- - [x] to be able to get out of the vehicle  
+ - [x] correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  - Fix by ```PHIKILL```
+ - [x] to be able to get out of the vehicle  - Fix by ```PHIKILL```
    - NOTE! For now, the character is quite buggy when exiting the vehicle.
       The bugs are: character rotation and invalid activation of the underwater state.  
   
