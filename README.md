@@ -28,19 +28,23 @@ In short, the game is working but needs several things fixed to make it stable a
 #### Vehicles
  - [x] Being able to drive  - Fix by ```PHIKILL```
  - [x] character positioned correctly in the seats  - Fix by ```PHIKILL```
- - [ ] to be able to get out of the vehicle  
- - [ ] correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  
-
+ - [x] correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  
+ - [x] to be able to get out of the vehicle  
+   - NOTE! For now, the character is quite buggy when exiting the vehicle.
+      The bugs are: character rotation and invalid activation of the underwater state.  
+  
 #### Character 
  - [ ] When aiming with ADS, the animation should be correct.  
- - [ ] When looking around, the server replicates the character rotation according to the yaw while it is stationary.  
+ - [x] When looking around, the server replicates the character rotation according to the yaw while it is stationary.
+    - NOTE! I made a quick fix, so this conflicts with the **```ALT FreeCam```**, but it helps with the punching gameplay.
  - [x] receive and give damage - *needs to improve*  - Fix By ```H4tiux```
  - [x] successfully landing - *needs to improve* - Fix By ```JerryPrimeDev``` and ```PHIKILL```  
  - [ ] Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped.
 
 #### World
  - [ ] Relevance correction based on distance from the camera's ```viewTarget```. - This problem causes physics-based actors to fall when they are far from the host's camera.  
- - [ ] DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.  
+ - [ ] DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.
+    - NOTE! Partially fixed, it works on the host, but the door is not replicated to the clients.
  - [ ] Item spawning on maps  
  - [ ] Vehicle spawning on maps  
 
