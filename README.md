@@ -22,8 +22,7 @@ In short, the game is working but needs several things fixed to make it stable a
 
 
 ## NOTE! Current issues - that have not yet been repaired
-
-### As a side Note, the issue with items dropping on the ground wasn't fixed until version 0.7.0.1, because other versions are packed.   
+ 
 
 #### Vehicles
  - [x] Being able to drive  - Fix by ```PHIKILL```
