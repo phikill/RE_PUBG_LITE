@@ -109,11 +109,25 @@ You can ***create matches*** from the *lobby* in any version of the game except 
 
 ### STEPS TO PLAY
   (1). First, create a match as ***host*** 👑🌐🗔.  
-    - Make sure you have all the pre-configuration information, such as **server port** and the map's **gamemode blueprint**.  
+  - Make sure you have all the pre-configuration information, such as **server port** and the map's **gamemode blueprint**.  
   
   (2). You can join the match 🖥️🎮   
-    - from the lobby by entering the IP address in the ```join from IP Adress``` option. If you are on the same computer as the host, simply enter ```127.0.0.1```.  
+  - from the lobby by entering the IP address in the ```join from IP Adress``` option. If you are on the same computer as the host, simply enter ```127.0.0.1``` if everything is standard.
+  - If you're trying to connect using a different port or IP address, just try something like this.
 
+  on the page : ```CUSTOM MATCH/JOIN FROM IP ADRESS```  
+    (1) in case it's a different port : Example ```9999```  
+    - ```127.0.0.1:9999```  
+      
+  (2) In case it's a different IP address but with the standard port : ```7777```.  
+    -  ```192.168.15.15```    
+  
+  (3) in case the IP address and port are configured differently : Example ```4050```   
+    -  ```192.168.15.15:4050```    
+
+  (4) default local address, and default port   
+  - ```127.0.0.1:7777``` The address of the same computer that is being hosted and the default port defined by Unreal Engine.       
+  
 By default, the game opens on port ```7777```.   
 
  (1).You can **change** the port by adding a new parameter ```?port=``` to the ```UWorld``` URL in Unreal Engine  
