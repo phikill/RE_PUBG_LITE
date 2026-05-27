@@ -103,8 +103,31 @@ The game uses Coherent GT to apply web elements as UI.
 ```0.7.0.1```  
 <img src="web_help_files/lobby_pic_0701.png" alt="lobby_preview_0701" width="600">  
 
+### NOTE: The server browser is fake for now, so ignore it. its a prototype
+<img src="web_help_files/lobby_server_browser_prototype.png" alt="server_browser" width="600">   
+
 
 You can create simple matches in the ```custom_match``` menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
+
+```PLAY/CUSTOM_MATCH/CREATE_CUSTOM_MATCH```   
+<img src="web_help_files/lobby_create_custom_match_page.png" alt="create_custom_match" width="600">    
+
+
+Some parameters, such as ```TPP/FPP``` and the number of players in the match, don't work, so you can ignore them. and also the name of the match.      
+
+And the game mode works.   
+
+```Default```: It does not add any extra parameters to the map; it loads the map's default blueprint.   
+```TRAINING MALE```: This game mode loads the training mode with a male character; in this mode, the character does not take damage.   
+```TRAINING FEMALE```: This game mode loads the training mode with a female character; in this mode, the character takes damage but does not die.  
+```BATTLE ROYALE FOREST```: Battle royale game mode, but loaded by Erangel by default.  works in the Miramar   
+```BATTLE ROYALE DESERT```: Battle Royale game mode, but loaded by Miramar by default. Works on Erangel.  
+
+```PLAY/CUSTOM_MATCH/JOIN_FROM_IP_ADRESS```   
+
+<img src="web_help_files/lobby_join_from_ip_page.png" alt="join_from_ip_adress" width="600">    
+
+On this page, simply enter the IP address of the server you wish to connect to. More instructions below.  
 
 ## 🕹️ 🎮 🌐 PLAY! | Creation of Match / Open Map | Join a Match
 
