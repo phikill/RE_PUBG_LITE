@@ -98,7 +98,7 @@ The game uses Coherent GT to apply web elements as UI.
 
 You can create simple matches in the ```custom_match``` menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
 
-## 🕹️ 🎮 🌐 creation of match, game, open map.
+## 🕹️ 🎮 🌐 PLAY! | Creation of Match / Open Map | Join a Match
 
 
 ### Remember, you need to open the program twice! this part is to turn the current process window into a host server, which is not playable.
@@ -139,6 +139,8 @@ By default, the game opens on port ```7777```.
 
 
 matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2.423``` and ```1.4.2.681``` the game crashes
+
+## Note: the fixes are in the releases; you just need to inject the DLL on the host side when the game is loaded and in the lobby. You can inject it during the match, but I recommend injecting it before any player joins the match or lobby.
 
 
 ## Game Launcher
