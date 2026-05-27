@@ -111,10 +111,10 @@ The host cannot interact with elements in the environment, among other things; i
 
 (1) Host (2) Client  
 
-```0.7.0.1```
-<img src="web_help_files/host_pic_0701.png" width="400"><img src="web_help_files/client_pic_0701.png" width="400">  
-```1.4.0.15```
-<img src="web_help_files/host_pic_14015.png" alt="host_pic_14015" width="400"><img src="web_help_files/client_pic_14015.png" alt="client_pic_14015" width="400">  
+```0.7.0.1```  
+Host <img src="web_help_files/host_pic_0701.png" width="400"> Client <img src="web_help_files/client_pic_0701.png" width="400">  
+```1.4.0.15```  
+Host <img src="web_help_files/host_pic_14015.png" alt="host_pic_14015" width="400"> Client <img src="web_help_files/client_pic_14015.png" alt="client_pic_14015" width="400">  
 
 You can ***create matches*** from the *lobby* in any version of the game except those mentioned later, and you can also use an SDK to open the map with DLL injection, or in the server panel.
 
