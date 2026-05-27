@@ -109,7 +109,7 @@ The game uses Coherent GT to apply web elements as UI.
 
 You can create simple matches in the ```custom_match``` menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
 
-```PLAY/CUSTOM_MATCH/CREATE_CUSTOM_MATCH```   
+## ```PLAY/CUSTOM_MATCH/CREATE_CUSTOM_MATCH```   
 <img src="web_help_files/lobby_create_custom_match_page.png" alt="create_custom_match" width="600">    
 
 
@@ -123,7 +123,7 @@ And the game mode works.
 ```BATTLE ROYALE FOREST```: Battle royale game mode, but loaded by Erangel by default.  works in the Miramar   
 ```BATTLE ROYALE DESERT```: Battle Royale game mode, but loaded by Miramar by default. Works on Erangel.  
 
-```PLAY/CUSTOM_MATCH/JOIN_FROM_IP_ADRESS```   
+## ```PLAY/CUSTOM_MATCH/JOIN_FROM_IP_ADRESS```   
 
 <img src="web_help_files/lobby_join_from_ip_page.png" alt="join_from_ip_adress" width="600">    
 
