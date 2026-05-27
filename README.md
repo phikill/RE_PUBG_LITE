@@ -20,38 +20,49 @@ And also to have control over the game, I want to do funny things.
 
 In short, the game is working but needs several things fixed to make it stable and functional.  
 
+# README! The game works, but it's not playable!  
 
-## NOTE! Current issues - that have not yet been repaired
+This repository is to demonstrate progress and how things are going and how they stand.  
+
+Don't expect too much for now.  
+
+Below is a list of problems that haven't been fixed yet.  
+
+I hope you understand.  
+
+
+## NOTE! Current issues - 🟢 Repaired / 🟡 Partially repaired / 🔴 UNREPAIRED
  
 
 #### Vehicles
- - [x] Being able to drive  - Fix by ```PHIKILL```
- - [x] character positioned correctly in the seats  - Fix by ```PHIKILL```
- - [x] correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  - Fix by ```PHIKILL```
- - [x] to be able to get out of the vehicle  - Fix by ```PHIKILL```
-   - NOTE! For now, the character is quite buggy when exiting the vehicle.
-      The bugs are: character rotation and invalid activation of the underwater state.  
+ - 🟢 Being able to drive  - Fix by ```PHIKILL```
+ - 🟢 character positioned correctly in the seats  - Fix by ```PHIKILL```
+ - 🟢 correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  - Fix by ```PHIKILL```
+ - 🟡 to be able to get out of the vehicle  - Fix by ```PHIKILL```[^note].
+   [^note]: NOTE! For now, the character is quite buggy when exiting the vehicle.
+      The bugs are: character rotation and invalid activation of the underwater state.
   
 #### Character 
- - [ ] When aiming with ADS, the animation should be correct.  
- - [x] When looking around, the server replicates the character rotation according to the yaw while it is stationary.
-    - NOTE! I made a quick fix, so this conflicts with the **```ALT FreeCam```**, but it helps with the punching gameplay.
- - [x] receive and give damage - *needs to improve*  - Fix By ```H4tiux```
- - [x] successfully landing - *needs to improve* - Fix By ```JerryPrimeDev``` and ```PHIKILL```  
- - [ ] Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped.
+ - 🔴 When aiming with ADS, the animation should be correct.  
+ - 🟡 When looking around, the server replicates the character rotation according to the yaw while it is stationary.[^note2].
+   [^note2]: - NOTE! I made a quick fix, so this conflicts with the **```ALT FreeCam```**, but it helps with the punching gameplay.
+ - 🟢 receive and give damage - *needs to improve*  - Fix By ```H4tiux```
+ - 🟢 successfully landing - *needs to improve* - Fix By ```JerryPrimeDev``` and ```PHIKILL```  
+ - 🔴 Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped.
 
 #### World
- - [ ] Relevance correction based on distance from the camera's ```viewTarget```. - This problem causes physics-based actors to fall when they are far from the host's camera.  
- - [ ] DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.
+ - 🔴 Relevance correction based on distance from the camera's ```viewTarget```. - This problem causes physics-based actors to fall when they are far from the host's camera.  
+ - 🔴 DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.
     - NOTE! Partially fixed, it works on the host, but the door is not replicated to the clients.
- - [ ] Item spawning on maps  
- - [ ] Vehicle spawning on maps  
+ - 🔴 Item spawning on maps  
+ - 🔴 Vehicle spawning on maps  
 
 
 #### Weapons
- - [ ] Replicate gunshots, including impact, decals, effects, and damage.  
- - [x] reloading weapons in newer versions - Fix By ```H4tiux```
- - [ ] The Grenades timings has been corrected to 5 seconds instead of 2.5.  
+ - 🔴 Replicate gunshots, including impact, decals, effects, and damage.  
+ - 🟡 reloading weapons in newer versions - Fix By ```H4tiux``` [^note3].
+  [^note3]: It works well, but needs improvement because it's quite broken.
+ - 🔴 The Grenades timings has been corrected to 5 seconds instead of 2.5.  
 
 ### Other issues in newer versions were fixed by H4tiux, such as the camera in the battle royale plane, getting out of the plane, crash problems, and others.
 
@@ -61,18 +72,45 @@ In short, the game is working but needs several things fixed to make it stable a
 ### Lobby Code : -> [ogbg_lobby](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_lobby)  
 #### *WORKS ON ALL VERSIONS OF THE GAME*  
 
+## READ  
+
+The lobby is just web code, so you can open it in your browser.  
+
+The game uses Coherent GT to apply web elements as UI.  
+
+#### It has several problems such as  
+ - 🔴 Sometimes, repeatedly, or constantly, the asynchronous loading of game information via Coherent GT fails to respond and gets stuck in an infinite loading loop.  
+ - 🔴 Clicks fail in the lobby; you have to move the cursor so that the command switching focuses on web elements.
+
+ The code is completely *open source* ❤️; **if anyone has the knowledge, they can access the branch listed above and modify the code**. It would help me a lot 
+ Since -> ***I don't have much experience with web coding*** 💔, I hate it and it's very annoying.   
+
+ 
 ### The following are parameter commands for the online lobby hosted on GitHub Pages.
 ### If you want to use it offline, access the branch and follow the instructions.  
 
 ```@PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="https://phikill.github.io/RE_PUBG_LITE/custom_lobby/index.html" -AllowJoinAnyMatchState -LOG -NOSPLASH```
 
+## The ```-AllowJoinAnyMatchState``` parameter is required for creating matches; otherwise, you will not be able to.
 
 <img src="web_help_files/lobby_preview.png" alt="lobby_preview" width="600">
 <img src="web_help_files/lobby_preview_2.png" alt="lobby_preview_2" width="600">
 
-You can create simple matches in the custom_match menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
+You can create simple matches in the ```custom_match``` menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
+
+### Remember, you need to open the program twice! this part is to turn the current process window into a host server, which is not playable.
+
+***To play, you need another instance and to join the match. as a CLIENT***
 
 By default, the game opens on port ```7777```.   
+
+ (1).You can **change** the port by adding a new parameter ```?port=``` to the ```UWorld``` URL in Unreal Engine  
+  - Like :  ```open MapName?listen?port=7778```  
+
+(2).Or you can use it in the program parameters ```-port=```
+ - Like :  ```PUBGLite-Win64-Shipping.exe -UI -LobbyUrl="" -AllowJoinAnyMatchState -NOSPLASH -port=9999 ```  
+
+
 
 matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2.423``` and ```1.4.2.681``` the game crashes
 
@@ -86,6 +124,23 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
 
 ### You can download this branch here; it contains the source code and the binary file in ```bin/nt_64/```.   
 ## Branch Link :[Launcher Source Code](https://github.com/phikill/RE_PUBG_LITE/tree/ogbg_game_launcher)  
+
+### README!
+
+(1). Currently, the launcher only serves to add a nickname, in this case, simply change the UID, and disable the ```Please run from launcher``` error message.  
+<img src="web_help_files/no_launcher_err.png" alt="no_launcher" width="200">  
+
+(2). If you are trying to open PUBG Lite 0.7.0.1 and are receiving a LauncherIpc.dll message like the one below.  
+<img src="web_help_files/LauncherIpc_dll_err.png" alt="LauncherIpc_dll_err" width="300">  
+
+ - You need the crack that's in this release : [0.7.0.1 Crack Patch](https://github.com/phikill/RE_PUBG_LITE/releases/tag/mod_dev)  
+
+That's all there is to it; **you can't start the game from the Launcher**, -> you have to start it ***Externally***.  
+
+If you want, you can implement it yourself; the code is in C, using Chromium for web with the LIBCEF library for its implementation.   
+
+And be happy, the code is in the branch mentioned above.  
+
  
  Login Page - nickname only  
 <img src="web_help_files/lpc_launcher_login_01.png" alt="launcher_windows_login" width="600">  
@@ -119,6 +174,8 @@ matchmaking works up to version ```1.4.0.15```, in higher versions like ```1.4.2
 ## Server Panel
 
 I created this Server Panel to remotely control the server from a browser, view its status, and more.  
+
+#### Don't expect too much; when trying to spawn vehicles, there's a 99% chance your server will crash. But it works fine.  
 
 More implementations and bug fixes will follow in the future.  
 
