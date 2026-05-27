@@ -93,8 +93,16 @@ The game uses Coherent GT to apply web elements as UI.
 
 ## The ```-AllowJoinAnyMatchState``` parameter is required for creating matches; otherwise, you will not be able to.
 
+```1.4.2.681```  
 <img src="web_help_files/lobby_preview.png" alt="lobby_preview" width="600">
-<img src="web_help_files/lobby_preview_2.png" alt="lobby_preview_2" width="600">
+<img src="web_help_files/lobby_preview_2.png" alt="lobby_preview_2" width="600">  
+
+```1.4.0.15```  
+<img src="web_help_files/lobby_pic_14015.png" alt="lobby_preview_14015" width="600">  
+
+```0.7.0.1```  
+<img src="web_help_files/lobby_pic_0701.png" alt="lobby_preview_0701" width="600">  
+
 
 You can create simple matches in the ```custom_match``` menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
 
