@@ -34,7 +34,7 @@ I hope you understand.
 ## NOTE! Current issues - 🟢 Repaired / 🟡 Partially repaired / 🔴 UNREPAIRED
  
 
-#### Vehicles
+#### 🚗 Vehicles
  - 🟢 Being able to drive  - Fix by ```PHIKILL```
  - 🟢 character positioned correctly in the seats  - Fix by ```PHIKILL```
  - 🟢 correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  - Fix by ```PHIKILL```
@@ -42,7 +42,7 @@ I hope you understand.
    [^note]: NOTE! For now, the character is quite buggy when exiting the vehicle.
       The bugs are: character rotation and invalid activation of the underwater state.
   
-#### Character 
+#### 🧍‍♂️ Character 
  - 🔴 When aiming with ADS, the animation should be correct.  
  - 🟡 When looking around, the server replicates the character rotation according to the yaw while it is stationary.[^note2].
    [^note2]: - NOTE! I made a quick fix, so this conflicts with the **```ALT FreeCam```**, but it helps with the punching gameplay.
@@ -50,7 +50,7 @@ I hope you understand.
  - 🟢 successfully landing - *needs to improve* - Fix By ```JerryPrimeDev``` and ```PHIKILL```  
  - 🔴 Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped.
 
-#### World
+#### 🌎 World
  - 🔴 Relevance correction based on distance from the camera's ```viewTarget```. - This problem causes physics-based actors to fall when they are far from the host's camera.  
  - 🔴 DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.
     - NOTE! Partially fixed, it works on the host, but the door is not replicated to the clients.
@@ -58,7 +58,7 @@ I hope you understand.
  - 🔴 Vehicle spawning on maps  
 
 
-#### Weapons
+#### 🔫 Weapons
  - 🔴 Replicate gunshots, including impact, decals, effects, and damage.  
  - 🟡 reloading weapons in newer versions - Fix By ```H4tiux``` [^note3].
   [^note3]: It works well, but needs improvement because it's quite broken.
