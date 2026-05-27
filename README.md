@@ -98,7 +98,7 @@ The game uses Coherent GT to apply web elements as UI.
 
 You can create simple matches in the ```custom_match``` menu. To play, simply open two instances of the game: one will be the ```server``` and the other the ```client```.   
 
-## creation of match, game, open map.
+## 🕹️ 🎮 🌐 creation of match, game, open map.
 
 
 ### Remember, you need to open the program twice! this part is to turn the current process window into a host server, which is not playable.
@@ -106,6 +106,13 @@ You can create simple matches in the ```custom_match``` menu. To play, simply op
 ***To play, you need another instance and to join the match. as a CLIENT***
 
 You can ***create matches*** from the *lobby* in any version of the game except those mentioned later, and you can also use an SDK to open the map with DLL injection, or in the server panel.
+
+### STEPS TO PLAY
+  (1). First, create a match as ***host*** 👑🌐🗔.  
+    - Make sure you have all the pre-configuration information, such as **server port** and the map's **gamemode blueprint**.  
+  
+  (2). You can join the match 🖥️🎮   
+    - from the lobby by entering the IP address in the ```join from IP Adress``` option. If you are on the same computer as the host, simply enter ```127.0.0.1```.  
 
 By default, the game opens on port ```7777```.   
 
