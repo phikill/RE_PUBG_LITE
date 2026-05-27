@@ -30,6 +30,14 @@ Below is a list of problems that haven't been fixed yet.
 
 I hope you understand.  
 
+## <img src="web_help_files/Windows_11_logo.png" alt="win11_logo" width="100"> Windows 11 Problems!
+
+```1.4.2.681```: It doesn't work on Windows 11 ```22h2``` and higher.  
+```1.4.2.423```: It works at ```23h2``` and below.  
+```1.4.2.14```: It works at ```23h2``` and below.  
+```1.4.0.15```: It works at ```23h2``` and below.  
+
+```0.7.0.1```: The h4tiux crack patch works on any operating system, from Windows 7 to the latest Windows ```26h2```.
 
 ## NOTE! Current issues - 🟢 Repaired / 🟡 Partially repaired / 🔴 UNREPAIRED
  
