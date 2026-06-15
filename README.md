@@ -5,7 +5,7 @@ You can join our *Discord* server by clicking the button above.
 ### STATUS  
   ### 🟢 Active, currently debugging the game's binary using an SDK generator and IDA and Ghidra.
 
-### Progress 0.7% 
+### Progress 1.2% 
 
 
 
