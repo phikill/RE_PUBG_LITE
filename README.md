@@ -30,9 +30,12 @@ Below is a list of problems that haven't been fixed yet.
 
 I hope you understand.  
 
-## <img src="web_help_files/Windows_11_logo.png" alt="win11_logo" width="100"> Windows 11 Problems!
+## <img src="web_help_files/Windows_11_logo.png" alt="win11_logo" width="100"> Windows 11 ~~Problems!~~ | 🟢 FIXED! by ```Senku Aoki``` & ```H4tiux```
 
-```1.4.2.681```: It doesn't work on Windows 11 ```22h2``` and higher.  
+# The binaries aren't available here yet, except for version 0.7.0.1, but you can download the game via Discord, which includes the fixed binary.
+
+### original versions, and their problems  
+```1.4.2.681```: It works at ```23h2``` and below.  
 ```1.4.2.423```: It works at ```23h2``` and below.  
 ```1.4.2.14```: It works at ```23h2``` and below.  
 ```1.4.0.15```: It works at ```23h2``` and below.  
@@ -43,31 +46,28 @@ I hope you understand.
  
 
 #### 🚗 Vehicles
- - 🟢 Being able to drive  - Fix by ```PHIKILL```
- - 🟢 character positioned correctly in the seats  - Fix by ```PHIKILL```
- - 🟢 correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  - Fix by ```PHIKILL```
- - 🟡 to be able to get out of the vehicle  - Fix by ```PHIKILL```[^note].
-   [^note]: NOTE! For now, the character is quite buggy when exiting the vehicle.
-      The bugs are: character rotation and invalid activation of the underwater state.
+ - 🟢 Being able to drive  - Fix by ~~```PHIKILL```~~ -> ```NETMODE``` FIX
+ - 🟢 character positioned correctly in the seats  - Fix by ~~```PHIKILL```~~  ```NETMODE``` FIX
+ - 🟢 correctly switch to the vehicle seats, press CTRL + 1, 2, 3, 4, 5, 6, 7, 8, 9  - Fix by ~~```PHIKILL```~~ ```NETMODE``` FIX
+ - 🟢 to be able to get out of the vehicle  - Fix by ~~```PHIKILL```~~ ```NETMODE``` FIX 
   
 #### 🧍‍♂️ Character 
  - 🔴 When aiming with ADS, the animation should be correct.  
- - 🟡 When looking around, the server replicates the character rotation according to the yaw while it is stationary.[^note2].
-   [^note2]: - NOTE! I made a quick fix, so this conflicts with the **```ALT FreeCam```**, but it helps with the punching gameplay.
- - 🟢 receive and give damage - *needs to improve*  - Fix By ```H4tiux```
+ - 🟢 When looking around, the server replicates the character rotation according to the yaw while it is stationary. ```NETMODE``` FIX  
+ - 🟢 receive and give damage - *needs to improve*  - Fix By ~~```H4tiux```~~ ```NETMODE``` FIX 
  - 🟢 successfully landing - *needs to improve* - Fix By ```JerryPrimeDev``` and ```PHIKILL```  
- - 🔴 Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped.
+ - 🟢 Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped. ```NETMODE``` FIX 
 
 #### 🌎 World
  - 🔴 Relevance correction based on distance from the camera's ```viewTarget```. - This problem causes physics-based actors to fall when they are far from the host's camera.  
  - 🔴 DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.
     - NOTE! Partially fixed, it works on the host, but the door is not replicated to the clients.
  - 🔴 Item spawning on maps  
- - 🔴 Vehicle spawning on maps  
+ - 🟢 Vehicle spawning on maps  ```NETMODE``` FIX 
 
 
 #### 🔫 Weapons
- - 🔴 Replicate gunshots, including impact, decals, effects, and damage.  
+ - 🟡 Replicate gunshots, including impact, decals, effects, and damage.  Fix By ```H4tiux``` and ```PHIKILL``` , only damage
  - 🟡 reloading weapons in newer versions - Fix By ```H4tiux``` [^note3].
   [^note3]: It works well, but needs improvement because it's quite broken.
  - 🔴 The Grenades timings has been corrected to 5 seconds instead of 2.5.  
