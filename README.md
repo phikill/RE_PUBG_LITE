@@ -324,15 +324,14 @@ name of the tools so I don't forget
 [EchoMirage](https://sourceforge.net/projects/echomirage.oldbutgold.p/)  
 [FakeNet](https://github.com/fireeye/flare-fakenet-ng/releases)  
 [Cain & Abel](https://sectools.org/tool/cain/)   
-[Postman](https://www.postman.com/)   
+ ~~[Postman](https://www.postman.com/)~~  <-- bad.  
+[Bruno](https://www.usebruno.com/)   Use Bruno, better than postman   
 [node.js](https://nodejs.org/)   
 [Nmap](https://nmap.org/)   
 
 
 ### *Direct Modification to the binary*
 
-QuickUnpack 4.3  
-[xvolkolak Unpacker](https://n10info.blogspot.com/2018/03/xvolkolak-010.html)    
 [Detect It Easy DIE](https://github.com/horsicq/Detect-It-Easy)    
 [HXD](https://mh-nexus.de/en/hxd/)    
 [ImHex](https://imhex.werwolv.net/)    
