@@ -32,8 +32,6 @@ I hope you understand.
 
 ## <img src="web_help_files/Windows_11_logo.png" alt="win11_logo" width="100"> Windows 11 ~~Problems!~~ | 🟢 FIXED! by ```Senku Aoki``` & ```H4tiux```
 
-# The binaries aren't available here yet, except for version 0.7.0.1, but you can download the game via Discord, which includes the fixed binary.
-
 ### original versions, and their problems  
 ```1.4.2.681```: It works at ```23h2``` and below.  
 ```1.4.2.423```: It works at ```23h2``` and below.  
