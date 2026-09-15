@@ -1,7 +1,26 @@
 [![discord](https://shields.io/discord/1549167235489210448?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/q9vcUTnz2u)  
 You can join our *Discord* server by clicking the button above.  
 
+# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
+**PUBG LITE** game reverse engineering, for educational purposes.    
 
+This project has no connection whatsoever to [**Krafton**](https://www.krafton.com), the game's original developer.   
+And the project is non-profit; it is intended solely for study and out of curiosity.  
+
+This repository contains only reverse-engineered data—such as analyses of the game's data,  
+  techniques, and fixes—to make it functional again as a server and in offline mode.  
+
+with no intention of competing with the game [PUBG Battlegrounds](https://pubg.com/), and being entirely related to the defunct and abandoned **PUBG Lite**, which still holds a place in our hearts
+
+  We will not modify the game's asset files, nor will we make any changes related to updates; 
+  the game's state remains exactly as distributed by Krafton and PUBG Studios. What we do is **REWRITE** the game's **SERVER-SIDE** logic.    
+
+ **WITHOUT DISTRIBUTING THE ORIGINAL GAME CODE** | only memory dumps and decompiled functions, such as C++ RTTI classes and offsets, only code written and rewritten by community members  
+
+## LICENSE 
+   **This repository follows the GPLv3 license.**   
+  to ensure that the code is public and alive, without any intention of selling or reselling  
+ 
 ### STATUS  
   ### 🟢 Active, currently debugging the game's binary using an SDK generator and IDA and Ghidra.
 
@@ -10,8 +29,7 @@ You can join our *Discord* server by clicking the button above.
 
 
 
-# <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
-PUBG LITE game reverse engineering, for educational purposes.  
+
 
 
 I want a free roam version of this game, which is why I'm working hard on the project.  
