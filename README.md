@@ -306,9 +306,9 @@ More implementations and bug fixes will follow in the future.
       The copyrighted work at issue is PUBG (PUBG: BATTLEGROUNDS), a video game developed and published by KRAFTON, Inc. (&quot;KRAFTON&quot;), including its software code, game client, game assets,
          trademarks, and associated intellectual property. KRAFTON is the owner of all right, title, and interest in and to the PUBG game and its underlying software.  
 
-  First Name: **Jangmin**
-  Last Name: **Park**
-  Email: ****************@krafton.com
+  First Name: **Jangmin**  
+  Last Name: **Park**  
+  Email: ****************@krafton.com  
   
   🔴[1.4.2.681 | (02.22.2021) link 1](https://drive.google.com/drive/folders/19vs1__70kZsb7YQScpdWKtGa2-Xwi9gj)  
   🔴[1.4.2.681 | (02.22.2021) link 2](https://archive.org/details/pubglitebuild)  
