@@ -79,7 +79,7 @@ I hope you understand.
  - 🔴 DOORS, Yes, the doors are quite complicated; they neither open nor close, and they are not being replicated.
     - NOTE! Partially fixed, it works on the host, but the door is not replicated to the clients.
  - 🔴 Item spawning on maps  
- - 🟢 Vehicle spawning on maps  ```NETMODE``` FIX 
+ - 🟢 Vehicle spawning on maps  ```NETMODE``` FIX & Loading of streamLevels required by vehicles, by ```H4TIUX```
 
 
 #### 🔫 Weapons
