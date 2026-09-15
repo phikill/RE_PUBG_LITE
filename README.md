@@ -1,4 +1,4 @@
-[![discord](https://shields.io/discord/1334106568253509692?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/E5vXyRd4ks)  
+[![discord](https://shields.io/discord/1549167235489210448?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/q9vcUTnz2u)  
 You can join our *Discord* server by clicking the button above.  
 
 
