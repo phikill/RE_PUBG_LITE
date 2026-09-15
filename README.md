@@ -22,9 +22,9 @@ with no intention of competing with the game [PUBG Battlegrounds](https://pubg.c
   to ensure that the code is public and alive, without any intention of selling or reselling  
  
 ### STATUS  
-  ### 🟢 Active, currently debugging the game's binary using an SDK generator and IDA and Ghidra.
+  ### 🟢 ACTIVE! |  Currently debugging the game binary using an SDK generator, IDA, and Ghidra, investigating the source of issues.
 
-### Progress 1.7% 
+### Progress 1.8% 
 
 
 
