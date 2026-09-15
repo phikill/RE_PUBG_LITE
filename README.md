@@ -71,7 +71,7 @@ I hope you understand.
  - 🔴 When aiming with ADS, the animation should be correct.  
  - 🟢 When looking around, the server replicates the character rotation according to the yaw while it is stationary. ```NETMODE``` FIX  
  - 🟢 receive and give damage - *needs to improve*  - Fix By ~~```H4tiux```~~ ```NETMODE``` FIX 
- - 🟢 successfully landing - *needs to improve* - Fix By ~~```JerryPrimeDev``` and ```PHIKILL``` ~~~ ```NETMODE``` FIX
+ - 🟢 successfully landing - *needs to improve* - Fix By ~~```JerryPrimeDev```~~ and ~~```PHIKILL```~~ ```NETMODE``` FIX
  - 🟢 Correctly updating character information in the inventory. such as keeping a helmet and other equipment even when they are unequipped. ```NETMODE``` FIX 
 
 #### 🌎 World
