@@ -1,6 +1,10 @@
 [![discord](https://shields.io/discord/1549167235489210448?style=for-the-badge&label=OG:BG&logo=discord&labelColor=black&color=5865F2)](https://discord.gg/q9vcUTnz2u)  
 You can join our *Discord* server by clicking the button above.  
 
+# TORRENT MAGNETIC URL FOR PUBG LITE 1.4.2.681
+
+``` magnet:?xt=urn:btih:7655CD8A57E8770946CBD7F04CB9E224728019AB&dn=pubglitebuild&tr=http%3a%2f%2fbt1.archive.org%3a6969%2fannounce&tr=http%3a%2f%2fbt2.archive.org%3a6969%2fannounce&ws=https%3a%2f%2farchive.org%2fdownload%2f&ws=http%3a%2f%2fia601400.us.archive.org%2f35%2fitems%2f&ws=%2f35%2fitems%2f ```
+
 # <img src="web_help_files/pubg_lite_logo.png" width="40" height="40" />   OG:Battlegrounds Lite.
 **PUBG LITE** game reverse engineering, for educational purposes.    
 
