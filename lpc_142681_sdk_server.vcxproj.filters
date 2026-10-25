@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Arquivos de Origem">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Recurso">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Origem\serverSide_Fix">
+      <UniqueIdentifier>{c98db328-99e7-4015-b136-06159760ca7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\serverSide_Fix\Character">
+      <UniqueIdentifier>{85e0037d-e93f-4519-851b-72014bff6dce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\serverSide_Fix\Weapon">
+      <UniqueIdentifier>{b88a3cf1-5ff8-4c41-b7e5-62db4886ef1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\serverSide_Fix\BackPack">
+      <UniqueIdentifier>{08bf78fd-e96e-49e9-a653-a72b16c45eb2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="serverSide_Fix\Character\characterCore.cpp">
+      <Filter>Arquivos de Origem\serverSide_Fix\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="include\cJSON\cJSON.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="include\cJSON\cJSON_Utils.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="serverSide_Fix\Weapon\weaponCore.cpp">
+      <Filter>Arquivos de Origem\serverSide_Fix\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="serverSide_Fix\Backpack\backPackCore.cpp">
+      <Filter>Arquivos de Origem\serverSide_Fix\BackPack</Filter>
+    </ClCompile>
+    <ClCompile Include="serverSide_Fix\general_utils.cpp">
+      <Filter>Arquivos de Origem\serverSide_Fix</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="serverSide_Fix\Character\characterCore.hpp">
+      <Filter>Arquivos de Origem\serverSide_Fix\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="serverSide_Fix\Weapon\weaponCore.hpp">
+      <Filter>Arquivos de Origem\serverSide_Fix\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="serverSide_Fix\Backpack\backPackCore.hpp">
+      <Filter>Arquivos de Origem\serverSide_Fix\BackPack</Filter>
+    </ClInclude>
+    <ClInclude Include="serverSide_Fix\general_utils.hpp">
+      <Filter>Arquivos de Origem\serverSide_Fix</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,7 +1,0 @@
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherUtil\LauncherUtil\obj\Debug\net452\LauncherUtil.csproj.AssemblyReference.cache
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherUtil\LauncherUtil\obj\Debug\net452\LauncherUtil.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherUtil\LauncherUtil\obj\Debug\net452\LauncherUtil.csproj.CoreCompileInputs.cache
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherUtil\LauncherUtil\bin\Debug\net452\LauncherUtil.dll
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherUtil\LauncherUtil\bin\Debug\net452\LauncherUtil.pdb
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherUtil\LauncherUtil\obj\Debug\net452\LauncherUtil.dll
-C:\Users\phikill\Desktop\pubg_lite_reverse\recode\game_launcher\LauncherUtil\LauncherUtil\obj\Debug\net452\LauncherUtil.pdb
