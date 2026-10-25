@@ -36,5 +36,13 @@ Because the system does not identify this as a standard client, various issues a
 
 Therefore, it is essential that these two hooks remain enabled.  
 
+# master masons who contributed to the project 
 
+H4tiux  
+Senku Aoki  
+PHIKILL  
+xXMrYashXx   
+Kirito/miku~/ ... IDK  
+
+among other members whose names I’ve forgotten  
 
